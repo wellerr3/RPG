@@ -11,22 +11,26 @@ end
 
 
 function love.load()
-  Object = require "assets.classic"
+  Object = require "assets/classic"
+  Sti = require 'assets/sti'
+  Anim8 = require "assets/anim8"
   require "entity"
   require "tilemap"
   require "player"
 
-  TileMap = TileMap()
-  Player = Player()
-
+  -- TileMap = TileMap()
+  Player = Player(100,100)
+  gameMap = Sti('maps/testMap.lua')
 
 
 end
-function love.update()
+function love.update(dt)
+  Player:update(dt)
 end
 
 function love.draw()
-  TileMap:draw()
+  gameMap:draw()
+  -- TileMap:draw()
   Player:draw()
 end
 

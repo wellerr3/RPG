@@ -17,7 +17,9 @@ function Entity:new(x, y, image_path)
   self.last.y = self.y
   self.strength = 0
   self.tempStrength = 0
-
+  self.isMoving = false
+  self.collider = World:newBSGRectangleCollider(self.x, self.y, 25,32, 10)
+  self.collider:setFixedRotation(true)
   -- Add the gravity and weight properties
   -- self.gravity = 0
   -- self.weight = 800
@@ -27,7 +29,6 @@ function Entity:update(dt)
   self.imgDir[self.dir]:update(dt)
   self.last.x = self.x
   self.last.y = self.y
-  self.tempStrength = self.strength
 
   -- Increase the gravity using the weight
   -- self.gravity = self.gravity + self.weight * dt
@@ -37,7 +38,12 @@ function Entity:update(dt)
 end
 
 function Entity:draw()
-  self.imgDir[self.dir]:draw(self.spriteSheet, self.x,self.y)
+  if self.isMoving == false then
+    self.imgDir[self.dir]:gotoFrame(1)
+  else
+    self.imgDir[self.dir]:draw(self.spriteSheet, self.x,self.y, nil, nil, nil, 16,16)
+  end
+  self.imgDir[self.dir]:draw(self.spriteSheet, self.x,self.y, nil, nil, nil, 16,16)
   -- love.graphics.draw(self.imgDir[self.dir], self.x, self.y)
 end
 

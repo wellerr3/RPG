@@ -9,6 +9,7 @@ function love.conf(t)
   t.window.height = 1000
 end
 
+MasterVolume = .05
 
 function love.load()
   Object = require "assets/classic"
@@ -24,23 +25,26 @@ function love.load()
   require "hud"
   require "walls"
   require "sounds"
+  require "assets/TEsound"
+  require "enemy"
 
   Sounds = Sounds()
   World = WF.newWorld(0,0)
   Cam = Camera()
-  Player = Player(100,100)
+  Player = Player(880,8800)
   Hud = Hud()
-  gameMap = Sti('maps/testMap2.lua')
+  gameMap = Sti('maps/MtMap.lua')
   Walls = Walls()
-  Sounds.music:play()
-  Sounds.music:setVolume(10)
+  Snek = Enemy(980,8800)
+
 
 end
 
 function love.update(dt)
   Player:update(dt)
+  Snek:update(dt)
   Cam:lookAt(Player.x, Player.y)
-  
+
   local w = love.graphics.getWidth()
   local h = love.graphics.getHeight()
   local mapW = gameMap.width * gameMap.tilewidth
@@ -62,26 +66,30 @@ function love.update(dt)
     Cam.y = (mapH - h/2)
   end
   World:update(dt)
+  TEsound.cleanup()
 
 end
 
 function love.draw()
   Cam:attach()
     -- gameMap:draw()
-    gameMap:drawLayer(gameMap.layers["Base"])
-    gameMap:drawLayer(gameMap.layers["Top"])
-    -- TileMap:draw()
+    gameMap:drawLayer(gameMap.layers["BK"])
+    gameMap:drawLayer(gameMap.layers["Paths"])
+    gameMap:drawLayer(gameMap.layers["BLD"])
+
+
+    Snek:draw()
     Player:draw()
+    
+    gameMap:drawLayer(gameMap.layers["Fence"])
+    -- World:setQueryDebugDrawing(true)
     -- World:draw()
   Cam:detach()
   Hud:draw()
 end
 
 function love.keypressed(key)
-  if key == "space" then
-    print('bang')
-    Sounds.bang:play()
-  end
+
 end
 
 

@@ -4,91 +4,63 @@ end
 -- io.stdout:setvbuf('no')
 -- starter
 
-function love.conf(t)
-  t.window.width = 1200
-  t.window.height = 1000
-end
 
 MasterVolume = .05
+NumEnemys = 10
+CurrID = 1
 
 function love.load()
-  Object = require "assets/classic"
-  Sti = require 'assets/sti'
-  Anim8 = require "assets/anim8"
-  Camera = require "assets/camera"
-  WF = require "assets/windfield"
+  math.randomseed(os.time())
+  success = love.window.setMode( 1500, 1200 )
 
-  require "entity"
-
-  require "tilemap"
-  require "player"
-  require "hud"
-  require "walls"
-  require "sounds"
-  require "assets/TEsound"
-  require "enemy"
+  require("src/startup/gameStart")
+  GameStart()
 
   Sounds = Sounds()
   World = WF.newWorld(0,0)
   Cam = Camera()
-  Player = Player(880,8800)
+  Player = Player(880,8800, "assets/tallCreg.png", .25)
   Hud = Hud()
-  gameMap = Sti('maps/MtMap.lua')
+  gameMap = Sti('src/maps/MtMap.lua')
   Walls = Walls()
-  Snek = Enemy(980,8800)
+  NPCs = NPCBuilder()
 
+  World:addCollisionClass("Wall")
+
+  ObjectSet = Objects()
+
+  Cam:zoom(2)
 
 end
 
 function love.update(dt)
   Player:update(dt)
-  Snek:update(dt)
-  Cam:lookAt(Player.x, Player.y)
-
-  local w = love.graphics.getWidth()
-  local h = love.graphics.getHeight()
-  local mapW = gameMap.width * gameMap.tilewidth
-  local mapH = gameMap.height * gameMap.tileheight
-  -- left border
-  if Cam.x < w/2 then
-    Cam.x = w/2
-  end
-  -- top border
-  if Cam.y < h/2 then
-    Cam.y = h/2
-  end
-  -- right border
-  if Cam.x > (mapW - w/2) then
-    Cam.x = (mapW - w/2)
-  end
-  -- bot border  
-  if Cam.y > (mapH - h/2) then
-    Cam.y = (mapH - h/2)
-  end
+  NPCs:update(dt)
+  camUpdate:update(dt)
   World:update(dt)
   TEsound.cleanup()
+
+  ObjectSet:update(dt)
 
 end
 
 function love.draw()
+  
   Cam:attach()
     -- gameMap:draw()
     gameMap:drawLayer(gameMap.layers["BK"])
     gameMap:drawLayer(gameMap.layers["Paths"])
     gameMap:drawLayer(gameMap.layers["BLD"])
-
-
-    Snek:draw()
+    gameMap:drawLayer(gameMap.layers["tree"])
+    NPCs:draw()
     Player:draw()
+    ObjectSet:draw()
     
     gameMap:drawLayer(gameMap.layers["Fence"])
-    -- World:setQueryDebugDrawing(true)
-    -- World:draw()
+    World:setQueryDebugDrawing(true)
+    World:draw()
   Cam:detach()
   Hud:draw()
-end
-
-function love.keypressed(key)
 
 end
 

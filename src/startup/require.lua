@@ -22,6 +22,9 @@ function RequireAll()
   require "src/key"
   require "src/itemMaker"
   require "src/objects"
-  require "src.spawnInteractable"
+  require "src/createCollider"
+  require "src/draw/drawOrder"
+  require "src/lightShadow/shadows"
+  require "src/maps/createMaps"
 
 end

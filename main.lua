@@ -8,60 +8,73 @@ end
 MasterVolume = .05
 NumEnemys = 10
 CurrID = 1
+ScaleFactor = 2
+GlobalTime = 0
 
 function love.load()
   math.randomseed(os.time())
-  success = love.window.setMode( 1500, 1200 )
+  success = love.window.setMode( 2000, 1200 )
+
+  love.graphics.setDefaultFilter("nearest", "nearest")
 
   require("src/startup/gameStart")
   GameStart()
 
+  
+
   Sounds = Sounds()
   World = WF.newWorld(0,0)
   Cam = Camera()
-  Player = Player(880,8800, "assets/tallCreg.png", .25)
+
+  World:addCollisionClass("Wall")
+  World:addCollisionClass("Interactable")
+  World:addCollisionClass("Enemy")
+  World:addCollisionClass("NPC")
+  World:addCollisionClass("Player")
+  World:addCollisionClass("Button")
+
+  Player = Player(880,8800, "assets/tallCreg.png", .2)
   Hud = Hud()
-  gameMap = Sti('src/maps/MtMap.lua')
+  CreateMaps()
   Walls = Walls()
   NPCs = NPCBuilder()
 
-  World:addCollisionClass("Wall")
-
+  SkyShadow = Shadows()
+  SkyShadow:addShadowsToGroup(NPCs.NPC)
   ObjectSet = Objects()
 
-  Cam:zoom(2)
+  Cam:zoom(ScaleFactor)
+
 
 end
 
 function love.update(dt)
+  if GlobalTime > 300 then
+    -- restart day
+    GlobalTime = 0
+  end
+  GlobalTime = GlobalTime + (2*dt)
   Player:update(dt)
   NPCs:update(dt)
   camUpdate:update(dt)
   World:update(dt)
-  TEsound.cleanup()
-
+  gameMap:update(dt)
   ObjectSet:update(dt)
+  SkyShadow:update(dt)
 
+  TEsound.cleanup()
 end
 
 function love.draw()
-  
-  Cam:attach()
-    -- gameMap:draw()
-    gameMap:drawLayer(gameMap.layers["BK"])
-    gameMap:drawLayer(gameMap.layers["Paths"])
-    gameMap:drawLayer(gameMap.layers["BLD"])
-    gameMap:drawLayer(gameMap.layers["tree"])
-    NPCs:draw()
-    Player:draw()
-    ObjectSet:draw()
-    
-    gameMap:drawLayer(gameMap.layers["Fence"])
-    World:setQueryDebugDrawing(true)
-    World:draw()
-  Cam:detach()
-  Hud:draw()
 
+  DrawOrder()
+
+end
+
+function love.keypressed(key)
+	if key == "escape" then
+		love.event.quit()
+	end
 end
 
 

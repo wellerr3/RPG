@@ -27,6 +27,7 @@ function NPC:new(x, y, art, animSpeed, height, isHostle)
   self.imgDir.left = self.imgDir.right:clone():flipH()
   self.isMoving = true
   self.isHostle = isHostle
+  self.offset = self.height - 16
 end
 
 function NPC:update(dt)

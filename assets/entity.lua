@@ -3,11 +3,15 @@ Entity = Object:extend()
 function Entity:new(x, y, imagePath, audioPath, dirs)
   self.x = x
   self.y = y
+  self.width = 32
+  self.height = 32
+  self.offset = 0
   self.spriteSheet = love.graphics.newImage(imagePath)
   -- self.audio = love.audio.newSource(audioPath, "stream")
   self.volume = 1
   -- self.audio:setVolume(self.volume * MasterVolume)
   self.dir = "down"
+  self.state = "still"
   self.imgDir = {}
   self.last = {}
   self.last.x = self.x

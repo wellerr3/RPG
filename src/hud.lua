@@ -37,9 +37,11 @@ function Hud:TextUpdate()
   textObj:add( {hpColor, hpText}, 0,0 )
   textObj:add( {{0,0,0}, "Player X: ".. math.floor(Player.x)}, 100, 0 )
   textObj:add( {{0,0,0}, "Player Y: ".. math.floor(Player.y)}, 300, 0 )
-  textObj:add( {{0,0,0}, "Score: ".. math.floor(Player.score)}, 500, 0 )
+  textObj:add( {{0,0,0}, "Inventory: "}, 500, 0 )
   if #Player.inventory > 0 then
-    textObj:add( {{0,0,0}, "Inventory: ".. Player.inventory[1].name}, 700, 0 )
+    for i, item in pairs(Player.inventory) do
+      textObj:add( {{0,0,0}, item.name}, 500 + (150 * i), 0 )
+    end
   end
   return textObj
 end

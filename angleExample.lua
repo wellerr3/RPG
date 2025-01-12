@@ -95,16 +95,16 @@ function love.load()
   Camera = require "assets/camera"
   WF = require "assets/windfield"
 
-  require "assets/entity"
+  require "src.entity"
 
   -- require "tilemap"
-  require "src/player"
+  require "src.entities.player"
   require "src/hud"
   require "src/walls"
   require "src/sounds"
   require "assets/TEsound"
-  require "src/npc"
-  require "src/npcBuilder"
+  require "src.entities.npc"
+  require "src.entities.npcBuilder"
 
   Sounds = Sounds()
   World = WF.newWorld(0,0)

@@ -4,11 +4,10 @@ function Player:new(x, y, art, animSpeed)
   Player.super.new(self, x, y, art, "audio/Fist Into Glove.mp3")
   self.strength = 10
   self.hp = 100
-  self.speed = 400
+  self.speed = 10
   self.score = 0
-  self.collider = World:newBSGRectangleCollider(self.x, self.y, 32,32, 7)
-  self.collider:setFixedRotation(true)
-  self.collider:setCollisionClass("Player")
+  self.volume = 1
+  world:add(self, self.x, self.y, 24, 24)
   self.grid = Anim8.newGrid(32, 64, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
   self.imgDir.still = Anim8.newAnimation(self.grid(1, 1), 1)
   local numFrames = self.spriteSheet:getWidth() / 32
@@ -25,11 +24,15 @@ function Player:new(x, y, art, animSpeed)
   self.audio:setVolume(self.volume * MasterVolume)
   self.hasAudio = true
   self.height = 64
+  self.offsetX = 0
+  self.offsetY = 40
+  self.shadowOffsetY = 24
+  self.name = "player"
 end
 
 function Player:update(dt)
   Player.super.update(self, dt)
-  self.audio:setPitch( self.speed / 100 )
+  -- self.audio:setPitch( self.speed / 100 )
   self:setDirAndVel()
   if love.keyboard.isDown("space") then
     self:queryFront()
@@ -75,13 +78,19 @@ function Player:setDirAndVel()
   else
     self.isMoving = true
   end
-  self.collider:setLinearVelocity(vx, vy)
-  self.x = self.collider:getX()
-  self.y = self.collider:getY() - 32
+  local future_x = self.x + vx
+  local future_y = self.y + vy
+  local goalX, goalY, cols, len = world:check(self, future_x, future_y)
+
+  if len == 0 then
+    self.x, self.y = future_x, future_y
+    world:move(self, self.x, self.y)
+  end
+
 end
 
 function Player:queryFront()
-  local px, py = self.collider:getPosition()
+  local px, py = self.x + self.offsetX, self.y + self.offsetY
   local checkDist = 32
   if self.dir == "right" then
     px = px + checkDist
@@ -92,19 +101,15 @@ function Player:queryFront()
   elseif self.dir == "down" then
     py = py + checkDist
   end
-  local colliders = World:queryCircleArea(px,py, 16, {"Interactible"})
-  for i,c in ipairs(colliders) do
-    c.parent:interact()
+  local goalX, goalY, cols, len = world:check(self, px, py)
+  if len ~= 0 then
+    if cols[1].other.interact then
+      cols[1].other:interact()
+    end
   end
-  -- if #colliders > 0 then
-  --   self.score = self.score + 1
-  --   chest:interact()
-  -- end
-
 end
 
 
 function Player:addToInv(item)
   table.insert(self.inventory, item)
-
 end

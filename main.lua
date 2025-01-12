@@ -20,23 +20,17 @@ function love.load()
   require("src/startup/gameStart")
   GameStart()
 
-  
+
 
   Sounds = Sounds()
-  World = WF.newWorld(0,0)
+  world = bump.newWorld(128)
+
   Cam = Camera()
 
-  World:addCollisionClass("Wall")
-  World:addCollisionClass("Interactable")
-  World:addCollisionClass("Enemy")
-  World:addCollisionClass("NPC")
-  World:addCollisionClass("Player")
-  World:addCollisionClass("Button")
-
   Player = Player(880,8800, "assets/tallCreg.png", .2)
+
   Hud = Hud()
   CreateMaps()
-  Walls = Walls()
   NPCs = NPCBuilder()
 
   SkyShadow = Shadows()
@@ -53,11 +47,10 @@ function love.update(dt)
     -- restart day
     GlobalTime = 0
   end
-  GlobalTime = GlobalTime + (2*dt)
+  GlobalTime = GlobalTime + (10*dt)
   Player:update(dt)
   NPCs:update(dt)
   camUpdate:update(dt)
-  World:update(dt)
   gameMap:update(dt)
   ObjectSet:update(dt)
   SkyShadow:update(dt)
@@ -76,7 +69,6 @@ function love.keypressed(key)
 		love.event.quit()
 	end
 end
-
 
 -- error handler
 local love_errorhandler = love.errorhandler

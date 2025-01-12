@@ -6,9 +6,6 @@ function NPC:new(x, y, art, animSpeed, height, isHostle)
   self.hp = 10
   self.speed = 200
   self.height = height
-  self.collider = World:newBSGRectangleCollider(self.x, self.y, 32, 32, 10)
-  self.collider:setFixedRotation(true)
-  self.collider:setCollisionClass("NPC")
   self.grid = Anim8.newGrid(32, height, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
   self.imgDir.still = Anim8.newAnimation(self.grid(1, 1), 1)
   local numFramesWide = self.spriteSheet:getWidth() / 32
@@ -27,23 +24,19 @@ function NPC:new(x, y, art, animSpeed, height, isHostle)
   self.imgDir.left = self.imgDir.right:clone():flipH()
   self.isMoving = true
   self.isHostle = isHostle
-  self.offset = self.height - 16
+  self.offsetY = self.height - 16
+  self.shadowOffsetY = 16
 end
 
 function NPC:update(dt)
   NPC.super.update(self, dt)
-  -- self.audio:setPitch( self.speed / 100 )
-  self:setDirAndVel()
-  -- if love.keyboard.isDown("space") then
-  --   self:queryFront()
-  -- end
 end
 
 function NPC:setDirAndVel()
   -- local speed = self.speed
   -- local vx = 0
   -- local vy = 0
-  self.x = self.collider:getX()
-  self.y = self.collider:getY() - (self.height - 32)
+  -- self.x = self.collider:getX()
+  -- self.y = self.collider:getY() - (self.height - 32)
 end
 

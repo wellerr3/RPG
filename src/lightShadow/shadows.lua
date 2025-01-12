@@ -5,8 +5,6 @@ Shadows = Object:extend()
 function Shadows:new()
 	self.entities = {}
 	table.insert(self.entities, Player)
-	Player.shearing = 0
-	Player.offset = 50
 	self.source = "sky"
 
 end
@@ -32,7 +30,6 @@ function Shadows:update(dt)
 		timeAdd = GlobalTime
 	end
 	for i, e in ipairs(self.entities) do
-		
 		local dx       = -150 + timeAdd
 		local dy       = 60
 		local distance = math.sqrt(dx^2 + dy^2) / 50
@@ -41,7 +38,6 @@ function Shadows:update(dt)
 		e.shearing = distance * math.cos(angle)
 		e.scaleY   = distance * math.sin(angle)
 		e.scaleX = 1
-
 	end
 end
 
@@ -61,9 +57,12 @@ function Shadows:drawShadow(e)
   -- if e.isMoving == false then
   --   e.imgDir[e.dir]:gotoFrame(1)
   -- else
-  --   e.imgDir[e.dir]:draw(e.spriteSheet, e.x + 20,e.y, self.angle, nil, e.scaleY, e.shearing, 0)
+  --   e.imgDir[e.dir]:draw( texture, x, y, Orientation (radians), Scale factor (x-axis), Scale factor (y-axis), Origin offset (x-axis), Origin offset (y-axis), Shearing factor (x-axis), Shearing factor (y-axis) )
   -- end
-  e.imgDir[e.dir]:draw(e.spriteSheet, e.x,e.y+ e.offset, 0, e.scaleX, 1, e.width/2,e.height, e.shearing*e.scaleX,0)
+	local offsetX = e.shadowOffsetX + e.x
+	local offsetY =  e.y + e.shadowOffsetY
+
+  e.imgDir[e.dir]:draw(e.spriteSheet, offsetX, offsetY, 0, e.scaleX, 1, e.width/2, e.height, e.shearing*e.scaleX,0)
   -- love.graphics.draw(e.imgDir[e.dir], e.x, e.y)
 end
 
@@ -75,4 +74,11 @@ function Shadows:addShadowsToGroup(group)
 	for i, e in ipairs(NPCs.NPCs) do
 		self:addShadow(e)
 	end
+end
+
+function Shadows:drawing2(group)
+	--
+
+
+	--
 end

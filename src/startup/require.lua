@@ -7,12 +7,15 @@ function RequireAll()
   -- WF = require "assets/windfield"
   bump = require "assets/bump"
   bump_debug = require "assets/bump_debug"
-  
+  flux = require "assets/flux"
+
+
   require "assets/TEsound"
 
   require "src/entities/entity"
 
   -- require "tilemap"
+  require "src/utilis"
   require "src/entities/player"
   require "src/hud"
   require "src/sounds"
@@ -27,4 +30,5 @@ function RequireAll()
   require "src/lightShadow/shadows"
   require "src/maps/createMaps"
   require "src/draw/vertexShader"
+  require "src/gameEnd"
 end

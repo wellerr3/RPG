@@ -7,7 +7,7 @@ function Player:new(x, y, art, animSpeed)
   self.speed = 10
   self.score = 0
   self.volume = 1
-  world:add(self, self.x, self.y, 24, 24)
+  world:add(self, self.x + 5, self.y, 22, 22)
   self.grid = Anim8.newGrid(32, 64, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
   self.imgDir.still = Anim8.newAnimation(self.grid(1, 1), 1)
   local numFrames = self.spriteSheet:getWidth() / 32
@@ -28,14 +28,18 @@ function Player:new(x, y, art, animSpeed)
   self.offsetY = 40
   self.shadowOffsetY = 24
   self.name = "player"
+  self.damageTimer = 0
 end
 
 function Player:update(dt)
   Player.super.update(self, dt)
-  -- self.audio:setPitch( self.speed / 100 )
+  self.audio:setPitch( self.speed / 5 )
   self:setDirAndVel()
   if love.keyboard.isDown("space") then
     self:queryFront()
+  end
+  if self.damageTimer > 0 then
+    self.damageTimer = self.damageTimer - 1
   end
 end
 
@@ -43,29 +47,29 @@ function Player:setDirAndVel()
   local speed = self.speed
   local vx = 0
   local vy = 0
-  if love.keyboard.isDown("down") then
+  if love.keyboard.isDown("down") or love.keyboard.isDown("s") then
     vy =  speed
     self.dir = "down"
-  elseif love.keyboard.isDown("up") then
+  elseif love.keyboard.isDown("up") or love.keyboard.isDown("w") then
     vy = - speed
     self.dir = "up"
   end
-  if love.keyboard.isDown("left") then
-    if love.keyboard.isDown("down") then
+  if love.keyboard.isDown("left") or love.keyboard.isDown("a") then
+    if love.keyboard.isDown("down") or love.keyboard.isDown("s") then
       speed = speed / 1.4
       self.dir = "downLeft"
-    elseif love.keyboard.isDown("up") then
+    elseif love.keyboard.isDown("up") or love.keyboard.isDown("w") then
       speed = speed / 1.4
       self.dir = "upLeft"
     else
       self.dir = "left"
     end
     vx = - speed
-  elseif love.keyboard.isDown("right") then
-    if love.keyboard.isDown("down") then
+  elseif love.keyboard.isDown("right") or love.keyboard.isDown("d") then
+    if love.keyboard.isDown("down") or love.keyboard.isDown("s") then
       speed = speed / 1.4
       self.dir = "downRight"
-    elseif love.keyboard.isDown("up") then
+    elseif love.keyboard.isDown("up") or love.keyboard.isDown("w") then
       speed = speed / 1.4
       self.dir = "upRight"
     else
@@ -84,13 +88,13 @@ function Player:setDirAndVel()
 
   if len == 0 then
     self.x, self.y = future_x, future_y
-    world:move(self, self.x, self.y)
+    world:move(self, self.x + 5, self.y)
   end
 
 end
 
 function Player:queryFront()
-  local px, py = self.x + self.offsetX, self.y + self.offsetY
+  local px, py = self.x, self.y
   local checkDist = 32
   if self.dir == "right" then
     px = px + checkDist
@@ -101,7 +105,9 @@ function Player:queryFront()
   elseif self.dir == "down" then
     py = py + checkDist
   end
-  local goalX, goalY, cols, len = world:check(self, px, py)
+  local goalX, goalY, cols, len = world:check(self, px + 5, py)
+  TestRect.x=px + 5
+  TestRect.y=py
   if len ~= 0 then
     if cols[1].other.interact then
       cols[1].other:interact()
@@ -112,4 +118,13 @@ end
 
 function Player:addToInv(item)
   table.insert(self.inventory, item)
+end
+
+
+function Player:hurt(damage)
+  self.damageTimer = 30
+  self.hp = self.hp - damage
+  if self.hp <= 0 then
+    print ("Dead")
+  end
 end

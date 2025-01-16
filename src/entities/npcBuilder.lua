@@ -8,7 +8,8 @@ function NPCBuilder:new(x, y)
     table.insert(self.NPCs, enemy)
   end
   for i = 1, NumNPC, 1 do
-    local npc = NPC(800,8900, "assets/npc1.png", .125, 64, false)
+    local npc = NPC(800,8900, "assets/npc1.png", .125, 64, false, "Birb")
+    npc.height = 64
     table.insert(self.NPCs, npc)
   end
 end

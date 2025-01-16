@@ -20,8 +20,12 @@ function  DrawOrder()
     ObjectSet:drawAbove()
     -- AFTER PLAYER
     gameMap:drawLayer(gameMap.layers["Fence"])
-    
-  
+
+    if Test == true then
+      drawRects()
+
+    end
+
   Cam:detach()
 
   -- AFTER CAM
@@ -29,6 +33,17 @@ function  DrawOrder()
 
 end
 
+function drawRects()
+  love.graphics.rectangle("fill", TestRect.x, TestRect.y, TestRect.w, TestRect.h)
+
+    local items, len = world:getItems()
+    for i = 1, len do
+      local x, y, w, h = world:getRect(items[i])
+      love.graphics.setColor(1,0,1,.5)
+      love.graphics.rectangle("fill", x, y, w, h)
+      love.graphics.setColor(1,1,1,1)
+    end
+end
 
 
 -- love.graphics.stencil(function()

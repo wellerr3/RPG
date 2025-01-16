@@ -59,8 +59,8 @@ function Shadows:drawShadow(e)
   -- else
   --   e.imgDir[e.dir]:draw( texture, x, y, Orientation (radians), Scale factor (x-axis), Scale factor (y-axis), Origin offset (x-axis), Origin offset (y-axis), Shearing factor (x-axis), Shearing factor (y-axis) )
   -- end
-	local offsetX = e.shadowOffsetX + e.x
-	local offsetY =  e.y + e.shadowOffsetY
+	local offsetX = e.x + e.shadowOffsetX
+	local offsetY = e.y + e.shadowOffsetY
 
   e.imgDir[e.dir]:draw(e.spriteSheet, offsetX, offsetY, 0, e.scaleX, 1, e.width/2, e.height, e.shearing*e.scaleX,0)
   -- love.graphics.draw(e.imgDir[e.dir], e.x, e.y)

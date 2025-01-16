@@ -12,8 +12,6 @@ function Entity:new(x, y, imagePath)
   self.state = "still"
   self.imgDir = {}
   self.last = {}
-  self.last.x = self.x
-  self.last.y = self.y
   self.strength = 0
   self.tempStrength = 0
   self.isMoving = false
@@ -26,54 +24,43 @@ function Entity:new(x, y, imagePath)
     x = x,
     y = y
   }
-  self.wanderDist = 500
   self.drawn = true
 end
 
 function Entity:update(dt)
+  flux.update(dt)
   self.imgDir[self.dir]:update(dt)
-  if not self:checkTooFar() then
-    -- self:wander()
-  end
-  
 end
 
 function Entity:draw()
-  if self.isMoving == false then
-    self.imgDir[self.dir]:gotoFrame(1)
-    if self.hasAudio then
-      self.audio:stop()
-    end
+  if self.damageTimer and self.damageTimer > 0 then
+    love.graphics.setColor(1,0,0,.5)
+    love.graphics.rectangle("fill", self.x - self.offsetX, self.y - self.offsetY, self.width, self.height)
+    love.graphics.setColor(1,1,1,1)
+  end
+  if self.state == "dead" then
+    self.imgDead:draw(self.spriteSheet, self.x,self.y, nil, nil, nil, self.offsetX, self.offsetY)
+    return
   else
-    self.imgDir[self.dir]:draw(self.spriteSheet, self.x,self.y, nil, nil, nil, self.offsetX, self.offsetY)
-    if self.hasAudio then
-      self.audio:play()
+    if self.isMoving == false then
+      self.imgDir[self.dir]:gotoFrame(1)
+      self.imgDir[self.dir]:draw(self.spriteSheet, self.x,self.y, nil, nil, nil, self.offsetX, self.offsetY)
+      if self.hasAudio then
+        self.audio:stop()
+      end
+    else
+      self.imgDir[self.dir]:draw(self.spriteSheet, self.x,self.y, nil, nil, nil, self.offsetX, self.offsetY)
+      if self.hasAudio then
+        self.audio:play()
+      end
     end
   end
-  self.imgDir[self.dir]:draw(self.spriteSheet, self.x,self.y, nil, nil, nil, self.offsetX, self.offsetY)
-  -- love.graphics.draw(self.imgDir[self.dir], self.x, self.y)
+  -- if self.test then
+  
+  --   love.graphics.setColor(1,0,1,.5)
+  --   love.graphics.rectangle("fill", self.x - self.offsetX, self.y - self.offsetY, self.width, self.height)
+  --   love.graphics.setColor(1,1,1,1)
+  -- end
+  -- self.imgDir[self.dir]:draw(self.spriteSheet, self.x,self.y, nil, nil, nil, self.offsetX, self.offsetY)
 end
 
-function Entity:checkTooFar()
-  local distX = math.abs(self.x - self.home.x)
-  local distY = math.abs(self.y - self.home.y)
-  local dist = math.sqrt(((self.x - self.home.x)^2 + (self.y - self.home.y)^2))
-
-  if dist > self.wanderDist then
-    return true
-  end
-  return false
-end
--- function Entity:wander()
---   local dirs = {}
---   if GlobalTime
---   for i, dir in ipairs(self.imgDir) do
---     table.insert(dirs, dir)
---   end
-
-
-
--- end
-
-function Entity:goTowardsHome()
-end

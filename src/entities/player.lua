@@ -47,13 +47,12 @@ end
 function Player:draw()
   if self.equiped and self.dir ~= "down" then
     local rotation, xOffset, yOffset = GetRotation(self.dir, self.equiped.dir, self.equiped.itemOffset)
-    self.equiped:draw(xOffset + self.x, yOffset + self.y, 1, rotation)
+    self.equiped:draw(xOffset + self.x, yOffset + self.y, 1, rotation, "use")
   end
   Player.super.draw(self)
   if self.equiped and self.dir == "down" then
     local rotation, xOffset, yOffset = GetRotation(self.dir, self.equiped.dir, self.equiped.itemOffset)
-    self.equiped:draw(xOffset + self.equiped.itemOffset.x + self.x, yOffset + self.equiped.itemOffset.y + self.y, 1, rotation)
-  end
+    self.equiped:draw(xOffset + self.x, yOffset + self.y, 1, rotation, "use")  end
 end
 
 

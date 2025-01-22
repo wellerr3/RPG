@@ -1,6 +1,7 @@
 Key = Loot:extend()
 Torch = Loot:extend()
 Chest = Loot:extend()
+IceCube = Loot:extend()
 
 function Key:new(x, y)
   Key.super.new(self,"Key", x, y, "assets/key.png")
@@ -9,10 +10,15 @@ function Key:new(x, y)
 end
 
 function Torch:new(x, y)
-  Torch.super.new(self, "Torch", x, y, "assets/torch.png", "assets/fire.png")
+  Torch.super.new(self, "Torch", x, y, "assets/fire.png")
   self.drawnAbove = true
   self.drawn = false
-  self.dir = "left"
+end
+
+function IceCube:new(x, y)
+  Key.super.new(self,"Ice Cube", x, y, "assets/iceCube.png")
+  self.drawnAbove = true
+  self.drawn = false
 end
 
 function Chest:new(x, y)

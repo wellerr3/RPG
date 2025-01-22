@@ -1,6 +1,6 @@
 Hud = Object:extend()
 
-function Hud:new(x, y, image_path)
+function Hud:new()
   self.hp = Player.hp
   self.strength = Player.strength
   self.width =  love.graphics.getWidth() - 20

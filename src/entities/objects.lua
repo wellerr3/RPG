@@ -1,6 +1,7 @@
 ItemTypes = {
   key = Key,
-  chest = Chest
+  chest = Chest,
+  torch = Torch
 }
 CurrId = 1
 
@@ -44,7 +45,8 @@ end
 function Objects:createObjects(objColl)
   local objList = {
     {name = "chest", x = 880, y = 8900, extra = "key", openToSky = true, hasCollison = true}
-    ,{name = "chest", x = 1000, y = 9500, extra = "key", openToSky = true, hasCollison = true}
+    ,{name = "chest", x = 940, y = 8500, extra = "key", openToSky = true, hasCollison = true}
+    ,{name = "chest", x = 880, y = 8500, extra = "torch", openToSky = true, hasCollison = true}
   }
   for i, item in pairs(objList) do
     self:createItem(item)
@@ -52,8 +54,7 @@ function Objects:createObjects(objColl)
 end
 
 function Objects:createItem(item)
-  local id = CreateID()
-  local newItem = ItemTypes[item.name](item.x,item.y,id)
+  local newItem = ItemTypes[item.name](item.x,item.y)
   if item.openToSky then
     SkyShadow:addShadow(newItem)
   end

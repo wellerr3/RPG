@@ -1,52 +1,65 @@
-Player = Entity:extend()
+Player = Character:extend()
 
 function Player:new(x, y, art, animSpeed)
-  Player.super.new(self, x, y, art, "audio/Fist Into Glove.mp3")
+  Player.super.new(self,"Player",  x, y, art, animSpeed, false, 64)
   self.strength = 10
   self.hp = 100
   self.speed = 10
-  self.score = 0
   self.volume = 1
-  world:add(self, self.x + 5, self.y, 22, 22)
+  world:add(self, self.x + 5, self.y + 32, 22, 22)
   self.grid = Anim8.newGrid(32, 64, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
-  self.imgDir.still = Anim8.newAnimation(self.grid(1, 1), 1)
   local numFrames = self.spriteSheet:getWidth() / 32
-  self.imgDir.down = Anim8.newAnimation(self.grid('1-' .. numFrames, 1), animSpeed)
-  self.imgDir.right = Anim8.newAnimation(self.grid('1-' .. numFrames, 2), animSpeed)
-  self.imgDir.up = Anim8.newAnimation(self.grid('1-' .. numFrames, 3), animSpeed)
-  self.imgDir.downLeft = Anim8.newAnimation(self.grid('1-' .. numFrames, 4), animSpeed)
-  self.imgDir.downRight = Anim8.newAnimation(self.grid('1-' .. numFrames, 5), animSpeed)
-  self.imgDir.upRight = Anim8.newAnimation(self.grid('1-' .. numFrames, 6), animSpeed)
-  self.imgDir.upLeft = Anim8.newAnimation(self.grid('1-' .. numFrames, 7), animSpeed)
-  self.imgDir.left = self.imgDir.right:clone():flipH()
+  self.img = {}
+  self.img.default = {
+    still = Anim8.newAnimation(self.grid(1, 1), 1),
+    down = Anim8.newAnimation(self.grid('1-' .. numFrames, 1), animSpeed),
+    right = Anim8.newAnimation(self.grid('1-' .. numFrames, 2), animSpeed),
+    up = Anim8.newAnimation(self.grid('1-' .. numFrames, 3), animSpeed),
+    downLeft = Anim8.newAnimation(self.grid('1-' .. numFrames, 4), animSpeed),
+    downRight = Anim8.newAnimation(self.grid('1-' .. numFrames, 5), animSpeed),
+    upRight = Anim8.newAnimation(self.grid('1-' .. numFrames, 6), animSpeed),
+    upLeft = Anim8.newAnimation(self.grid('1-' .. numFrames, 7), animSpeed)
+  }
+  self.img.default.left = self.img.default.right:clone():flipH()
   self.inventory = {}
   self.audio = love.audio.newSource("audio/Fist Into Glove.mp3", "stream")
   self.audio:setVolume(self.volume * MasterVolume)
   self.hasAudio = true
   self.height = 64
   self.offsetX = 0
-  self.offsetY = 40
-  self.shadowOffsetY = 24
+  self.offsetY = 42
+  self.shadowOffsetY = 22
   self.name = "player"
   self.damageTimer = 0
+  self.invScreen = false
+  self.equiped = nil
 end
 
 function Player:update(dt)
   Player.super.update(self, dt)
   self.audio:setPitch( self.speed / 5 )
   self:setDirAndVel()
-  if love.keyboard.isDown("space") then
-    self:queryFront()
-  end
   if self.damageTimer > 0 then
     self.damageTimer = self.damageTimer - 1
   end
 end
+-- Loot:draw(x, y, scale, rotation)
+function Player:draw()
+  if self.equiped and self.dir ~= "down" then
+    local rotation, xOffset, yOffset = GetRotation(self.dir, self.equiped.dir, self.equiped.itemOffset)
+    self.equiped:draw(xOffset + self.x, yOffset + self.y, 1, rotation)
+  end
+  Player.super.draw(self)
+  if self.equiped and self.dir == "down" then
+    local rotation, xOffset, yOffset = GetRotation(self.dir, self.equiped.dir, self.equiped.itemOffset)
+    self.equiped:draw(xOffset + self.equiped.itemOffset.x + self.x, yOffset + self.equiped.itemOffset.y + self.y, 1, rotation)
+  end
+end
+
 
 function Player:setDirAndVel()
   local speed = self.speed
-  local vx = 0
-  local vy = 0
+  local vx, vy = 0, 0
   if love.keyboard.isDown("down") or love.keyboard.isDown("s") then
     vy =  speed
     self.dir = "down"
@@ -85,7 +98,6 @@ function Player:setDirAndVel()
   local future_x = self.x + vx
   local future_y = self.y + vy
   local goalX, goalY, cols, len = world:check(self, future_x, future_y)
-
   if len == 0 then
     self.x, self.y = future_x, future_y
     world:move(self, self.x + 5, self.y)
@@ -95,7 +107,7 @@ end
 
 function Player:queryFront()
   local px, py = self.x, self.y
-  local checkDist = 32
+  local checkDist = 22
   if self.dir == "right" then
     px = px + checkDist
   elseif self.dir == "left" then
@@ -108,6 +120,10 @@ function Player:queryFront()
   local goalX, goalY, cols, len = world:check(self, px + 5, py)
   TestRect.x=px + 5
   TestRect.y=py
+  if self.equiped then
+    self.equiped.img["use"]:gotoFrame(1)
+    self.equiped.img["use"]:resume()
+  end
   if len ~= 0 then
     if cols[1].other.interact then
       cols[1].other:interact()
@@ -122,9 +138,21 @@ end
 
 
 function Player:hurt(damage)
-  self.damageTimer = 30
-  self.hp = self.hp - damage
+  if self.damageTimer == 0 then
+    self.damageTimer = 30
+    self.hp = self.hp - damage
+  end
   if self.hp <= 0 then
+    -- love.event.quit("restart")
     print ("Dead")
+  end
+end
+
+function Player:keypressed(key)
+  if key == 'm' then
+    self.invScreen = not self.invScreen
+  end
+  if key == 'space' then
+    self:queryFront()
   end
 end

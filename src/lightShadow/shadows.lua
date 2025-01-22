@@ -2,10 +2,10 @@ Shadows = Object:extend()
 
 
 
-function Shadows:new()
+function Shadows:new(source)
 	self.entities = {}
 	table.insert(self.entities, Player)
-	self.source = "sky"
+	self.source = source or "sky"
 
 end
 
@@ -15,8 +15,8 @@ function Shadows:CheckDist()
 		-- local dy       = lightSource.y - e.y
 		-- local distance = math.sqrt((dx/1.5)^2 + (dy)^2)
 
-		-- local lightDistance = clamp(1 - distance / 400, 0, 1) -- Darker if farther away.
-		-- local lightFacing   = clamp(1 + dy       / 20 , 0, 1) -- Darker if facing away.
+		-- local lightDistance = Clamp(1 - distance / 400, 0, 1) -- Darker if farther away.
+		-- local lightFacing   = Clamp(1 + dy       / 20 , 0, 1) -- Darker if facing away.
 		-- local light         = lightDistance * lightFacing
 
 		-- love.graphics.setColor(light, light, light)
@@ -49,21 +49,24 @@ function Shadows:draw()
 	love.graphics.setColor(1, 1, 1)
 end
 
-function clamp(v, min, max)
+function Clamp(v, min, max)
 	return math.max(math.min(v, max), min)
 end
 
 function Shadows:drawShadow(e)
   -- if e.isMoving == false then
-  --   e.imgDir[e.dir]:gotoFrame(1)
+  --   e.img.default[e.dir]:gotoFrame(1)
   -- else
-  --   e.imgDir[e.dir]:draw( texture, x, y, Orientation (radians), Scale factor (x-axis), Scale factor (y-axis), Origin offset (x-axis), Origin offset (y-axis), Shearing factor (x-axis), Shearing factor (y-axis) )
+  --   e.img.default[e.dir]:draw( texture, x, y, Orientation (radians), Scale factor (x-axis), Scale factor (y-axis), Origin offset (x-axis), Origin offset (y-axis), Shearing factor (x-axis), Shearing factor (y-axis) )
   -- end
 	local offsetX = e.x + e.shadowOffsetX
 	local offsetY = e.y + e.shadowOffsetY
-
-  e.imgDir[e.dir]:draw(e.spriteSheet, offsetX, offsetY, 0, e.scaleX, 1, e.width/2, e.height, e.shearing*e.scaleX,0)
-  -- love.graphics.draw(e.imgDir[e.dir], e.x, e.y)
+	-- if e.mode == "dead" then
+	-- 	e.img.dead:gotoFrame(1)
+	-- else
+		e.img[e.mode][e.dir]:draw(e.spriteSheet, offsetX, offsetY, 0, e.scaleX, 1, e.width/2, e.height, e.shearing*e.scaleX,0)
+	-- end
+  -- love.graphics.draw(e.img.default[e.dir], e.x, e.y)
 end
 
 function Shadows:addShadow(e)
@@ -71,14 +74,7 @@ function Shadows:addShadow(e)
 end
 
 function Shadows:addShadowsToGroup(group)
-	for i, e in ipairs(NPCs.NPCs) do
+	for i, e in ipairs(group) do
 		self:addShadow(e)
 	end
-end
-
-function Shadows:drawing2(group)
-	--
-
-
-	--
 end

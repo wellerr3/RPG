@@ -1,6 +1,6 @@
 
 
-function  DrawOrder()
+function  GameDrawOrder()
 
   Cam:attach()
 
@@ -10,6 +10,7 @@ function  DrawOrder()
     gameMap:drawLayer(gameMap.layers["BK"])
     gameMap:drawLayer(gameMap.layers["Paths"])
     gameMap:drawLayer(gameMap.layers["BLD"])
+    gameMap:drawLayer(gameMap.layers["oldmtn"])
     SkyShadow:draw()
     -- gameMap:drawLayer(gameMap.layers["tree"])
     -- gameMap:draw(-tx,-ty)
@@ -20,16 +21,19 @@ function  DrawOrder()
     ObjectSet:drawAbove()
     -- AFTER PLAYER
     gameMap:drawLayer(gameMap.layers["Fence"])
+    gameMap:drawLayer(gameMap.layers["Veg"])
 
     if Test == true then
       drawRects()
-
     end
 
   Cam:detach()
-
-  -- AFTER CAM
   Hud:draw()
+  -- AFTER CAM
+  if Player.invScreen then
+    Inv:draw()
+  end
+  
 
 end
 

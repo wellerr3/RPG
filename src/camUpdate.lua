@@ -5,8 +5,8 @@ function camUpdate:update(dt)
   
   local w = love.graphics.getWidth() / ScaleFactor
   local h = love.graphics.getHeight() / ScaleFactor
-  local mapW = gameMap.width * gameMap.tilewidth
-  local mapH = gameMap.height * gameMap.tileheight
+  local mapW = GameMap.width * GameMap.tilewidth
+  local mapH = GameMap.height * GameMap.tileheight
   -- left border
   if Cam.x < w/2 then
     Cam.x = w/2

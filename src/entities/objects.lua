@@ -1,16 +1,20 @@
 ItemTypes = {
   key = Key,
   chest = Chest,
-  torch = Torch
+  torch = Torch,
+  interactObj = InteractObj,
+  other = Loot
 }
 CurrId = 1
 
 Objects = Entity:extend()
 
-function Objects:new()
+function Objects:new(map, mapObjects)
   self.belowObjects = {}
   self.aboveObjects = {}
-  self:createObjects()
+  self.interactable = {}
+  self:createObjects(map)
+  self:createMapObjects(map, mapObjects)
 end
 
 function Objects:update(dt)
@@ -42,24 +46,45 @@ function Objects:drawAbove()
   end
 end
 
-function Objects:createObjects(objColl)
-  local objList = {
-    {name = "chest", x = 880, y = 8900, extra = "key", openToSky = true, hasCollison = true}
-    ,{name = "chest", x = 940, y = 8500, extra = "key", openToSky = true, hasCollison = true}
-    ,{name = "chest", x = 880, y = 8500, extra = "torch", openToSky = true, hasCollison = true}
+function Objects:createObjects(map)
+  local objList = {}
+  objList.worldMap = {
+    {name = "chest", x = 27, y = 279, extra = "key", openToSky = true, hasCollison = true}
+    ,{name = "chest", x = 30, y = 266, extra = "key", openToSky = true, hasCollison = true}
+    ,{name = "chest", x = 27, y = 266, extra = "torch", openToSky = true, hasCollison = true}
   }
-  for i, item in pairs(objList) do
+  objList.dung = {
+    {name = "chest", x = 63, y = 66, extra = "key", openToSky = false, hasCollison = true}
+    ,{name = "chest", x = 65, y = 48, extra = "key", openToSky = false, hasCollison = true}
+    ,{name = "chest", x = 46, y = 32, extra = "torch", openToSky = false, hasCollison = true}
+    ,{name = "chest", x = 65, y = 16, extra = "key", openToSky = false, hasCollison = true}
+    ,{name = "chest", x = 3, y = 26, extra = "key", openToSky = false, hasCollison = true}
+  }
+  if not objList[map] then
+    objList[map] = {}
+  end
+  for i, item in pairs(objList[map]) do
     self:createItem(item)
   end
 end
 
 function Objects:createItem(item)
-  local newItem = ItemTypes[item.name](item.x,item.y)
+  local tileX = item.x
+  local tileY = item.y
+  item.x = item.x * TileSize
+  item.y = item.y * TileSize
+  local newItem = {}
+  if ItemTypes[item.name] then
+    newItem = ItemTypes[item.name](item.x,item.y)
+  else
+    newItem = ItemTypes["other"]("other", item.x, item.y, "src/tilesets/non.png")
+  end
+
   if item.openToSky then
     SkyShadow:addShadow(newItem)
   end
   if item.extra then
-    newItem.item = self:createItem({name = item.extra, x = item.x, y = item.y})
+    newItem.item = self:createItem({name = item.extra, x = tileX, y = tileY})
     newItem.item.shown = false
   end
   if item.hasCollison then
@@ -73,9 +98,21 @@ function Objects:createItem(item)
   return newItem
 end
 
+function Objects:createMapObjects(map, mapObjects)
+  for i, item in pairs(mapObjects) do
+    if item.properties.interactable == true then
+      local obj = InterObj(item, map)
+      table.insert(self.interactable, obj)
+    end
+  end
+end
+
 
 
 function CreateID()
   CurrId = CurrId + 1
   return CurrId
 end
+
+
+

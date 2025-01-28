@@ -36,5 +36,7 @@ function RequireAll()
   require "src/gameEnd"
   require "src/draw/scenes/gameScene"
   require "src/draw/scenes/pauseMenu"
+  require "src/startup/initVariables"
+  require "src/entities/interactObjs"
 
 end

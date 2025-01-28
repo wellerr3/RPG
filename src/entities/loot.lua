@@ -6,7 +6,6 @@ function Loot:new(type, x, y, imagePath)
   self.grid = Anim8.newGrid(32, 32, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
   local numFrames = self.spriteSheet:getWidth() / 32
   local numTypes = self.spriteSheet:getHeight() / 32
-  print(self.name, numTypes)
   self.dir = "left"
   self.img = {}
   self.img.default = Anim8.newAnimation(self.grid('1-' .. numFrames, 1), .25)
@@ -18,15 +17,13 @@ function Loot:new(type, x, y, imagePath)
     self.img.tablet = self.img.default:clone()
   end
   self.id = CreateID()
-  self.name = self.type .. ": " .. self.id
+  self.name = self.type
   self.drawnAbove = false
   self.itemOffset = {
     dist = 22,
     x = 0,
     y = -10
   }
-  print(self.name, numTypes, numFrames)
-
 end
 
 function Loot:update(dt)

@@ -4,14 +4,6 @@ end
 -- io.stdout:setvbuf('no')
 -- starter
 
-MasterVolume = .05
-NumEnemys = 2
-CurrID = 1
-ScaleFactor = 2
-GlobalTime = 0
-TestRect = {x= 0, y= 0,w= 22, h=22}
-Test = false
-CurrScene = "game"
 
 function love.load()
   math.randomseed(os.time())

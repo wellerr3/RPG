@@ -6,15 +6,20 @@ function GameScene:new(dt)
 
   Cam = Camera()
 
-  Player = Player(880,8800, "assets/tallCreg.png", .2)
+  -- CurrMap = "dung"
+  -- Player = Player(43 * 32,75 * 32, "src/tilesets/tallCreg.png", .2)
+  Player = Player(32 * 32, 283 * 32, "src/tilesets/shortCreg.png", .2)
 
   Hud = Hud()
+  ObjectSet = {}
+  SkyShadow = Shadows()
+  -- ObjectSet = Objects()
   CreateMaps()
   NPCs = CharacterBuilder()
 
-  SkyShadow = Shadows()
+
   SkyShadow:addShadowsToGroup(NPCs.NPCs)
-  ObjectSet = Objects()
+
   Inv = InventoryMenu()
   Cam:zoom(ScaleFactor)
 end
@@ -29,13 +34,13 @@ function GameScene:update(dt)
     Player:update(dt)
     NPCs:update(dt)
     camUpdate:update(dt)
-    gameMap:update(dt)
+    GameMap:update(dt)
     SkyShadow:update(dt)
     TEsound.cleanup()
   else
     Inv:update(dt)
   end
-  ObjectSet:update(dt)
+  ObjectSet[CurrMap]:update(dt)
   Hud:update()
 end
 

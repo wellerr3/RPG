@@ -2,27 +2,29 @@ Key = Loot:extend()
 Torch = Loot:extend()
 Chest = Loot:extend()
 IceCube = Loot:extend()
+InteractObj = Loot:extend()
 
 function Key:new(x, y)
-  Key.super.new(self,"Key", x, y, "assets/key.png")
+  Key.super.new(self,"Key", x, y, "src/tilesets/key.png")
   self.drawnAbove = true
   self.drawn = false
+  self.name = self.name .. ": " .. self.id
 end
 
 function Torch:new(x, y)
-  Torch.super.new(self, "Torch", x, y, "assets/fire.png")
+  Torch.super.new(self, "Torch", x, y, "src/tilesets/fire.png")
   self.drawnAbove = true
   self.drawn = false
 end
 
 function IceCube:new(x, y)
-  Key.super.new(self,"Ice Cube", x, y, "assets/iceCube.png")
+  Key.super.new(self,"Ice Cube", x, y, "src/tilesets/iceCube.png")
   self.drawnAbove = true
   self.drawn = false
 end
 
 function Chest:new(x, y)
-  Chest.super.new(self, "Chest", x, y, "/assets/chest.png")
+  Chest.super.new(self, "Chest", x, y, "src/tilesets/chest.png")
   self.state = "closed"
   self.grid = Anim8.newGrid(32, 32, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
   self.img.default.closed = Anim8.newAnimation(self.grid(1, 1), 1)
@@ -60,4 +62,15 @@ function Chest:interact()
     self.state = "opening"
     Player:addToInv(self.item)
   end
+end
+
+
+function InteractObj:new(item)
+  InteractObj.super.new(self, "Other", item.x, item.y, "")
+  self.drawnAbove = true
+  self.drawn = false
+end
+
+function InteractObj:update(dt)
+
 end

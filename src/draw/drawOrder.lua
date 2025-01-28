@@ -6,22 +6,21 @@ function  GameDrawOrder()
 
     -- BEFORE PLAYER
     -- love.graphics.setShader(shader)
-    -- gameMap:draw(-tx,-ty)
-    gameMap:drawLayer(gameMap.layers["BK"])
-    gameMap:drawLayer(gameMap.layers["Paths"])
-    gameMap:drawLayer(gameMap.layers["BLD"])
-    gameMap:drawLayer(gameMap.layers["oldmtn"])
+    for i, layer in pairs(GameMap.below) do
+      GameMap:drawLayer(layer)
+    end
     SkyShadow:draw()
-    -- gameMap:drawLayer(gameMap.layers["tree"])
-    -- gameMap:draw(-tx,-ty)
+
     NPCs:draw()
-    ObjectSet:drawBelow()
+    ObjectSet[CurrMap]:drawBelow()
     -- PLAYER
     Player:draw()
-    ObjectSet:drawAbove()
+    ObjectSet[CurrMap]:drawAbove()
     -- AFTER PLAYER
-    gameMap:drawLayer(gameMap.layers["Fence"])
-    gameMap:drawLayer(gameMap.layers["Veg"])
+    
+    for i, layer in pairs(GameMap.above) do
+      GameMap:drawLayer(layer)
+    end
 
     if Test == true then
       drawRects()
@@ -116,13 +115,13 @@ end
 
 --     -- BEFORE PLAYER
 --     -- love.graphics.setShader(shader)
---     -- gameMap:draw(-tx,-ty)
---     gameMap:drawLayer(gameMap.layers["BK"])
---     gameMap:drawLayer(gameMap.layers["Paths"])
---     gameMap:drawLayer(gameMap.layers["BLD"])
+--     -- GameMap:draw(-tx,-ty)
+--     GameMap:drawLayer(GameMap.layers["BK"])
+--     GameMap:drawLayer(GameMap.layers["Paths"])
+--     GameMap:drawLayer(GameMap.layers["BLD"])
 --     SkyShadow:draw()
---     -- gameMap:drawLayer(gameMap.layers["tree"])
---     -- gameMap:draw(-tx,-ty)
+--     -- GameMap:drawLayer(GameMap.layers["tree"])
+--     -- GameMap:draw(-tx,-ty)
 --     NPCs:draw()
 --     ObjectSet:drawBelow()
     
@@ -135,7 +134,7 @@ end
 
 
 --       love.graphics.stencil(function()
---         gameMap:drawLayer(gameMap.layers["Fence"])
+--         GameMap:drawLayer(GameMap.layers["Fence"])
 --     end, "replace", 0)
 
 --     -- -- 2. Enable stencil testing
@@ -148,7 +147,7 @@ end
 --     -- shader:send("extend", -1.5) -- Adjust extension amount as needed
 --     love.graphics.setColor(0,0,1,1)
 --     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight()) 
---     -- gameMap:drawLayer(gameMap.layers["Fence"])
+--     -- GameMap:drawLayer(GameMap.layers["Fence"])
     
 --     love.graphics.setShader()
 
@@ -167,7 +166,7 @@ end
 
 
 --     -- AFTER PLAYER
---     gameMap:drawLayer(gameMap.layers["Fence"])
+--     GameMap:drawLayer(GameMap.layers["Fence"])
     
 --     love.graphics.setShader() -- Reset shader
 --     -- World:setQueryDebugDrawing(true)
@@ -176,7 +175,7 @@ end
 --     -- drawDebug()
 --     -- drawConsole()
 --     -- drawMessage()
---     -- gameMap:drawLayer(gameMap.layers["Fence"])
+--     -- GameMap:drawLayer(GameMap.layers["Fence"])
   
 --   Cam:detach()
 

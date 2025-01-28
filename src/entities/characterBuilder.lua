@@ -9,9 +9,9 @@ EnemyTypes = {
 function CharacterBuilder:new(x, y)
   self.NPCs = {}
   local enemyList = {
-    {name = "snake", x = 950, y = 8900}
-    ,{name = "snake", x = 950, y = 9000}
-    ,{name = "snake", x = 960, y = 9200}
+    {name = "snake", x = 800, y = 8900}
+    ,{name = "snake", x = 800, y = 9000}
+    ,{name = "snake", x = 800, y = 9200}
     ,{name = "rat", x = 1000, y = 9200}
     ,{name = "rat", x = 1100, y = 9200}
   }
@@ -20,7 +20,7 @@ function CharacterBuilder:new(x, y)
     table.insert(self.NPCs, enemy)
   end
   for i = 1, NumNPC, 1 do
-    local npc = Character("Birb", 800,8900, "assets/npc1.png", .125, false, 64)
+    local npc = Character("Birb", 800,8900, "src/tilesets/npc1.png", .125, false, 64)
     createCollider(npc)
     table.insert(self.NPCs, npc)
   end

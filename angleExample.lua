@@ -111,7 +111,7 @@
 --   Cam = Camera()
 --   Player = Player(880,8800, "assets/tallCreg.png", .25)
 --   Hud = Hud()
---   gameMap = Sti('src/maps/MtMap.lua')
+--   GameMap = Sti('src/maps/MtMap.lua')
 --   Walls = Walls()
 --   NPCs = NPCBuilder()
 --   -- local code = [[
@@ -159,8 +159,8 @@
 
 --   local w = love.graphics.getWidth()
 --   local h = love.graphics.getHeight()
---   local mapW = gameMap.width * gameMap.tilewidth
---   local mapH = gameMap.height * gameMap.tileheight
+--   local mapW = GameMap.width * GameMap.tilewidth
+--   local mapH = GameMap.height * GameMap.tileheight
 --   -- left border
 --   if Cam.x < w/2 then
 --     Cam.x = w/2
@@ -184,18 +184,18 @@
 
 -- function love.draw()
 --   Cam:attach()
---     -- gameMap:draw()
+--     -- GameMap:draw()
 --     tx = math.floor((Player.x - love.graphics.getWidth()/2))
 --     ty = math.floor((Player.y - love.graphics.getHeight()/2))
 --     -- love.graphics.setShader(shader)
---     -- gameMap:draw(-tx,-ty)
+--     -- GameMap:draw(-tx,-ty)
     
     
 --     -- love.graphics.setShader(treeShader)
---     gameMap:drawLayer(gameMap.layers["BK"])
---     gameMap:drawLayer(gameMap.layers["Paths"])
---     gameMap:drawLayer(gameMap.layers["BLD"])
---     gameMap:drawLayer(gameMap.layers["tree"])
+--     GameMap:drawLayer(GameMap.layers["BK"])
+--     GameMap:drawLayer(GameMap.layers["Paths"])
+--     GameMap:drawLayer(GameMap.layers["BLD"])
+--     GameMap:drawLayer(GameMap.layers["tree"])
 --     -- love.graphics.draw(canvas)
 --     -- Snek:draw()
 --     -- love.graphics.draw(canvas2)
@@ -203,7 +203,7 @@
 --     -- love.graphics.setShader()
 --     Player:draw()
     
---     gameMap:drawLayer(gameMap.layers["Fence"])
+--     GameMap:drawLayer(GameMap.layers["Fence"])
 --     -- World:setQueryDebugDrawing(true)
 --     -- World:draw()
 --   Cam:detach()

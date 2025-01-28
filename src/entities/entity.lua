@@ -7,7 +7,9 @@ function Entity:new(x, y, imagePath)
   self.height = 32
   self.shadowOffsetY = 32
   self.shadowOffsetX = 16
-  self.spriteSheet = love.graphics.newImage(imagePath)
+  if imagePath then
+    self.spriteSheet = love.graphics.newImage(imagePath)
+  end
   self.state = "still"
   self.offsetX = 0
   self.offsetY = 0

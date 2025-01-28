@@ -6,8 +6,8 @@ function Player:new(x, y, art, animSpeed)
   self.hp = 100
   self.speed = 10
   self.volume = 1
-  world:add(self, self.x + 5, self.y + 32, 22, 22)
-  self.grid = Anim8.newGrid(32, 64, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
+  world:add(self, self.x + 5, self.y + 10, 22, 22)
+  self.grid = Anim8.newGrid(32, 32, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
   local numFrames = self.spriteSheet:getWidth() / 32
   self.img = {}
   self.img.default = {
@@ -25,9 +25,9 @@ function Player:new(x, y, art, animSpeed)
   self.audio = love.audio.newSource("audio/Fist Into Glove.mp3", "stream")
   self.audio:setVolume(self.volume * MasterVolume)
   self.hasAudio = true
-  self.height = 64
+  self.height = 32
   self.offsetX = 0
-  self.offsetY = 42
+  self.offsetY = 10
   self.shadowOffsetY = 22
   self.name = "player"
   self.damageTimer = 0
@@ -97,11 +97,23 @@ function Player:setDirAndVel()
   local future_x = self.x + vx
   local future_y = self.y + vy
   local goalX, goalY, cols, len = world:check(self, future_x, future_y)
+
   if len == 0 then
     self.x, self.y = future_x, future_y
     world:move(self, self.x + 5, self.y)
+  else
+    -- for index, value in pairs(cols[1].other) do
+    --     print (index, value)
+    --     -- for i, v in pairs(value) do
+    --     --   print (i, v)
+    --     -- end
+    --   end
+  -- end
+  -- else
+    if cols[1].other.type == "tele" then
+      cols[1].other.interactObj:tele()
+    end
   end
-
 end
 
 function Player:queryFront()
@@ -125,7 +137,7 @@ function Player:queryFront()
   end
   if len ~= 0 then
     if cols[1].other.interact then
-      cols[1].other:interact()
+      cols[1].other:interact(self.equiped)
     end
   end
 end
@@ -154,4 +166,18 @@ function Player:keypressed(key)
   if key == 'space' then
     self:queryFront()
   end
+  if key == 'p' then
+    self:teleport(42 * 32, 44 * 32, "dung")
+  end
+  if key == 'o' then
+    self:teleport(self.home.x, self.home.y, "worldMap")
+  end
+end
+
+
+function Player:teleport(x,y, map)
+  FullMap:changeMap(map)
+  world:remove(self)
+  world:add(self, x,y, 22,22)
+  self.x, self.y = x, y
 end

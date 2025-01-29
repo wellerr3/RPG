@@ -2,6 +2,7 @@ Key = Loot:extend()
 Torch = Loot:extend()
 Chest = Loot:extend()
 IceCube = Loot:extend()
+Shovel = Loot:extend()
 InteractObj = Loot:extend()
 
 function Key:new(x, y)
@@ -15,12 +16,21 @@ function Torch:new(x, y)
   Torch.super.new(self, "Torch", x, y, "src/tilesets/fire.png")
   self.drawnAbove = true
   self.drawn = false
+  self.element = "fire"
 end
 
 function IceCube:new(x, y)
   Key.super.new(self,"Ice Cube", x, y, "src/tilesets/iceCube.png")
   self.drawnAbove = true
   self.drawn = false
+  self.element = "ice"
+end
+
+function Shovel:new(x, y)
+  Key.super.new(self,"Shovel", x, y, "src/tilesets/shovel.png")
+  self.drawnAbove = true
+  self.drawn = false
+  self.element = "rock"
 end
 
 function Chest:new(x, y)

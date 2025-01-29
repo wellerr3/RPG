@@ -1096,28 +1096,28 @@
   <object id="5" type="door" x="2080" y="1856" width="32" height="32">
    <properties>
     <property name="collision" type="bool" value="false"/>
-    <property name="interaction" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
     <property name="type" value="door"/>
    </properties>
   </object>
   <object id="7" type="door" x="1344" y="1856" width="64" height="32">
    <properties>
     <property name="collision" type="bool" value="false"/>
-    <property name="interaction" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
     <property name="type" value="door"/>
    </properties>
   </object>
   <object id="8" type="door" x="1344" y="1824" width="64" height="32">
    <properties>
     <property name="collision" type="bool" value="false"/>
-    <property name="interaction" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
     <property name="type" value="door"/>
    </properties>
   </object>
   <object id="9" type="door" x="2080" y="896" width="32" height="32">
    <properties>
     <property name="collision" type="bool" value="false"/>
-    <property name="interaction" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
     <property name="type" value="door"/>
    </properties>
   </object>

@@ -36,6 +36,7 @@ function InterObj:interact(tool)
   if self.type == "tele" then
     obj:tele()
   elseif self.type == "door" then
+    print("door")
     obj:door(tool)
   elseif self.type == "fire" then
     obj:fire(tool)
@@ -61,7 +62,7 @@ function InterObj:findTele()
 end
 
 function InterObj:door(key)
-  if not self.neededTool or self.neededTool == key.name then
+  if key and (not self.neededTool or self.neededTool == key.name) then
     -- change sprite
     print ("Door Open Got")
     self.collidable = false

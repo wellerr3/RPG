@@ -2,8 +2,23 @@ ItemTypes = {
   key = Key,
   chest = Chest,
   torch = Torch,
-  interactObj = InteractObj,
+  iceCube = IceCube,
+  shovel = Shovel,
   other = Loot
+}
+
+ObjList = {}
+ObjList.worldMap = {
+  {name = "chest", x = 27, y = 279, extra = "shovel", openToSky = true, hasCollison = true}
+  ,{name = "chest", x = 30, y = 266, extra = "iceCube", openToSky = true, hasCollison = true}
+  -- ,{name = "chest", x = 27, y = 266, extra = "torch", openToSky = true, hasCollison = true}
+}
+ObjList.dung = {
+  {name = "chest", x = 63, y = 66, extra = "key", openToSky = false, hasCollison = true}
+  ,{name = "chest", x = 65, y = 48, extra = "key", openToSky = false, hasCollison = true}
+  ,{name = "chest", x = 46, y = 32, extra = "torch", openToSky = false, hasCollison = true}
+  ,{name = "chest", x = 65, y = 16, extra = "iceCube", openToSky = false, hasCollison = true}
+  ,{name = "chest", x = 3, y = 26, extra = "key", openToSky = false, hasCollison = true}
 }
 CurrId = 1
 
@@ -47,23 +62,10 @@ function Objects:drawAbove()
 end
 
 function Objects:createObjects(map)
-  local objList = {}
-  objList.worldMap = {
-    {name = "chest", x = 27, y = 279, extra = "key", openToSky = true, hasCollison = true}
-    ,{name = "chest", x = 30, y = 266, extra = "key", openToSky = true, hasCollison = true}
-    ,{name = "chest", x = 27, y = 266, extra = "torch", openToSky = true, hasCollison = true}
-  }
-  objList.dung = {
-    {name = "chest", x = 63, y = 66, extra = "key", openToSky = false, hasCollison = true}
-    ,{name = "chest", x = 65, y = 48, extra = "key", openToSky = false, hasCollison = true}
-    ,{name = "chest", x = 46, y = 32, extra = "torch", openToSky = false, hasCollison = true}
-    ,{name = "chest", x = 65, y = 16, extra = "key", openToSky = false, hasCollison = true}
-    ,{name = "chest", x = 3, y = 26, extra = "key", openToSky = false, hasCollison = true}
-  }
-  if not objList[map] then
-    objList[map] = {}
+  if not ObjList[map] then
+    ObjList[map] = {}
   end
-  for i, item in pairs(objList[map]) do
+  for i, item in pairs(ObjList[map]) do
     self:createItem(item)
   end
 end

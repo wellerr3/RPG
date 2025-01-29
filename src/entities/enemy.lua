@@ -68,8 +68,11 @@ function Enemy:getDamaged(damage)
   end
 end
 
-function Enemy:interact(damage)
-  damage = damage or 10
+function Enemy:interact(onHand)
+  local damage = onHand.damage or 10
+  if onHand.element == self.weakness then
+    damage = damage * 2
+  end
   if self.isHostle then
     if self.damageTimer <= 0 then
       self:getDamaged(damage)

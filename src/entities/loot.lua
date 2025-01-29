@@ -24,6 +24,8 @@ function Loot:new(type, x, y, imagePath)
     x = 0,
     y = -10
   }
+  self.damage = 10
+  self.element = nil
 end
 
 function Loot:update(dt)
@@ -37,5 +39,8 @@ function Loot:draw(x, y, scale, rotation, mode)
   scale = scale or 1
   mode = mode or self.mode
   self.img[mode]:draw(self.spriteSheet, x,y, rotation, scale, scale)
+  if mode == "inventory" then
+    
+  end
 end
 

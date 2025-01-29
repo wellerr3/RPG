@@ -2497,7 +2497,7 @@ return {
           visible = true,
           properties = {
             ["collision"] = false,
-            ["interaction"] = true,
+            ["interactable"] = true,
             ["type"] = "door"
           }
         },
@@ -2514,7 +2514,7 @@ return {
           visible = true,
           properties = {
             ["collision"] = false,
-            ["interaction"] = true,
+            ["interactable"] = true,
             ["type"] = "door"
           }
         },
@@ -2531,7 +2531,7 @@ return {
           visible = true,
           properties = {
             ["collision"] = false,
-            ["interaction"] = true,
+            ["interactable"] = true,
             ["type"] = "door"
           }
         },
@@ -2548,7 +2548,7 @@ return {
           visible = true,
           properties = {
             ["collision"] = false,
-            ["interaction"] = true,
+            ["interactable"] = true,
             ["type"] = "door"
           }
         }

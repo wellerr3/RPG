@@ -4,7 +4,8 @@ function Player:new(x, y, art, animSpeed)
   Player.super.new(self,"Player",  x, y, art, animSpeed, false, 64)
   self.strength = 10
   self.hp = 100
-  self.speed = 10
+  self.baseSpeed = 2.5
+  self.speed = 2.5
   self.volume = 1
   world:add(self, self.x + 5, self.y + 10, 22, 22)
   self.grid = Anim8.newGrid(32, 32, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
@@ -33,6 +34,7 @@ function Player:new(x, y, art, animSpeed)
   self.damageTimer = 0
   self.invScreen = false
   self.equiped = nil
+  self.runMultiplier = 2
 end
 
 function Player:update(dt)
@@ -59,6 +61,10 @@ end
 function Player:setDirAndVel()
   local speed = self.speed
   local vx, vy = 0, 0
+  if love.keyboard.isDown("lshift") then
+    --run
+    speed = speed * self.runMultiplier
+  end
   if love.keyboard.isDown("down") or love.keyboard.isDown("s") then
     vy =  speed
     self.dir = "down"
@@ -102,14 +108,6 @@ function Player:setDirAndVel()
     self.x, self.y = future_x, future_y
     world:move(self, self.x + 5, self.y)
   else
-    -- for index, value in pairs(cols[1].other) do
-    --     print (index, value)
-    --     -- for i, v in pairs(value) do
-    --     --   print (i, v)
-    --     -- end
-    --   end
-  -- end
-  -- else
     if cols[1].other.type == "tele" then
       cols[1].other.interactObj:tele()
     end
@@ -166,12 +164,13 @@ function Player:keypressed(key)
   if key == 'space' then
     self:queryFront()
   end
-  if key == 'p' then
-    self:teleport(42 * 32, 44 * 32, "dung")
-  end
-  if key == 'o' then
-    self:teleport(self.home.x, self.home.y, "worldMap")
-  end
+
+  -- if key == 'p' then
+  --   self:teleport(42 * TileSize, 44 * TileSize, "dung")
+  -- end
+  -- if key == 'o' then
+  --   self:teleport(self.home.x, self.home.y, "worldMap")
+  -- end
 end
 
 

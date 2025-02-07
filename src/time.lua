@@ -1,4 +1,4 @@
-IsTime = Object.extend()
+IsTime = Object:extend()
 
 TimeSets = {
   one = "",

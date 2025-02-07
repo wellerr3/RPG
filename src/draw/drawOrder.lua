@@ -22,7 +22,7 @@ function  GameDrawOrder()
       GameMap:drawLayer(layer)
     end
 
-    if Test == true then
+    if CollisionTest == true then
       drawRects()
     end
 

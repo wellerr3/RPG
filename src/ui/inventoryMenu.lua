@@ -7,7 +7,7 @@ function InventoryMenu:new()
   self.height = love.graphics.getHeight() - 350
   self.x = 50
   self.y = 300
-  self.font =  love.graphics.newFont("assets/Minecraft.ttf", 20)
+  self.font =  love.graphics.newFont("assets/RasterForgeRegular-JpBgm.ttf", 20)
   self.textObj = love.graphics.newText(self.font)
   self.textObj:add( {{0,0,0}, "Inventory: "}, 50, 50 )
   self.selected = 1

@@ -10,18 +10,23 @@ function love.load()
   success = love.window.setMode( 2000, 1200 )
 
   love.graphics.setDefaultFilter("nearest", "nearest")
-
   require("src/startup/gameStart")
   GameStart()
-
+  DebugMenu = DebugMenu()
 end
 
 function love.update(dt)
   Scene[CurrScene]:update(dt)
+  if Debug then
+    DebugMenu:update(dt)
+  end
 end
 
 function love.draw()
   Scene[CurrScene]:draw()
+  if Debug then
+    DebugMenu:draw()
+  end
 end
 
 function love.keypressed(key)
@@ -29,6 +34,21 @@ function love.keypressed(key)
   if key == "escape" then
 		CurrScene = "pause"
 	end
+  if key == "b" then
+    Debug = not Debug
+  end
+end
+
+function love.mousemoved( x, y, dx, dy, istouch )
+  Mouse.x = x
+  Mouse.y = y
+end
+
+function love.mousepressed(x, y, button, istouch)
+  Scene[CurrScene]:mousepressed(x, y, button, istouch)
+  if Debug then
+    DebugMenu:mousepressed(x,y,button,istouch)
+  end
 end
 
 -- error handler

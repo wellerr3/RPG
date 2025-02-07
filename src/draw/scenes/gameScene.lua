@@ -55,3 +55,8 @@ function GameScene:keypressed(key)
     Inv:keypressed(key)
   end
 end
+
+
+function GameScene:mousepressed(key)
+
+end

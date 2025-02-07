@@ -15,11 +15,11 @@ DirectionAxies = {
   down = {0,1}
 }
 
-function CalculateXYFromSpeedandDest(p1, p2)
+function CalculateXYFromSpeedandDest(p1, p2, dt)
   local x, y
   local angleInRad = math.atan2(p1.y - p2.y, p1.x - p2.x)
-  y = p1.speed * math.sin(angleInRad)
-  x = p1.speed * math.cos(angleInRad)
+  y = p1.speed * dt * math.sin(angleInRad)
+  x = p1.speed * dt * math.cos(angleInRad)
   return x, y
 end
 

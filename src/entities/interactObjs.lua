@@ -64,19 +64,17 @@ end
 function InterObj:door(key)
   if key and (not self.neededTool or self.neededTool == key.name) then
     -- change sprite
-    print ("Door Open Got")
+    Player:addText("Door Open Got")
     self.collidable = false
   else
-    print ("i need the key")
+    Player:addText("i need the key")
   end
 
 end
 
 function InterObj:fire(tool)
   if tool == "torch" then
-    -- light fire 
-    -- update lighting 
-    -- change sprite
+    
   end
 end
 
@@ -84,6 +82,7 @@ end
 function InterObj:findToTeleLocation(obj)
   local x = obj.x + (obj.width/2)
   local y = obj.y + (obj.height/2)
+  local map = obj.properties.name
   local facing = obj.properties.facing
   if facing == "north" then
     y = y - 32 - obj.height
@@ -96,5 +95,5 @@ function InterObj:findToTeleLocation(obj)
   else
     print ("error")
   end
-  TeleLocations[self.name] = {x, y}
+  TeleLocations[self.name] = {x, y, self.map}
 end

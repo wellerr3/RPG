@@ -1,11 +1,11 @@
 Player = Character:extend()
 
 function Player:new(x, y, art, animSpeed)
-  Player.super.new(self,"Player",  x, y, art, animSpeed, false, 64)
+  Player.super:new("Player",  x, y, art, animSpeed, false, 64)
   self.strength = 10
   self.hp = 100
-  self.baseSpeed = 2.5
-  self.speed = 2.5
+  self.baseSpeed = 300
+  self.speed = 300
   self.volume = 1
   world:add(self, self.x + 5, self.y + 10, 22, 22)
   self.grid = Anim8.newGrid(32, 32, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
@@ -35,15 +35,29 @@ function Player:new(x, y, art, animSpeed)
   self.invScreen = false
   self.equiped = nil
   self.runMultiplier = 2
+  self.tileX = math.floor(self.x / TileSize)
+  self.tileY = math.floor(self.y / TileSize)
+  self.text = {}
+  self.text.timer = 0
+  self.text.font =  love.graphics.newFont("assets/RasterForgeRegular-JpBgm.ttf", 16)
+  self.text.textObj = love.graphics.newText(self.text.font)
+  self.text.numlines = 0
 end
 
 function Player:update(dt)
-  Player.super.update(self, dt)
+  self.img.default[self.dir]:update(dt)
   self.audio:setPitch( self.speed / 5 )
-  self:setDirAndVel()
+  self:setDirAndVel(dt)
   if self.damageTimer > 0 then
     self.damageTimer = self.damageTimer - 1
   end
+  if self.text.timer > 0 then
+    self.text.timer = self.text.timer - 1
+    if self.text.timer == 0 then
+      self.text.numlines = 0
+    end
+  end
+  self.tileX, self.tileY = math.floor(self.x / TileSize), math.floor(self.y / TileSize)
 end
 -- Loot:draw(x, y, scale, rotation)
 function Player:draw()
@@ -54,12 +68,16 @@ function Player:draw()
   Player.super.draw(self)
   if self.equiped and self.dir == "down" then
     local rotation, xOffset, yOffset = GetRotation(self.dir, self.equiped.dir, self.equiped.itemOffset)
-    self.equiped:draw(xOffset + self.x, yOffset + self.y, 1, rotation, "use")  end
+    self.equiped:draw(xOffset + self.x, yOffset + self.y, 1, rotation, "use")
+  end
+  if self.text.timer > 0 then
+    love.graphics.draw( self.text.textObj, self.x, self.y)
+  end
 end
 
 
-function Player:setDirAndVel()
-  local speed = self.speed
+function Player:setDirAndVel(dt)
+  local speed = self.speed * dt
   local vx, vy = 0, 0
   if love.keyboard.isDown("lshift") then
     --run
@@ -102,15 +120,28 @@ function Player:setDirAndVel()
   end
   local future_x = self.x + vx
   local future_y = self.y + vy
-  local goalX, goalY, cols, len = world:check(self, future_x, future_y)
+  local goalX, goalY, cols, len = world:check(self, future_x, future_y, Filter)
 
   if len == 0 then
     self.x, self.y = future_x, future_y
-    world:move(self, self.x + 5, self.y)
+    world:update(self, self.x, self.y)
   else
+    -- for i,v in ipairs(cols[1].other) do
+    --   for ind, val in pairs(v.properties) do
+    --     print (ind, val)
+    --   end
+    -- end
     if cols[1].other.type == "tele" then
       cols[1].other.interactObj:tele()
     end
+  end
+end
+
+function Filter (item, other)
+  if other.properties and other.properties.type == "cross" then
+    return "cross"
+  else
+    return "slide"
   end
 end
 
@@ -136,6 +167,10 @@ function Player:queryFront()
   if len ~= 0 then
     if cols[1].other.interact then
       cols[1].other:interact(self.equiped)
+    else
+      -- for i, v in pairs(cols[1]) do
+      --   print (i,v)
+      -- end
     end
   end
 end
@@ -164,19 +199,18 @@ function Player:keypressed(key)
   if key == 'space' then
     self:queryFront()
   end
-
-  -- if key == 'p' then
-  --   self:teleport(42 * TileSize, 44 * TileSize, "dung")
-  -- end
-  -- if key == 'o' then
-  --   self:teleport(self.home.x, self.home.y, "worldMap")
-  -- end
 end
 
 
 function Player:teleport(x,y, map)
+  world:update(self, x, y)
   FullMap:changeMap(map)
-  world:remove(self)
-  world:add(self, x,y, 22,22)
   self.x, self.y = x, y
+end
+
+function Player:addText(text)
+  self.text.timer = 100
+  self.text.numlines = self.text.numlines + 1
+  local offset = 16
+  self.text.textObj:add(text, 0, offset + (16 * self.text.numlines))
 end

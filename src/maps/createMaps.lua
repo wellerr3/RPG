@@ -14,9 +14,17 @@ end
 
 MakeFullMap = Object:extend()
 
+MapTypes = {
+  farm = FarmMap
+}
 function MakeFullMap:new(maps)
   for key, v in pairs(maps) do
-    local map = IndMap(v, key)
+    local map
+    if MapTypes[key] then
+      map = MapTypes[key](v)
+    else
+      map = IndMap(v, key)
+    end
     self[key] = map
   end
   self.currMap = CurrMap
@@ -33,53 +41,4 @@ function MakeFullMap:changeMap(newMap)
   else
     print ("ERROR: no map named " .. newMap)
   end
-end
-
-
-IndMap = Objects:extend()
-
-function IndMap:new(map, key)
-  self.map = map
-  self.width = self.map.width
-  self.height = self.map.height
-  self.tilewidth = self.map.tilewidth
-  self.tileheight = self.map.tileheight
-  self.above, self.below = self:findOrder()
-  ObjectSet[key] = Objects(key, map.objects)
-
-end
-
-function IndMap:update(dt)
-  self.map:update(dt)
-end
-
-function IndMap:draw(tx, ty, sx, sy)
-  self.map:draw(tx, ty, sx, sy)
-end
-function IndMap:drawLayer(layer)
-  self.map:drawLayer(layer)
-end
-
-
-function IndMap:findOrder()
-  local above = {}
-  local below = {}
-  local mt =  {
-    __lt = function (layer1, layer2)
-       return layer1.properties.order < layer2.properties.order
-    end
-}
-  for i, layer in ipairs(self.map.layers) do
-    local properties = self.map:getLayerProperties(i)
-    if properties.isAbove then
-      table.insert(above, layer)
-      setmetatable (layer, mt)
-    else
-      table.insert(below, layer)
-      setmetatable (layer, mt)
-    end
-  end
-  table.sort(above)
-  table.sort(below)
-  return above, below
 end

@@ -10,7 +10,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 15,
-  nextobjectid = 154,
+  nextobjectid = 155,
   properties = {},
   tilesets = {
     {
@@ -6009,7 +6009,7 @@ return {
           type = "tele",
           shape = "rectangle",
           x = 8256,
-          y = 3968,
+          y = 3936,
           width = 128,
           height = 32,
           rotation = 0,
@@ -6026,11 +6026,11 @@ return {
         {
           id = 152,
           name = "",
-          type = "",
+          type = "tele",
           shape = "rectangle",
-          x = 9568,
+          x = 9600,
           y = 8320,
-          width = 32,
+          width = 64,
           height = 320,
           rotation = 0,
           visible = true,

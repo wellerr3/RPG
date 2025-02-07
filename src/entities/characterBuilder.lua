@@ -9,8 +9,7 @@ EnemyTypes = {
 function CharacterBuilder:new(x, y)
   self.NPCs = {}
   local enemyList = {
-    {name = "snake", x = 800, y = 8900}
-    ,{name = "snake", x = 800, y = 9000}
+    {name = "snake", x = 800, y = 9000}
     ,{name = "snake", x = 800, y = 9200}
     ,{name = "rat", x = 1000, y = 9200}
     ,{name = "rat", x = 1100, y = 9200}

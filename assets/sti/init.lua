@@ -798,7 +798,6 @@ end
 -- @param index Index or name of Layer to remove
 function Map:removeLayer(index)
 	local layer = assert(self.layers[index], "Layer not found: " .. index)
-
 	if type(index) == "string" then
 		for i, l in ipairs(self.layers) do
 			if l.name == index then

@@ -22,7 +22,7 @@ function  GameDrawOrder()
       GameMap:drawLayer(layer)
     end
 
-    if CollisionTest == true then
+    if OVariable.CollisionTest == true then
       drawRects()
     end
 

@@ -42,6 +42,7 @@ function Character:new(name, x, y, imagePath, animSpeed, isHostle, height)
   self.sightDist = 300
   self.damageTimer = 0
   self.state = "wander"
+  self.attackDamage = 0
 end
 
 function Character:update(dt)
@@ -103,11 +104,59 @@ function Character:setMoveMode(dt)
     world:move(self, self.x, self.y)
   else
     for i = 1, len do
-      if cols[i].other.hurt then
+      if cols[i].other.name == "player" then
+        -- attack
         Player:hurt(self.attackDamage)
+      else
+        local gX, gY, selfCols, selfLen = world:check(self, self.x , self.y)
+        if selfLen ~= 0 then
+          self:findFreeSpace(dt)
+        end
       end
     end
   end
+end
+
+function Character:findFreeSpace(dt)
+  -- check opp dir then clockwise
+  local dirs = {"right","left","up","down"}
+  local found = false
+  local checkDir = self.dir
+  local checked = 0
+  local currDist = self.speed * dt
+  local goalX, goalY, cols, len
+  local px, py = self.x, self.y
+  local count = 0
+  while (found == false) and count < 16 do
+    count = count + 1
+    checked = checked + 1
+    if dirs[checkDir] == "right" then
+      px = px + currDist
+    elseif dirs[checkDir] == "left" then
+      px = px - currDist
+    elseif dirs[checkDir] == "up" then
+      py = py - currDist
+    elseif dirs[checkDir] == "down" then
+      py = py + currDist
+    end
+    goalX, goalY, cols, len = world:check(self, px, py)
+    if len == 0 then
+      found = true
+    end
+    if checked >= 4 then
+      checked = 0
+      currDist = currDist * 2
+    end
+  end
+  self.dir = checkDir
+  if found then
+    self.x, self.y = px, py
+    world:update(self, self.x, self.y)
+  else
+    self.x, self.y = self.home.x, self.home.y
+    world:update(self, self.x, self.y)
+  end
+
 end
 
 function Character:wander(dt)

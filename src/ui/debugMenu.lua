@@ -13,7 +13,7 @@ function DebugMenu:new()
   self.textObj = love.graphics.newText(self.font)
   self.titles = love.graphics.newText(self.font2)
   self.titles:add( {{0,0,0}, "Debug: "}, 50, 50 )
-  self.titles:add( {{0,0,0}, "Tele: "}, 50, 250 )
+  self.titles:add( {{0,0,0}, "Tele: "}, 50, 400 )
   self.selected = 1
   self.clickBoxes = {}
 end
@@ -42,29 +42,37 @@ end
 
 function DebugMenu:MenuUpdate()
   local offset = 0
+  local collisionOn = "on"
+  if OVariable.CollisionTest then
+    collisionOn = "on"
+  else
+    collisionOn = "off"
+  end
   self.textObj:clear()
   self.textObj:add( {{0,0,0}, "Map: ".. CurrMap}, 50, 100 )
   self.textObj:add( {{0,0,0}, "Player X,Y: ".. math.floor(Player.x) .. ", " .. math.floor(Player.y)}, 50, 150 )
-  self.textObj:add( {{0,0,0}, "GlobalTime: ".. math.floor(GlobalTime)}, 50, 200 )
-  for i,v in pairs(TeleLocations) do
+  self.textObj:add( {{0,0,0}, "GlobalTime: ".. math.floor(OVariable.GlobalTime)}, 50, 200 )
+  self.textObj:add( {{0,0,0}, "Collision: " .. collisionOn}, 50, 300 )
+  self.clickBoxes["collision"] = ColObj("collision", self.x + 50, self.y+ (offset * 50) + 300, 200, 25, "CollisionTest", "options")
+  for i, v in pairs(TeleLocations) do
     offset = offset + 1
     local x = self.x + 50
-    local y = self.y + (offset * 50) + 250
+    local y = self.y + (offset * 50) + 400
     local width = 200
     local height = 25
     love.graphics.rectangle( "fill", x, y, width, height)
-    self.textObj:add( {{0,0,0}, i}, 50, (offset * 50) + 250 )
+    self.textObj:add( {{0,0,0}, i}, 50, (offset * 50) + 400 )
     self.clickBoxes[i] = ColObj(i, x, y, width, height, v)
   end
 end
-function ColObj:new(name, x, y, width, height, v)
-  self.teleLocation = v
+function ColObj:new(name, x, y, width, height, v, type)
+  self.info = v
   self.name = name
   self.x = x
   self.y = y
   self.width = width or 200
   self.height = height or 25
-  self.type = "tele"
+  self.type = type or "tele"
   self.selected = false
 end
 
@@ -81,7 +89,9 @@ function ColObj:draw()
 end
 function ColObj:click()
   if self.type == "tele" then
-    Player:teleport(self.teleLocation[1], self.teleLocation[2], self.teleLocation[3])
+    Player:teleport(self.info[1], self.info[2], self.info[3])
+  elseif self.type == "options" then
+    OVariable[self.info] = not OVariable[self.info]
   end
 end
 
@@ -101,7 +111,6 @@ function DebugMenu:checkBoxes(x,y, click)
     local x2, y2, w2, h2 = v.x, v.y, v.width, v.height
     box =  x < x2 + w2 and x2 < x and y < y2+h2 and y2 < y
     if box and click then
-      print("click")
       v:click()
     elseif box then
       v.selected = true

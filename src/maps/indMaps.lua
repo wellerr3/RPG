@@ -102,17 +102,11 @@ function FarmMap:checkSight()
     open = open - 1
     local items, len = world:queryRect((Player.tileX * TileSize) + TileSize, (Player.tileY * TileSize) + TileSize, searchSize * TileSize, searchSize * TileSize)
     for i, v in ipairs(items) do
-      
+    
     end
-
-
-
   end
 
 end
-
-
-
 
   -- for i = playerTile.x, screenTileH do
   --   -- while notFound do

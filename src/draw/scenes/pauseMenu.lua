@@ -60,7 +60,7 @@ function MenuSquare:new(name, x, y, width, height, font)
   self.textBoxX = x
   self.textBoxY = y
   self.x = x + 50
-  self.y = y - 25
+  self.y = y - 30
 end
 
 function MenuSquare:draw()
@@ -71,7 +71,7 @@ function MenuSquare:draw()
     else
       love.graphics.rectangle( "fill", self.x, self.y, self.width, self.height)
     end
-    love.graphics.setColor(1,0,1,1)
+    love.graphics.setColor(1,.25,.25,1)
     love.graphics.printf( self.name, self.font, self.textBoxX, self.textBoxY, 300, "center")
   love.graphics.pop()
 end

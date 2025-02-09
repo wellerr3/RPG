@@ -24,7 +24,7 @@ function Player:new(x, y, art, animSpeed)
   self.img.default.left = self.img.default.right:clone():flipH()
   self.inventory = {}
   self.audio = love.audio.newSource("audio/Fist Into Glove.mp3", "stream")
-  self.audio:setVolume(self.volume * MasterVolume)
+  self.audio:setVolume(self.volume * OVariable.MasterVolume)
   self.hasAudio = true
   self.height = 32
   self.offsetX = 0
@@ -53,7 +53,8 @@ function Player:update(dt)
   end
   if self.text.timer > 0 then
     self.text.timer = self.text.timer - 1
-    if self.text.timer == 0 then
+    if self.text.timer <= 0 then
+      self.text.textObj:clear()
       self.text.numlines = 0
     end
   end

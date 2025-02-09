@@ -32,8 +32,12 @@ end
 function love.keypressed(key)
   Scene[CurrScene]:keypressed(key)
   if key == "escape" then
-		CurrScene = "pause"
-	end
+    if CurrScene ~= "pause" then
+    	CurrScene = "pause"
+    elseif CurrScene == "pause" then
+      CurrScene = "game"
+    end
+  end
   if key == "b" then
     Debug = not Debug
   end

@@ -26,11 +26,11 @@ end
 
 function GameScene:update(dt)
   if not Player.invScreen then
-    if GlobalTime > 300 then
+    if OVariable.GlobalTime > 300 then
       -- restart day
-      GlobalTime = 0
+      OVariable.GlobalTime = 0
     end
-    GlobalTime = GlobalTime + (10*dt)
+    OVariable.GlobalTime = OVariable.GlobalTime + (10*dt)
     Player:update(dt)
     NPCs:update(dt)
     camUpdate:update(dt)

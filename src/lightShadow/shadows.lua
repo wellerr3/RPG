@@ -27,7 +27,7 @@ end
 function Shadows:update(dt)
 	local timeAdd = 0
 	if self.source == "sky" then
-		timeAdd = GlobalTime
+		timeAdd = OVariable.GlobalTime
 	end
 	for i, e in ipairs(self.entities) do
 		local dx       = -150 + timeAdd

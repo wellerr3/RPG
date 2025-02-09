@@ -9,7 +9,6 @@ function CreateMaps()
   -- CurrMap = "dung"
   FullMap = MakeFullMap(mapTypes)
   GameMap = FullMap[CurrMap]
-
 end
 
 MakeFullMap = Object:extend()
@@ -33,10 +32,13 @@ end
 
 function MakeFullMap:changeMap(newMap)
   if self[newMap]then
-    -- world:remove(self[self.currMap].map)
+    -- world:remove(self[CurrMap].map)
+    for i, layer in ipairs(self[CurrMap].map.layers) do
+      self[CurrMap].map:bump_removeLayer(i, world)
+    end
     self.currMap = newMap
     CurrMap = newMap
-    self[self.currMap].map:bump_init(world)
+    self[CurrMap].map:bump_init(world)
     GameMap = self[newMap]
   else
     print ("ERROR: no map named " .. newMap)

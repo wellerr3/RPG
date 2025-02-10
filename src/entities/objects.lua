@@ -21,11 +21,11 @@ ObjList.dung = {
   ,{name = "chest", x = 3, y = 26, extra = "key", openToSky = false, hasCollison = true}
 }
 ObjList.farm = {
-  {name = "chest", x = 5, y = 30, extra = "key", openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 20, y = 30, extra = "key", openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 21, y = 32, extra = "torch", openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 2, y = 20, extra = "iceCube", openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 0, y = 33, extra = "key", openToSky = false, hasCollison = true}
+  -- {name = "chest", x = 5, y = 30, extra = "key", openToSky = false, hasCollison = true}
+  -- ,{name = "chest", x = 20, y = 30, extra = "key", openToSky = false, hasCollison = true}
+  -- ,{name = "chest", x = 21, y = 32, extra = "torch", openToSky = false, hasCollison = true}
+  -- ,{name = "chest", x = 2, y = 20, extra = "iceCube", openToSky = false, hasCollison = true}
+  -- ,{name = "chest", x = 0, y = 33, extra = "key", openToSky = false, hasCollison = true}
 }
 CurrId = 1
 

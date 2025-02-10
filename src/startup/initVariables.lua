@@ -15,7 +15,8 @@ CurrMap = "worldMap"
 TileSize = 32
 
 TeleLocations = {
-  home = {32 * 32, 283 * 32, "worldMap"}
+  home = {32 * 32, 283 * 32, "worldMap"},
+  InFrontOfCorn = {85 * 32, 35 * 32, "farm"}
 }
 
 Mouse = {x = 0,y = 0}

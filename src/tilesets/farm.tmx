@@ -313,8 +313,10 @@
   <object id="3" x="3" y="5" width="2669" height="1538">
    <properties>
     <property name="area" value="cornFarm"/>
-    <property name="collidable" type="bool" value="true"/>
+    <property name="collidable" type="bool" value="false"/>
+    <property name="interactable" type="bool" value="true"/>
     <property name="isArea" type="bool" value="true"/>
+    <property name="name" value="cornFarm"/>
     <property name="type" value="cross"/>
    </properties>
   </object>

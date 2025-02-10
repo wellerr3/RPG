@@ -34,7 +34,9 @@ function MakeFullMap:changeMap(newMap)
   if self[newMap]then
     -- world:remove(self[CurrMap].map)
     for i, layer in ipairs(self[CurrMap].map.layers) do
-      self[CurrMap].map:bump_removeLayer(i, world)
+      if layer.type ~= "objectgroup" then
+        self[CurrMap].map:bump_removeLayer(i, world)
+      end
     end
     self.currMap = newMap
     CurrMap = newMap

@@ -600,8 +600,10 @@ return {
           visible = true,
           properties = {
             ["area"] = "cornFarm",
-            ["collidable"] = true,
+            ["collidable"] = false,
+            ["interactable"] = true,
             ["isArea"] = true,
+            ["name"] = "cornFarm",
             ["type"] = "cross"
           }
         }

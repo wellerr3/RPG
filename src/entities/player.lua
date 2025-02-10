@@ -7,9 +7,12 @@ function Player:new(x, y, art, animSpeed)
   self.baseSpeed = 300
   self.speed = 300
   self.volume = 1
-  world:add(self, self.x + 5, self.y + 10, 22, 22)
+  self.spriteSheet1 = love.graphics.newImage("src/tilesets/shortCreg.png")
+  self.spriteSheet2 = love.graphics.newImage("src/tilesets/tallCreg.png")
+  world:add(self, self.x + 5, self.y, 22, 22)
   self.grid = Anim8.newGrid(32, 32, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
-  local numFrames = self.spriteSheet:getWidth() / 32
+  self.grid2 = Anim8.newGrid(32, 64, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
+  local numFrames = self.spriteSheet:getWidth() / self.width
   self.img = {}
   self.img.default = {
     still = Anim8.newAnimation(self.grid(1, 1), 1),
@@ -27,9 +30,10 @@ function Player:new(x, y, art, animSpeed)
   self.audio:setVolume(self.volume * OVariable.MasterVolume)
   self.hasAudio = true
   self.height = 32
-  self.offsetX = 0
+  self.offsetX = 5
   self.offsetY = 10
   self.shadowOffsetY = 22
+  self.shadowOffsetX = 11
   self.name = "player"
   self.damageTimer = 0
   self.invScreen = false
@@ -118,23 +122,28 @@ function Player:setDirAndVel(dt)
     self.isMoving = false
   else
     self.isMoving = true
-  end
-  local future_x = self.x + vx
-  local future_y = self.y + vy
-  local goalX, goalY, cols, len = world:check(self, future_x, future_y, Filter)
-
-  if len == 0 then
-    self.x, self.y = future_x, future_y
-    world:update(self, self.x, self.y)
-  else
-    -- for i,v in ipairs(cols[1].other) do
-    --   for ind, val in pairs(v.properties) do
-    --     print (ind, val)
+    local future_x = self.x + vx
+    local future_y = self.y + vy
+    local actualX, actualY, cols, len = world:move(self, future_x, future_y, Filter)
+    self.x, self.y = actualX, actualY
+    -- self.x = self.x
+    -- local goalX, goalY, cols, len = world:check(self, future_x, future_y, Filter)
+    -- if len == 0 then
+    --   self.x, self.y = future_x, future_y
+    --   world:update(self, self.x, self.y)
+    -- else
+    --   if cols[1].other.properties then
+    --     print (cols[1].other.properties.type)
+    --   end
+    --   -- for i,v in ipairs(cols[1].other) do
+    --   --   for ind, val in pairs(v.properties) do
+    --   --     print (ind, val)
+    --   --   end
+    --   -- end
+    --   if cols[1].other.type == "tele" then
+    --     cols[1].other.interactObj:tele()
     --   end
     -- end
-    if cols[1].other.type == "tele" then
-      cols[1].other.interactObj:tele()
-    end
   end
 end
 
@@ -142,7 +151,7 @@ function Filter (item, other)
   if other.properties and other.properties.type == "cross" then
     return "cross"
   else
-    return "slide"
+    return 'slide'
   end
 end
 
@@ -158,7 +167,7 @@ function Player:queryFront()
   elseif self.dir == "down" then
     py = py + checkDist
   end
-  local goalX, goalY, cols, len = world:check(self, px + 5, py)
+  local goalX, goalY, cols, len = world:check(self, px + 5, py, Filter)
   TestRect.x=px + 5
   TestRect.y=py
   if self.equiped then
@@ -168,10 +177,6 @@ function Player:queryFront()
   if len ~= 0 then
     if cols[1].other.interact then
       cols[1].other:interact(self.equiped)
-    else
-      -- for i, v in pairs(cols[1]) do
-      --   print (i,v)
-      -- end
     end
   end
 end

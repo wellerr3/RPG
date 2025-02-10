@@ -42,12 +42,14 @@ function IndMap:findOrder()
 }
   for i, layer in ipairs(self.map.layers) do
     local properties = self.map:getLayerProperties(i)
-    if properties.isAbove then
-      table.insert(above, layer)
-      setmetatable (layer, mt)
-    else
-      table.insert(below, layer)
-      setmetatable (layer, mt)
+    if layer.type ~= "objectgroup" then
+      if properties.isAbove then
+        table.insert(above, layer)
+        setmetatable (layer, mt)
+      else
+        table.insert(below, layer)
+        setmetatable (layer, mt)
+      end
     end
   end
   table.sort(above)

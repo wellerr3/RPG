@@ -97,11 +97,13 @@ function Character:setMoveMode(dt)
   else
     px, py = self:wander(dt)
   end
-  local goalX, goalY, cols, len = world:check(self, px , py)
+  -- local goalX, goalY, cols, len = world:check(self, px , py)
+  local actualX, actualY, cols, len = world:move(self, px, py, Filter)
+  self.x, self.y = actualX, actualY
   if len == 0 then
     self.dir = GetDir(self.x, self.y, px, py)
-    self.x, self.y = px, py
-    world:move(self, self.x, self.y)
+    -- self.x, self.y = px, py
+    -- world:move(self, self.x, self.y)
   else
     for i = 1, len do
       if cols[i].other.name == "player" then

@@ -97,3 +97,9 @@ function InterObj:findToTeleLocation(obj)
   end
   TeleLocations[self.name] = {x, y, self.map}
 end
+
+function InterObj:specialArea(tool)
+  if tool == "torch" then
+    
+  end
+end

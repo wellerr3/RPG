@@ -66,7 +66,7 @@ function Character:draw()
       self.audio:stop()
     end
   else
-    self.img[self.mode][self.dir]:draw(self.spriteSheet, self.x,self.y, nil, nil, nil, self.offsetX, self.offsetY)
+    self.img[self.mode][self.dir]:draw(self.spriteSheet, self.x, self.y, nil, nil, nil, self.offsetX, self.offsetY)
     if self.hasAudio then
       self.audio:play()
     end
@@ -99,72 +99,67 @@ function Character:setMoveMode(dt)
   end
   -- local goalX, goalY, cols, len = world:check(self, px , py)
   local actualX, actualY, cols, len = world:move(self, px, py, Filter)
+  if actualX ~= self.x or actualY ~= self.y then
+    self.isMoving = true
+    self.dir = GetDir(self.x, self.y, actualX, actualY)
+  end
   self.x, self.y = actualX, actualY
   if len == 0 then
-    self.dir = GetDir(self.x, self.y, px, py)
-    -- self.x, self.y = px, py
-    -- world:move(self, self.x, self.y)
   else
     for i = 1, len do
       if cols[i].other.name == "player" then
         -- attack
         Player:hurt(self.attackDamage)
-      else
-        local gX, gY, selfCols, selfLen = world:check(self, self.x , self.y)
-        if selfLen ~= 0 then
-          self:findFreeSpace(dt)
-        end
       end
     end
   end
 end
 
-function Character:findFreeSpace(dt)
-  -- check opp dir then clockwise
-  local dirs = {"right","left","up","down"}
-  local found = false
-  local checkDir = self.dir
-  local checked = 0
-  local currDist = self.speed * dt
-  local goalX, goalY, cols, len
-  local px, py = self.x, self.y
-  local count = 0
-  while (found == false) and count < 16 do
-    count = count + 1
-    checked = checked + 1
-    if dirs[checkDir] == "right" then
-      px = px + currDist
-    elseif dirs[checkDir] == "left" then
-      px = px - currDist
-    elseif dirs[checkDir] == "up" then
-      py = py - currDist
-    elseif dirs[checkDir] == "down" then
-      py = py + currDist
-    end
-    goalX, goalY, cols, len = world:check(self, px, py)
-    if len == 0 then
-      found = true
-    end
-    if checked >= 4 then
-      checked = 0
-      currDist = currDist * 2
-    end
-  end
-  self.dir = checkDir
-  if found then
-    self.x, self.y = px, py
-    world:update(self, self.x, self.y)
-  else
-    self.x, self.y = self.home.x, self.home.y
-    world:update(self, self.x, self.y)
-  end
-
-end
+-- function Character:findFreeSpace(dt)
+--   -- check opp dir then clockwise
+--   local dirs = {"right","left","up","down"}
+--   local found = false
+--   local checkDir = self.dir
+--   local checked = 0
+--   local currDist = self.speed * dt
+--   local goalX, goalY, cols, len
+--   local px, py = self.x, self.y
+--   local count = 0
+--   while (found == false) and count < 16 do
+--     count = count + 1
+--     checked = checked + 1
+--     if dirs[checkDir] == "right" then
+--       px = px + currDist
+--     elseif dirs[checkDir] == "left" then
+--       px = px - currDist
+--     elseif dirs[checkDir] == "up" then
+--       py = py - currDist
+--     elseif dirs[checkDir] == "down" then
+--       py = py + currDist
+--     end
+--     goalX, goalY, cols, len = world:check(self, px, py)
+--     if len == 0 then
+--       found = true
+--     end
+--     if checked >= 4 then
+--       checked = 0
+--       currDist = currDist * 2
+--     end
+--   end
+--   self.dir = checkDir
+--   if found then
+--     self.x, self.y = px, py
+--     world:update(self, self.x, self.y)
+--   else
+--     self.x, self.y = self.home.x, self.home.y
+--     world:update(self, self.x, self.y)
+--   end
+-- end
 
 function Character:wander(dt)
-  local dirs = {"right","left","up","down"}
+  -- local dirs = {"right","left","up","down"}
   if math.random(20) == 1 then
-    self.dir = dirs[math.random(#dirs)]
+    self.dir = Dirs[math.random(#Dirs)]
   end
   local speed = self.speed * dt
   local px, py = self.x, self.y
@@ -204,6 +199,7 @@ function Character:getDamaged(damage)
     self.mode = "dead"
     self.dir = "still"
     self.isMoving = false
+    world:remove(self)
   end
 end
 

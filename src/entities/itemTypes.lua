@@ -4,6 +4,7 @@ Chest = Loot:extend()
 IceCube = Loot:extend()
 Shovel = Loot:extend()
 InteractObj = Loot:extend()
+Corn = Loot:extend()
 
 function Key:new(x, y)
   Key.super.new(self,"Key", x, y, "src/tilesets/key.png")
@@ -84,3 +85,50 @@ end
 function InteractObj:update(dt)
 
 end
+
+function Corn:new(x, y)
+  Key.super.new(self,"Corn", x, y, "src/tilesets/cornWall.png")
+  self.drawnAbove = true
+  self.drawn = true
+  self.element = "corn"
+  self.seeThrough = true
+  self.type = "cross"
+  self.name = "corn: ".. math.floor(self.x/TileSize) .. "  " .. math.floor(self.y/TileSize)
+  -- self.img.top = Anim8.newAnimation(self.grid('1-' .. numFrames, 1), .25)
+  self.img["0101"] = Anim8.newAnimation(self.grid(1, 1), .25)
+  self.img["1010"] = Anim8.newAnimation(self.grid(2, 1), .25)
+  self.img["1100"] = Anim8.newAnimation(self.grid(3, 1), .25)
+
+  self.img["1001"] = Anim8.newAnimation(self.grid(1, 2), .25)
+  self.img["1110"] = Anim8.newAnimation(self.grid(2, 2), .25)
+  self.img["1101"] = Anim8.newAnimation(self.grid(3, 2), .25)
+
+  -- self.img["1111"] = Anim8.newAnimation(self.grid(1, 3), .25)
+  self.img["0011"] = Anim8.newAnimation(self.grid(2, 3), .25)
+  self.img["0110"] = Anim8.newAnimation(self.grid(3, 3), .25)
+
+  self.img["1011"] = Anim8.newAnimation(self.grid(1, 4), .25)
+  self.img["0000"] = Anim8.newAnimation(self.grid(2, 4), .25)
+  self.img["0111"] = Anim8.newAnimation(self.grid(3, 4), .25)
+
+  self.img["0100"] = Anim8.newAnimation(self.grid(1, 5), .25)
+  self.img["0001"] = Anim8.newAnimation(self.grid(2, 5), .25)
+  self.img["1000"] = Anim8.newAnimation(self.grid(3, 5), .25)
+
+  self.img["0010"] = Anim8.newAnimation(self.grid(1, 6), .25)
+  self.img["1111"] = Anim8.newAnimation(self.grid(2, 6), .25)
+  self.img["default"] = Anim8.newAnimation(self.grid(2, 6), .25)
+
+end
+
+function Corn:update(dt)
+  local halfWidth = ScreenWidth/2
+  local halfHeight = ScreenHeight/2
+  local xDist = math.abs(self.x - Player.x) - 32
+  local yDist = math.abs(self.y - Player.y) - 32
+  if xDist > halfWidth or yDist > halfHeight then
+    self.drawn = true
+    GameMap:checkCornAround(self)
+  end
+end
+

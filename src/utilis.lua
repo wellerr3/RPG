@@ -4,6 +4,7 @@ function GetDist(startX, startY, endX, endY)
   local dist = math.sqrt(((startX - endX)^2 + (startY - endY)^2))
   return dist
 end
+Dirs = {"right","left","up","down"}
 DirectionAxies = {
   right = {1,0},
   upRight = {1,0},
@@ -71,4 +72,22 @@ function GetRotation(dir, startDir, addOffset)
 
   end
   return imgRotation, offsets[1], offsets[2]
+end
+
+function CalculateXYFromDistAngle(x1,y1, dist, angle)
+  local x2 = x1 + (dist) * math.cos(angle)
+  local y2 = y1 + (dist) * math.sin(angle)
+  return x2, y2
+end
+
+function XYToTile(x,y)
+  local tx = math.floor(x /TileSize)
+  local ty = math.floor(y /TileSize)
+  return tx, ty
+end
+
+function CalculateTilesPassedThrough(x,y)
+  local tx = math.floor(x /TileSize)
+  local ty = math.floor(y /TileSize)
+  return tx, ty
 end

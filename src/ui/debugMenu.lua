@@ -43,17 +43,25 @@ end
 function DebugMenu:MenuUpdate()
   local offset = 0
   local collisionOn = "on"
+  local viewDots = "on"
   if OVariable.CollisionTest then
     collisionOn = "on"
   else
     collisionOn = "off"
   end
+  if OVariable.ViewDots then
+    viewDots = "on"
+  else
+    viewDots = "off"
+  end
   self.textObj:clear()
   self.textObj:add( {{0,0,0}, "Map: ".. CurrMap}, 50, 100 )
   self.textObj:add( {{0,0,0}, "Player X,Y: ".. math.floor(Player.x) .. ", " .. math.floor(Player.y)}, 50, 150 )
   self.textObj:add( {{0,0,0}, "GlobalTime: ".. math.floor(OVariable.GlobalTime)}, 50, 200 )
-  self.textObj:add( {{0,0,0}, "Collision: " .. collisionOn}, 50, 300 )
-  self.clickBoxes["collision"] = ColObj("collision", self.x + 50, self.y+ (offset * 50) + 300, 200, 25, "CollisionTest", "options")
+  self.textObj:add( {{0,0,0}, "Collision: " .. collisionOn}, 50, 250 )
+  self.textObj:add( {{0,0,0}, "View Dots: " .. viewDots}, 50, 300 )
+  self.clickBoxes["collision"] = ColObj("collision", self.x + 50, self.y+ (offset * 50) + 250, 200, 25, "CollisionTest", "options")
+  self.clickBoxes["viewDots"] = ColObj("view dots", self.x + 50, self.y+ (offset * 50) + 300, 200, 25, "ViewDots", "options")
   for i, v in pairs(TeleLocations) do
     offset = offset + 1
     local x = self.x + 50

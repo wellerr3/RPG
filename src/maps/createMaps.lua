@@ -2,7 +2,7 @@ function CreateMaps()
   local mapTypes = {}
   local worldMap = Sti('src/maps/MtMap.lua', {'bump'})
   local dung1 = Sti('src/maps/dung.lua', {'bump'})
-  local farm = Sti('src/maps/farm.lua', {'bump'})
+  local farm = Sti('src/maps/farm2.lua', {'bump'})
   mapTypes.worldMap = worldMap
   mapTypes.dung = dung1
   mapTypes.farm = farm
@@ -28,11 +28,13 @@ function MakeFullMap:new(maps)
   end
   self.currMap = CurrMap
   self[CurrMap].map:bump_init(world)
+  ObjectSet[CurrMap]:addColliders()
 end
 
 function MakeFullMap:changeMap(newMap)
   if self[newMap]then
-    -- world:remove(self[CurrMap].map)
+    ObjectSet[CurrMap]:removeColliders()
+    ObjectSet[newMap]:addColliders()
     for i, layer in ipairs(self[CurrMap].map.layers) do
       if layer.type ~= "objectgroup" then
         self[CurrMap].map:bump_removeLayer(i, world)

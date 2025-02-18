@@ -64,6 +64,7 @@ function FarmMap:new(map)
   self.spriteSheet = love.graphics.newImage("src/tilesets/cornWall.png")
   self.grid = Anim8.newGrid(32, 32, self.spriteSheet:getWidth(), self.spriteSheet:getHeight())
   self.deleteTiles = {}
+  ObjectSet["farm"]:createDuplicateObjs('corn', 25,0,107,75)
 end
 
 function FarmMap:update(dt)
@@ -87,6 +88,13 @@ function FarmMap:checkSight()
   local function sortByY(v1, v2)
     return v1.y < v2.y
   end
+  local function cornFilter(other)
+      if (other.properties and (other.properties.name == "player")) or other.name == "player" or not other.seeThrough then
+        return false
+      else
+        return 'slide'
+      end
+   end
 
   local mapW = self.width * self.tilewidth
   local mapH = self.height * self.tileheight
@@ -95,96 +103,75 @@ function FarmMap:checkSight()
   local playerTile = {x = Player.tileX, y = Player.tileY}
   local screenTileW = screenW / self.tilewidth
   local screenTileH = screenH / self.tileheight
--- remove old delete tiles
-  self.deleteTiles = {playerTile}
-  local open = 8
-  local searchSize = 3
-
-  while (open > 0) do
-    open = open - 1
-    local items, len = world:queryRect((Player.tileX * TileSize) + TileSize, (Player.tileY * TileSize) + TileSize, searchSize * TileSize, searchSize * TileSize)
-    for i, v in ipairs(items) do
-    
+  local segment = 12
+  local px, py = Player:getCenter()
+  local dist = 3 * TileSize
+  local angle = math.pi /(segment/2)
+  while (segment > 0) do
+      -- local items, len = world:queryRect((Player.tileX * TileSize) + TileSize, (Player.tileY * TileSize) + TileSize, searchSize * TileSize, searchSize * TileSize)
+    local a = angle * segment
+    local segX, segY = CalculateXYFromDistAngle(px,py, dist, a)
+    local itemInfo, len2 = world:querySegmentWithCoords(px,py, segX, segY, Filter2)
+    if len2 > 0 then
+      Hit[segment] = itemInfo[1]
+    else
+      Hit[segment] = {x1 = segX, y1 = segY, x2 = segX, y2 = segY}
     end
-  end
+    local items, len =  world:querySegment(px, py, Hit[segment].x2, Hit[segment].y2, cornFilter)
+    local wall = {}
+    for i, item in ipairs(items) do
+      if i == #items then
+        self:checkCornAround(item)
+      else
+        if item.type == "cross" and item.seeThrough then
+          item.mode = "default"
+          item.drawn = false
+        end
+      end
 
+    end
+    segment = segment - 1
+  end
 end
 
-  -- for i = playerTile.x, screenTileH do
-  --   -- while notFound do
-  --     local currTile = self.map:getTileProperties ("CornWalls", i, playerTile.y)
-  --     for ind, val in pairs(currTile) do
-  --       print (i, playerTile.y)
-  --       print (ind, val)
-  --     end
-  --   -- end
-  -- end
--- width	32
--- height	32
--- x	128
--- y	1440
--- properties	table: 0x01d46d40d650
--- layer	table: 0x01d46d40e140
+function FarmMap:checkCornAround(item)
+  local shape = ""
+  local currX, currY = math.floor(item.x/TileSize),math.floor(item.y/TileSize)
+  local corn = ObjectSet["farm"].objSets.below.corn
+  if corn[currX] and corn[currX][currY - 1] and corn[currX][currY - 1].drawn == true then
+    shape = shape .. "1"
+  else
+    shape = shape .. "0"
+  end
+  if corn[currX + 1] and corn[currX + 1][currY] and corn[currX + 1][currY].drawn then
+    shape = shape .. "1"
+  else
+    shape = shape .. "0"
+  end
+  if corn[currX] and corn[currX][currY + 1] and corn[currX][currY + 1].drawn then
+    shape = shape .. "1"
+  else
+    shape = shape .. "0"
+  end
+  if corn[currX - 1] and corn[currX - 1][currY] and corn[currX - 1][currY].drawn then
+    shape = shape .. "1"
+  else
+    shape = shape .. "0"
+  end
+  if shape == "1111" then
+    shape = "default"
+  end
+  item.mode = shape
+end
+
+function Filter2 (other)
+  if (other.properties and other.properties.type == "cross") or other.type == "cross" then
+    return false
+  elseif (other.properties and other.properties.name == "player") or other.name == "player" then
+    return false
+  else
+    return "slide"
+  end
+end
 
 
-
-  -- for i, v in pairs(items) do
-  --   print (i,v)
-  -- end
-
-  -- function FarmMap:checkSight()
-  --   -- local items, len = world:queryRect(l,t,w,h, filter)
-  --   -- Cam.x Cam.y
-  --   -- cam.x - (mapW /2)
-  --   local mapW = self.width * self.tilewidth
-  --   local mapH = self.height * self.tileheight
-  --   local screenW = love.graphics.getWidth()
-  --   local screenH = love.graphics.getHeight()
-  --   local items, len = world:queryRect(Cam.x - (mapW /2), Cam.y - (mapH /2),screenW,screenH)
-  --   local playerTile = {x = Player.tileX, y = Player.tileY}
-  --   local screenTileW = screenW / self.tilewidth
-  --   local screenTileH = screenH / self.tileheight
-  -- -- remove old delete tiles
-  --   self.deleteTiles = {playerTile}
-  --   local notFound = true
-  
-  --   local function sortByX(v1, v2) 
-  --     return v1.x < v2.x
-  --   end
-  --   local function sortByY(v1, v2) 
-  --     return v1.y < v2.y
-  --   end
-  --   local itemsUpRight, itemsDownRight, itemsUpLeft, itemsDownLeft = {},{},{},{}
-  --   table.sort(items, sortByX)
-  --   for i, item in ipairs(items) do
-  --     for j, v in pairs(item) do
-  --       print (j, v)
-  --     end
-  --     if item.x >= Player.x then
-  --       if item.y >= Player.y then
-  --         table.insert(itemsDownRight, item)
-  --       else
-  --         table.insert(itemsDownLeft, item)
-  --       end
-  --     else
-  --       if item.y >= Player.y then
-  --         table.insert(itemsUpRight, item)
-  --       else
-  --         table.insert(itemsUpLeft, item)
-  --       end
-  --     end
-  --   end
-  --   table.sort(itemsUpRight, sortByX)
-  --   for i = math.floor(screenTileH / 2), screenTileH do
-  --     for i = math.floor(screenTileW), screenTileW do
-        
-  --     end
-  --   end
-  --   -- for i = 10, 1, -1 do
-  --   --   print(i)
-  --   -- end
-  
-  
-  -- end
-  
-  

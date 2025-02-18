@@ -20,7 +20,8 @@ function CharacterBuilder:new(x, y)
   end
   for i = 1, NumNPC, 1 do
     local npc = Character("Birb", 800,8900, "src/tilesets/npc1.png", .125, false, 64)
-    createCollider(npc)
+    npc.speed = 100
+    CreateCollider(npc, 32)
     table.insert(self.NPCs, npc)
   end
 end

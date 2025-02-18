@@ -4,8 +4,8 @@ function Player:new(x, y, art, animSpeed)
   Player.super:new("Player",  x, y, art, animSpeed, false, 64)
   self.strength = 10
   self.hp = 100
-  self.baseSpeed = 300
-  self.speed = 300
+  self.baseSpeed = 150
+  self.speed = 150
   self.volume = 1
   self.spriteSheet1 = love.graphics.newImage("src/tilesets/shortCreg.png")
   self.spriteSheet2 = love.graphics.newImage("src/tilesets/tallCreg.png")
@@ -50,7 +50,7 @@ end
 
 function Player:update(dt)
   self.img.default[self.dir]:update(dt)
-  self.audio:setPitch( self.speed / 5 )
+  self.audio:setPitch( self.speed / 50 )
   self:setDirAndVel(dt)
   if self.damageTimer > 0 then
     self.damageTimer = self.damageTimer - 1
@@ -126,32 +126,17 @@ function Player:setDirAndVel(dt)
     local future_y = self.y + vy
     local actualX, actualY, cols, len = world:move(self, future_x, future_y, Filter)
     self.x, self.y = actualX, actualY
-    -- self.x = self.x
-    -- local goalX, goalY, cols, len = world:check(self, future_x, future_y, Filter)
-    -- if len == 0 then
-    --   self.x, self.y = future_x, future_y
-    --   world:update(self, self.x, self.y)
-    -- else
-    --   if cols[1].other.properties then
-    --     print (cols[1].other.properties.type)
-    --   end
-    --   -- for i,v in ipairs(cols[1].other) do
-    --   --   for ind, val in pairs(v.properties) do
-    --   --     print (ind, val)
-    --   --   end
-    --   -- end
-    --   if cols[1].other.type == "tele" then
-    --     cols[1].other.interactObj:tele()
-    --   end
-    -- end
+    if len ~= 0 and cols[1].other.type == "tele" then
+      cols[1].other.interactObj:tele()
+    end
   end
 end
 
 function Filter (item, other)
-  if other.properties and other.properties.type == "cross" then
+  if (other.properties and other.properties.type == "cross") or (other.type == "cross") then
     return "cross"
   else
-    return 'slide'
+    return "slide"
   end
 end
 
@@ -219,4 +204,11 @@ function Player:addText(text)
   self.text.numlines = self.text.numlines + 1
   local offset = 16
   self.text.textObj:add(text, 0, offset + (16 * self.text.numlines))
+end
+
+function Player:getCenter()
+  local x = self.x + (self.height/2)
+  local y = self.y + (self.width/2)
+
+  return x,y
 end

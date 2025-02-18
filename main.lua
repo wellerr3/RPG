@@ -13,6 +13,7 @@ function love.load()
   require("src/startup/gameStart")
   GameStart()
   DebugMenu = DebugMenu()
+  Hit = {}
 end
 
 function love.update(dt)

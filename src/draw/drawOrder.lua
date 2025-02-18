@@ -25,6 +25,11 @@ function  GameDrawOrder()
     if OVariable.CollisionTest == true then
       drawRects()
     end
+    if OVariable.ViewDots then
+      for i,v in pairs(Hit) do
+        love.graphics.circle("fill", v.x1, v.y1, 5)
+      end
+    end
 
   Cam:detach()
   Hud:draw()
@@ -32,7 +37,8 @@ function  GameDrawOrder()
   if Player.invScreen then
     Inv:draw()
   end
-  
+
+
 
 end
 

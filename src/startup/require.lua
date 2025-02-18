@@ -26,7 +26,7 @@ function RequireAll()
   require "src/sounds"
   require "src/camUpdate"
   require "src/entities/loot"
-  require "src/entities/lootTypes"
+  require "src.entities.itemTypes"
   require "src/entities/enemyTypes"
   require "src/entities/characterBuilder"
   require "src/entities/objects"

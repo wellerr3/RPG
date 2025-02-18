@@ -5,6 +5,8 @@ function GameScene:new(dt)
   world = bump.newWorld(128)
 
   Cam = Camera()
+  ScreenWidth = love.graphics.getWidth() / ScaleFactor
+  ScreenHeight = love.graphics.getHeight() / ScaleFactor
 
   -- CurrMap = "dung"
   -- Player = Player(43 * 32,75 * 32, "src/tilesets/tallCreg.png", .2)

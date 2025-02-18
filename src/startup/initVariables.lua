@@ -6,7 +6,8 @@ TestRect = {x= 0, y= 0,w= 22, h=22}
 OVariable = {
   CollisionTest = false,
   GlobalTime = 0,
-  MasterVolume = .05
+  MasterVolume = .05,
+  ViewDots = false
 }
 
 Debug = false
@@ -16,7 +17,6 @@ TileSize = 32
 
 TeleLocations = {
   home = {32 * 32, 283 * 32, "worldMap"},
-  InFrontOfCorn = {85 * 32, 35 * 32, "farm"}
 }
 
 Mouse = {x = 0,y = 0}

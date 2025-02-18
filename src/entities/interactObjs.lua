@@ -16,6 +16,7 @@ function InterObj:new(obj, map)
     self.neededTool = "torch"
   end
   if obj.properties.type == "tele" then
+    -- self.type = "cross"
     self.teleTo = self.obj.properties.tele
     self.name = self.obj.properties.name
     self.destMap = self.obj.properties.destMap
@@ -87,7 +88,7 @@ function InterObj:findToTeleLocation(obj)
   if facing == "north" then
     y = y - 32 - obj.height
   elseif facing == "south" then
-    y = y + 32+ obj.height
+    y = y + 32 + obj.height
   elseif facing == "east" then
     x = x + 32 + obj.width
   elseif facing == "west" then

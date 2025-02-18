@@ -5,5 +5,5 @@ function Enemy:new(name, x, y, art, animSpeed)
   self.isMoving = true
   self.name = name or "Enemy"
   self.attackDamage = 10
-  createCollider(self)
+  CreateCollider(self)
 end

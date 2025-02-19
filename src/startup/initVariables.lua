@@ -1,6 +1,6 @@
 NumEnemys = 2
 CurrID = 1
-ScaleFactor = 4
+ScaleFactor = 2
 TestRect = {x= 0, y= 0,w= 22, h=22}
 
 OVariable = {

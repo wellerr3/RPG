@@ -16,6 +16,10 @@ DirectionAxies = {
   down = {0,1}
 }
 
+function CalculateAngle(p1, p2)
+  return math.atan2(p1.y - p2.y, p1.x - p2.x)
+end
+
 function CalculateXYFromSpeedandDest(p1, p2, dt)
   local x, y
   local angleInRad = math.atan2(p1.y - p2.y, p1.x - p2.x)
@@ -74,7 +78,7 @@ function GetRotation(dir, startDir, addOffset)
   return imgRotation, offsets[1], offsets[2]
 end
 
-function CalculateXYFromDistAngle(x1,y1, dist, angle)
+function CalculateXYFromDistAngle(x1, y1, dist, angle)
   local x2 = x1 + (dist) * math.cos(angle)
   local y2 = y1 + (dist) * math.sin(angle)
   return x2, y2

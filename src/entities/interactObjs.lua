@@ -34,12 +34,12 @@ end
 
 function InterObj:interact(tool)
   local obj = self.interactObj
-  if self.type == "tele" then
+  if self.type == "tele" and obj then
     obj:tele()
-  elseif self.type == "door" then
+  elseif self.type == "door" and obj then
     print("door")
     obj:door(tool)
-  elseif self.type == "fire" then
+  elseif self.type == "fire" and obj then
     obj:fire(tool)
   end
 end

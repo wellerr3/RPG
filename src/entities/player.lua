@@ -46,12 +46,14 @@ function Player:new(x, y, art, animSpeed)
   self.text.font =  love.graphics.newFont("assets/RasterForgeRegular-JpBgm.ttf", 16)
   self.text.textObj = love.graphics.newText(self.text.font)
   self.text.numlines = 0
+  self.projectile = Projectile()
 end
 
 function Player:update(dt)
   self.img.default[self.dir]:update(dt)
   self.audio:setPitch( self.speed / 50 )
   self:setDirAndVel(dt)
+  self.projectile:update(dt)
   if self.damageTimer > 0 then
     self.damageTimer = self.damageTimer - 1
   end
@@ -78,6 +80,7 @@ function Player:draw()
   if self.text.timer > 0 then
     love.graphics.draw( self.text.textObj, self.x, self.y)
   end
+  self.projectile:draw()
 end
 
 
@@ -126,8 +129,12 @@ function Player:setDirAndVel(dt)
     local future_y = self.y + vy
     local actualX, actualY, cols, len = world:move(self, future_x, future_y, Filter)
     self.x, self.y = actualX, actualY
-    if len ~= 0 and cols[1].other.type == "tele" then
-      cols[1].other.interactObj:tele()
+    if len > 0 and cols[1].other.type == "tele" then
+      print ("inCols")
+      for i,v in pairs(cols[1].other) do
+        print ("in cols: ", i,v)
+      end
+      cols[1].other:interact()
     end
   end
 end
@@ -135,6 +142,8 @@ end
 function Filter (item, other)
   if (other.properties and other.properties.type == "cross") or (other.type == "cross") then
     return "cross"
+  elseif (other.properties and other.properties.type == "touch") or (other.type == "touch") then
+    return "touch"
   else
     return "slide"
   end
@@ -160,8 +169,8 @@ function Player:queryFront()
     self.equiped.img["use"]:resume()
   end
   if len ~= 0 then
-    if cols[1].other.interact then
-      cols[1].other:interact(self.equiped)
+    if cols[1].other.interactObj then
+      cols[1].other.interactObj(self.equiped)
     end
   end
 end

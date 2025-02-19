@@ -5,8 +5,9 @@ function GameScene:new(dt)
   world = bump.newWorld(128)
 
   Cam = Camera()
-  ScreenWidth = love.graphics.getWidth() / ScaleFactor
-  ScreenHeight = love.graphics.getHeight() / ScaleFactor
+  ScreenWidth = love.graphics.getWidth()
+  ScreenHeight = love.graphics.getHeight()
+  Cam:zoomTo(ScaleFactor)
 
   -- CurrMap = "dung"
   -- Player = Player(43 * 32,75 * 32, "src/tilesets/tallCreg.png", .2)
@@ -59,6 +60,9 @@ function GameScene:keypressed(key)
 end
 
 
-function GameScene:mousepressed(key)
-
+function GameScene:mousepressed(x, y, button, istouch)
+  if button == 1 then
+    local worldX, worldY = Cam:mousePosition()
+    Player.projectile:addBullet(worldX, worldY)
+  end
 end

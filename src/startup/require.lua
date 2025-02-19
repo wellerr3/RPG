@@ -40,5 +40,8 @@ function RequireAll()
   require "src/draw/scenes/pauseMenu"
   require "src/startup/initVariables"
   require "src/entities/interactObjs"
+  require "src/entities/projectiles/projectiles"
+  require "src/entities/projectiles/bullet"
+
 
 end

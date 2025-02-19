@@ -3,8 +3,8 @@ camUpdate = Object:extend()
 function camUpdate:update(dt)
   Cam:lookAt(Player.x, Player.y)
   
-  local w = love.graphics.getWidth() / ScaleFactor
-  local h = love.graphics.getHeight() / ScaleFactor
+  local w = love.graphics.getWidth() / (ScaleFactor*2)
+  local h = love.graphics.getHeight() / (ScaleFactor*2)
   local mapW = GameMap.width * GameMap.tilewidth
   local mapH = GameMap.height * GameMap.tileheight
   -- left border

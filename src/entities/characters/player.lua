@@ -129,25 +129,15 @@ function Player:setDirAndVel(dt)
     local future_y = self.y + vy
     local actualX, actualY, cols, len = world:move(self, future_x, future_y, Filter)
     self.x, self.y = actualX, actualY
-    if len > 0 and cols[1].other.type == "tele" then
-      print ("inCols")
-      for i,v in pairs(cols[1].other) do
-        print ("in cols: ", i,v)
+    if len > 0 then
+      if cols[1].other.properties and cols[1].other.properties.interactable and (cols[1].other.type == "cross" or cols[1].other.properties.type == "cross") then
+        print (cols[1].other.type)
+        cols[1].other:interact()
       end
-      cols[1].other:interact()
     end
   end
 end
 
-function Filter (item, other)
-  if (other.properties and other.properties.type == "cross") or (other.type == "cross") then
-    return "cross"
-  elseif (other.properties and other.properties.type == "touch") or (other.type == "touch") then
-    return "touch"
-  else
-    return "slide"
-  end
-end
 
 function Player:queryFront()
   local px, py = self.x, self.y
@@ -169,8 +159,8 @@ function Player:queryFront()
     self.equiped.img["use"]:resume()
   end
   if len ~= 0 then
-    if cols[1].other.interactObj then
-      cols[1].other.interactObj(self.equiped)
+    if cols[1].other.interact then
+      cols[1].other:interact(self.equiped)
     end
   end
 end
@@ -188,6 +178,7 @@ function Player:hurt(damage)
   end
   if self.hp <= 0 then
     -- love.event.quit("restart")
+    self:addText('dead :(')
     print ("Dead")
   end
 end
@@ -204,7 +195,9 @@ end
 
 function Player:teleport(x,y, map)
   world:update(self, x, y)
-  FullMap:changeMap(map)
+  if map ~= CurrMap then
+    FullMap:changeMap(map)
+  end
   self.x, self.y = x, y
 end
 

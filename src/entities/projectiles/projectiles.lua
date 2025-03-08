@@ -10,9 +10,14 @@ function Projectile:update(dt)
     bullet:update(dt)
     if bullet.timer <= 0 then
       table.remove(self.bullets, i)
-      world:remove(bullet)
+      if world:hasItem(bullet) then
+        world:remove(bullet)
+      end
     end
   end
+  for _, particleData in ipairs(AllParticleData) do
+		particleData.system:update(dt)
+	end
 end
 
 function Projectile:draw()
@@ -25,6 +30,5 @@ function Projectile:addBullet(goalX, goalY)
   table.insert(self.bullets, Bullet(Player.x, Player.y, goalX, goalY))
 
 end
-
 
 

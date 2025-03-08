@@ -5,7 +5,10 @@ ItemTypes = {
   iceCube = IceCube,
   shovel = Shovel,
   other = Loot,
-  corn = Corn
+  corn = Corn,
+  door = Door,
+  button = Button,
+  sconce = Sconce
 }
 
 ObjList = {}
@@ -20,6 +23,7 @@ ObjList.dung = {
   ,{name = "chest", x = 46, y = 32, extra = "torch", openToSky = false, hasCollison = true}
   ,{name = "chest", x = 65, y = 16, extra = "iceCube", openToSky = false, hasCollison = true}
   ,{name = "chest", x = 3, y = 26, extra = "key", openToSky = false, hasCollison = true}
+  ,{name = "chest", x = 48, y = 68, extra = "torch", openToSky = false, hasCollison = true}
 }
 ObjList.farm = {
   -- {name = "chest", x = 5, y = 30, extra = "key", openToSky = false, hasCollison = true}
@@ -46,24 +50,9 @@ function Objects:new(map, mapObjects)
 end
 
 function Objects:update(dt)
-  for i, item in pairs(self.belowObjects) do
-    item:update(dt)
-  end
-  for i, item in pairs(self.aboveObjects) do
-    item:update(dt)
-  end
-  for i, set in pairs(self.objSets.above) do
-    for j, row in pairs(set) do
-      for n, obj in pairs(row) do
-        obj:update(dt)
-      end
-    end
-  end
-  for i, set in pairs(self.objSets.below) do
-    for j, row in pairs(set) do
-      for n, obj in pairs(row) do
-        obj:update(dt)
-      end
+  for i, item in pairs(self.allObjs) do
+    if item.update then
+      item:update(dt)
     end
   end
 end
@@ -123,7 +112,7 @@ function Objects:createItem(item)
   item.y = item.y * TileSize
   local newItem = {}
   if ItemTypes[item.name] then
-    newItem = ItemTypes[item.name](item.x,item.y)
+    newItem = ItemTypes[item.name](item)
   else
     newItem = ItemTypes["other"]("other", item.x, item.y, "src/tilesets/non.png")
   end
@@ -134,9 +123,11 @@ function Objects:createItem(item)
     newItem.item = self:createItem({name = item.extra, x = tileX, y = tileY})
     newItem.item.shown = false
   end
-  -- if item.hasCollison then
-  --   CreateCollider(newItem)
-  -- end
+  if item.hasCollison then
+    newItem.collidable = true
+  else
+    newItem.collidable = false
+  end
   table.insert(self.allObjs, newItem)
   if newItem.drawnAbove then
     table.insert(self.aboveObjects, newItem)
@@ -168,9 +159,8 @@ function Objects:createDuplicateObjs(item, x1,y1,x2,y2,loc)
       else
         newItem = ItemTypes["other"]("other", i*TileSize,j*TileSize, "src/tilesets/non.png")
       end
-      -- CreateCollider(newItem, nil, "cross")
       set[j] = newItem
-      -- table.insert(self.aboveObjects, newItem)
+      newItem.collider = true
       table.insert(self.allObjs, newItem)
     end
     self.objSets[loc][item][i] = set
@@ -179,14 +169,18 @@ end
 
 function Objects:addColliders()
   for i, item in ipairs(self.allObjs) do
-    CreateCollider(item)
+    if item.collidable or item.collider then
+      CreateCollider(item)
+    end
   end
   
 end
 
 function Objects:removeColliders()
   for i, item in ipairs(self.allObjs) do
-    world:remove(item)
+    if world:hasItem(item) then
+      world:remove(item)
+    end
   end
 end
 
@@ -195,6 +189,3 @@ function CreateID()
   CurrId = CurrId + 1
   return CurrId
 end
-
-
-

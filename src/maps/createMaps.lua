@@ -28,13 +28,15 @@ function MakeFullMap:new(maps)
   end
   self.currMap = CurrMap
   self[CurrMap].map:bump_init(world)
-  ObjectSet[CurrMap]:addColliders()
+  self[CurrMap].objects:addColliders()
 end
 
 function MakeFullMap:changeMap(newMap)
   if self[newMap]then
-    ObjectSet[CurrMap]:removeColliders()
-    ObjectSet[newMap]:addColliders()
+    self[CurrMap].objects:removeColliders()
+    self[newMap].objects:addColliders()
+    self[CurrMap].npcs:removeColliders()
+    self[newMap].npcs:addColliders()
     for i, layer in ipairs(self[CurrMap].map.layers) do
       if layer.type ~= "objectgroup" then
         self[CurrMap].map:bump_removeLayer(i, world)

@@ -95,3 +95,13 @@ function CalculateTilesPassedThrough(x,y)
   local ty = math.floor(y /TileSize)
   return tx, ty
 end
+
+function Filter (item, other)
+  if (other.properties and other.properties.type == "cross") or (other.type == "cross") then
+    return "cross"
+  elseif (other.properties and other.properties.type == "touch") or (other.type == "touch") then
+    return "touch"
+  else
+    return "slide"
+  end
+end

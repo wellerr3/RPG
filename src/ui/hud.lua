@@ -8,7 +8,6 @@ function Hud:new()
   self.x = 10
   self.y = 10
   self.text = Hud:TextUpdate()
-  
 end
 
 
@@ -22,6 +21,7 @@ function Hud:draw()
   love.graphics.push("all")
     love.graphics.setColor(1,1,1, .5)
     love.graphics.rectangle( "fill", self.x, self.y, self.width, self.height)
+    love.graphics.rectangle( "fill", self.width - 200, self.y + 40, 200, 200)
     -- love.graphics.print("This is the HUD",10,10)
     local text = Hud:TextUpdate()
     love.graphics.draw( text, 15, 15)
@@ -42,6 +42,18 @@ function Hud:TextUpdate()
     for i, item in pairs(Player.inventory) do
       textObj:add( {{0,0,0}, item.name}, 800 + (150 * i), 0 )
     end
+    self:drawEquiped(Player.equiped)
   end
   return textObj
+end
+
+function Hud:drawEquiped(equiped)
+  if equiped then
+    local loc = {
+      x = self.width - 180,
+      y = self.y + 50,
+      scale = 5
+    }
+    Inv:renderItem(0, equiped, loc, true)
+  end
 end

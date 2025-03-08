@@ -11,12 +11,15 @@ function  GameDrawOrder()
     end
     SkyShadow:draw()
 
-    NPCs:draw()
-    ObjectSet[CurrMap]:drawBelow()
+    GameMap.objects:drawBelow()
+
+    GameMap.npcs:draw()
     -- PLAYER
     Player:draw()
-    ObjectSet[CurrMap]:drawAbove()
+    
     -- AFTER PLAYER
+    GameMap.objects:drawAbove()
+
     
     for i, layer in pairs(GameMap.above) do
       GameMap:drawLayer(layer)

@@ -5,23 +5,22 @@ function GameScene:new(dt)
   world = bump.newWorld(128)
 
   Cam = Camera()
-  ScreenWidth = love.graphics.getWidth()
-  ScreenHeight = love.graphics.getHeight()
-  Cam:zoomTo(ScaleFactor)
+  ScreenWidth = love.graphics.getWidth() / ScaleFactor
+  ScreenHeight = love.graphics.getHeight() / ScaleFactor
 
   -- CurrMap = "dung"
   -- Player = Player(43 * 32,75 * 32, "src/tilesets/tallCreg.png", .2)
-  Player = Player(32 * 32, 283 * 32, "src/tilesets/shortCreg.png", .2)
+  Player = Player(32 * TileSize, 283 * TileSize, "src/tilesets/shortCreg.png", .2)
 
   Hud = Hud()
-  ObjectSet = {}
+  -- ObjectSet = {}
+  -- NPCSet = {}
   SkyShadow = Shadows()
   -- ObjectSet = Objects()
   CreateMaps()
-  NPCs = CharacterBuilder()
+  -- NPCs = CharacterBuilder()
 
-
-  SkyShadow:addShadowsToGroup(NPCs.NPCs)
+  -- SkyShadow:addShadowsToGroup(NPCs.NPCs)
 
   Inv = InventoryMenu()
   Cam:zoom(ScaleFactor)
@@ -35,7 +34,6 @@ function GameScene:update(dt)
     end
     OVariable.GlobalTime = OVariable.GlobalTime + (10*dt)
     Player:update(dt)
-    NPCs:update(dt)
     camUpdate:update(dt)
     GameMap:update(dt)
     SkyShadow:update(dt)
@@ -43,7 +41,7 @@ function GameScene:update(dt)
   else
     Inv:update(dt)
   end
-  ObjectSet[CurrMap]:update(dt)
+  -- ObjectSet[CurrMap]:update(dt)
   Hud:update()
 end
 
@@ -61,8 +59,10 @@ end
 
 
 function GameScene:mousepressed(x, y, button, istouch)
-  if button == 1 then
+  if button == 1 and not Player.invScreen then
     local worldX, worldY = Cam:mousePosition()
     Player.projectile:addBullet(worldX, worldY)
+  elseif Player.invScreen then
+    Inv:mousepressed(x,y,button)
   end
 end

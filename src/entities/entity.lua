@@ -13,7 +13,7 @@ function Entity:new(x, y, imagePath, width, height)
   self.state = "still"
   self.offsetX = 0
   self.offsetY = 0
-  self.name = "enemy"
+  self.name = "entity"
   self.home = {
     x = x,
     y = y
@@ -22,5 +22,5 @@ function Entity:new(x, y, imagePath, width, height)
   self.rotation = 0
   self.mode = "default"
   self.scale = 1
-  self.type = "enemy"
+  self.type = nil
 end

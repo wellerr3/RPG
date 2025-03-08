@@ -8,6 +8,7 @@ function RequireAll()
   bump = require "assets/bump"
   bump_debug = require "assets/bump_debug"
   flux = require "assets/flux"
+  AllParticleData = require("src/entities/projectiles/particle")
 
   require "assets/TEsound"
 
@@ -17,9 +18,9 @@ function RequireAll()
   require "src/utilis"
   require "src/entities/createCollider"
   require "src/entities/entity"
-  require "src/entities/character"
-  require "src/entities/player"
-  require "src/entities/enemy"
+  require "src.entities.characters.character"
+  require "src.entities.characters.player"
+  require "src.entities.characters.enemy"
   require "src/ui/hud"
   require "src/ui/inventoryMenu"
   require "src/ui/debugMenu"
@@ -27,8 +28,8 @@ function RequireAll()
   require "src/camUpdate"
   require "src/entities/loot"
   require "src.entities.itemTypes"
-  require "src/entities/enemyTypes"
-  require "src/entities/characterBuilder"
+  require "src.entities.characters.enemyTypes"
+  require "src.entities.characters.characterBuilder"
   require "src/entities/objects"
   require "src/draw/drawOrder"
   require "src/lightShadow/shadows"

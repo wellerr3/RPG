@@ -32,7 +32,7 @@ function InventoryMenu:draw()
     if #Player.inventory > 0 then
       local itemText = love.graphics.newText(self.font)
       for i, item in pairs(Player.inventory) do
-        itemText:add( {{0,0,0}, item.name}, 150 * i + 20, 170 )
+        itemText:add( {{0,0,0}, item.name}, 200 * i + 20, 170 )
         self:renderItem(i, item)
       end
       love.graphics.draw( itemText, 0,0)
@@ -44,17 +44,23 @@ function InventoryMenu:MenuUpdate(i, text)
   self.textObj:add( {{0,0,0}, text}, i, text )
 end
 
-function InventoryMenu:renderItem(i, item)
-  local scale = 5
+function InventoryMenu:renderItem(i, item, loc, noBackground)
+  loc = loc or {
+    x = 200* i,
+    y = 200,
+    scale = 5
+  }
   love.graphics.push()
-    love.graphics.setColor(1,1,1, 1)
+    love.graphics.setColor(1,1,1,1)
     if self.selected == i then
-      love.graphics.rectangle( "line", 150 * i + 20, 200, item.width * scale -40, item.height * scale)
+      love.graphics.rectangle( "line", loc.x - 10, loc.y, item.width * loc.scale + 10, item.height * loc.scale + 10)
       love.graphics.setColor(.5,.5,0, 1)
     end
-    love.graphics.rectangle( "fill", 150 * i + 20, 200, item.width * scale -40, item.height * scale)
-    love.graphics.setColor(1,1,1,1)
-    item:draw(150 * i, 200, scale, 0, "default")
+    if not noBackground then
+      love.graphics.rectangle( "fill", loc.x - 10, loc.y, item.width * loc.scale + 10, item.height * loc.scale + 10)
+      love.graphics.setColor(1,1,1,1)
+    end
+    item:draw(loc.x, loc.y, loc.scale, 0, "default")
   love.graphics.pop()
 end
 
@@ -76,4 +82,8 @@ function InventoryMenu:keypressed(key)
     Player.equiped = Player.inventory[self.selected]
     Player.equiped.mode = "use"
   end
+end
+
+function InventoryMenu:mousepressed(x, y, button, istouch)
+  
 end

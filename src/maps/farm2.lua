@@ -678,12 +678,12 @@ return {
           rotation = 0,
           visible = true,
           properties = {
+            ["class"] = "tele",
             ["destMap"] = "worldMap",
             ["facing"] = "east",
             ["interactable"] = true,
             ["name"] = "farmInside",
-            ["tele"] = "farmOutside",
-            ["type"] = "tele"
+            ["tele"] = "farmOutside"
           }
         }
       }

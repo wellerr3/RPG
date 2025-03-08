@@ -8,7 +8,7 @@ end
 function love.load()
   math.randomseed(os.time())
   success = love.window.setMode( 2000, 1200 )
-
+  print ("Starting Game")
   love.graphics.setDefaultFilter("nearest", "nearest")
   require("src/startup/gameStart")
   GameStart()

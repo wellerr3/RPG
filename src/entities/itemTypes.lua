@@ -86,11 +86,12 @@ function InteractObj:update(dt)
 
 end
 
-function Corn:new(x, y)
-  Key.super.new(self,"Corn", x, y, "src/tilesets/cornWall.png")
+function Corn:new(item)
+  Corn.super.new(self,"Corn", item.x, item.y, "src/tilesets/cornWall.png")
   self.drawnAbove = true
   self.drawn = true
   self.element = "corn"
+  self.removeableCollider = true
   self.seeThrough = true
   self.type = "cross"
   self.name = "corn: ".. math.floor(self.x/TileSize) .. "  " .. math.floor(self.y/TileSize)
@@ -122,8 +123,8 @@ function Corn:new(x, y)
 end
 
 function Corn:update(dt)
-  local halfWidth = ScreenWidth/2
-  local halfHeight = ScreenHeight/2
+  local halfWidth = ScreenWidth / 2
+  local halfHeight = ScreenHeight / 2
   local xDist = math.abs(self.x - Player.x) - 32
   local yDist = math.abs(self.y - Player.y) - 32
   if xDist > halfWidth or yDist > halfHeight then

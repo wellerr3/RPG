@@ -220,33 +220,35 @@ function TeleObj:findToTeleLocation(obj)
   TeleLocations[self.name] = {x, y, self.map}
 end
 
-function Door:new(obj, map, imgPath)
-  Door.super.new(self, obj, map, imgPath)
-  self.mode = item.mode or "closed"
+function Door:new(obj, map)
+  Door.super.new(self, obj, map, "src/tilesets/sconce.png")
+  -- self.mode = obj.mode or "closed"
 
 end
 
 function ButtonDoor:new(obj, map)
-  ButtonDoor.super.new(self, obj, map, "src/tilesets/cornWall.png")
+  ButtonDoor.super.new(self, obj, map)
+  self.mode = obj.mode or "button"
 
 end
 
 function LockedDoor:new(obj, map)
-  LockedDoor.super.new(self, obj, map, "src/tilesets/cornWall.png")
+  LockedDoor.super.new(self, obj, map)
+  self.mode = obj.mode or "locked"
 
 end
 
 
 function Sconce:new(obj, map)
-  Sconce.super.new(self, obj, map, "src/tilesets/cornWall.png")
-
+  Sconce.super.new(self, obj, map, "src/tilesets/sconce.png")
+  self.mode = "unlit"
 
 end
 
 
 function Button:new(obj, map)
-  Button.super.new(self, obj, map, "src/tilesets/cornWall.png")
-
+  Button.super.new(self, obj, map, "src/tilesets/button.png")
+  self.mode = "up"
 
 end
 

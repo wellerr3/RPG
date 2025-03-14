@@ -47,6 +47,6 @@ function MakeFullMap:changeMap(newMap)
     self[CurrMap].map:bump_init(world)
     GameMap = self[newMap]
   else
-    print ("ERROR: no map named " .. newMap)
+    print ("ERROR: no map named that")
   end
 end

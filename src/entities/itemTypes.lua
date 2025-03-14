@@ -6,11 +6,12 @@ Shovel = Loot:extend()
 InteractObj = Loot:extend()
 Corn = Loot:extend()
 
-function Key:new(x, y)
+function Key:new(x, y, keyID)
   Key.super.new(self,"Key", x, y, "src/tilesets/key.png")
   self.drawnAbove = true
+  self.keyID = keyID
   self.drawn = false
-  self.name = self.name .. ": " .. self.id
+  self.name = self.name
 end
 
 function Torch:new(x, y)

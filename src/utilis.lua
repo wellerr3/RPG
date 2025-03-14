@@ -105,3 +105,28 @@ function Filter (item, other)
     return "slide"
   end
 end
+
+function FilterTest (item, other)
+  if (other.properties and other.properties.type == "cross") or (other.type == "cross") then
+    return "cross"
+  elseif (other.properties and other.properties.type == "touch") or (other.type == "touch") then
+    return "touch"
+  else
+    return "slide"
+  end
+end
+
+function Filter2 (other)
+  if (other.properties and other.properties.type == "cross") or other.type == "cross" then
+    return false
+  elseif (other.properties and other.properties.name == "player") or other.name == "player" then
+    return false
+  else
+    return "slide"
+  end
+end
+
+function CreateID()
+  CurrId = CurrId + 1
+  return CurrId
+end

@@ -130,8 +130,7 @@ function Player:setDirAndVel(dt)
     local actualX, actualY, cols, len = world:move(self, future_x, future_y, Filter)
     self.x, self.y = actualX, actualY
     if len > 0 then
-      if cols[1].other.properties and cols[1].other.properties.interactable and (cols[1].other.type == "cross" or cols[1].other.properties.type == "cross") then
-        print (cols[1].other.type)
+      if ((cols[1].other.interact) or (cols[1].other.properties and cols[1].other.properties.interactable)) and (cols[1].other.type == "cross" or (cols[1].other.properties and cols[1].other.properties.type == "cross")) then
         cols[1].other:interact()
       end
     end
@@ -159,7 +158,17 @@ function Player:queryFront()
     self.equiped.img["use"]:resume()
   end
   if len ~= 0 then
-    if cols[1].other.interact then
+    -- for i, v in ipairs(cols[1]) do
+    --   print (i,v)
+    -- end
+    -- if cols[1].other.properties then
+    --   for i, v in ipairs(cols[1].other.properties) do
+    --     print (i,v)
+    --   end
+    -- end
+    if cols[1].interact then
+      cols[1]:interact(self.equiped)
+    elseif cols[1].other.interact then
       cols[1].other:interact(self.equiped)
     end
   end
@@ -179,7 +188,6 @@ function Player:hurt(damage)
   if self.hp <= 0 then
     -- love.event.quit("restart")
     self:addText('dead :(')
-    print ("Dead")
   end
 end
 

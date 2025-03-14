@@ -7,23 +7,27 @@ ItemTypes = {
   other = Loot,
   corn = Corn,
   door = Door,
+  bossDoor = BossDoor,
+  lockedDoor = LockedDoor,
+  buttonDoor = ButtonDoor,
+  tele = TeleObj,
   button = Button,
   sconce = Sconce
 }
 
 ObjList = {}
 ObjList.worldMap = {
-  {name = "chest", x = 27, y = 279, extra = "shovel", openToSky = true, hasCollison = true}
-  ,{name = "chest", x = 30, y = 266, extra = "iceCube", openToSky = true, hasCollison = true}
+  {name = "chest", x = 27, y = 279, extra = {name = "shovel"}, openToSky = true, hasCollison = true}
+  ,{name = "chest", x = 30, y = 266, extra = {name = "iceCube"}, openToSky = true, hasCollison = true}
   -- ,{name = "chest", x = 27, y = 266, extra = "torch", openToSky = true, hasCollison = true}
 }
 ObjList.dung = {
-  {name = "chest", x = 63, y = 66, extra = "key", openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 65, y = 48, extra = "key", openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 46, y = 32, extra = "torch", openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 65, y = 16, extra = "iceCube", openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 3, y = 26, extra = "key", openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 48, y = 68, extra = "torch", openToSky = false, hasCollison = true}
+  {name = "chest", x = 63, y = 66, extra = {name = "key", keyID = "B"}, openToSky = false, hasCollison = true}
+  ,{name = "chest", x = 65, y = 48, extra = {name = "key", keyID = "B"},openToSky = false, hasCollison = true}
+  ,{name = "chest", x = 46, y = 32, extra = {name = "torch"}, openToSky = false, hasCollison = true}
+  ,{name = "chest", x = 65, y = 16, extra = {name = "iceCube"}, openToSky = false, hasCollison = true}
+  ,{name = "chest", x = 3, y = 26, extra = {name = "key", keyID = "B"}, openToSky = false, hasCollison = true}
+  ,{name = "chest", x = 48, y = 68, extra = {name = "torch"}, openToSky = false, hasCollison = true}
 }
 ObjList.farm = {
   -- {name = "chest", x = 5, y = 30, extra = "key", openToSky = false, hasCollison = true}
@@ -77,6 +81,11 @@ function Objects:drawBelow()
       end
     end
   end
+  for i, item in pairs(self.interactable) do
+    if item.drawn == true then
+      item:draw()
+    end
+  end
 end
 
 function Objects:drawAbove()
@@ -112,7 +121,7 @@ function Objects:createItem(item)
   item.y = item.y * TileSize
   local newItem = {}
   if ItemTypes[item.name] then
-    newItem = ItemTypes[item.name](item)
+    newItem = ItemTypes[item.name](item.x, item.y, item.keyID)
   else
     newItem = ItemTypes["other"]("other", item.x, item.y, "src/tilesets/non.png")
   end
@@ -120,7 +129,7 @@ function Objects:createItem(item)
     SkyShadow:addShadow(newItem)
   end
   if item.extra then
-    newItem.item = self:createItem({name = item.extra, x = tileX, y = tileY})
+    newItem.item = self:createItem({name = item.extra.name, x = tileX, y = tileY, keyID = item.extra.keyID})
     newItem.item.shown = false
   end
   if item.hasCollison then
@@ -139,8 +148,19 @@ end
 
 function Objects:createMapObjects(map, mapObjects)
   for i, item in pairs(mapObjects) do
-    if item.properties.interactable == true then
-      local obj = InterObj(item, map)
+    local prop = item.properties
+    item.map = map
+    if prop.interactable == true then
+      local obj
+      if ItemTypes[prop.name] then
+        obj = ItemTypes[prop.name](item, map)
+      elseif prop.tele then
+        -- obj, map
+        obj = ItemTypes.tele(item, map)
+      else
+        obj = InterObj(item, map)
+      end
+      
       table.insert(self.interactable, obj)
       table.insert(self.allObjs, obj)
     end
@@ -154,10 +174,11 @@ function Objects:createDuplicateObjs(item, x1,y1,x2,y2,loc)
   for i = x1, x2, 1 do
     local set = {}
     for j = y1, y2, 1 do
+      local obj = {x = i*TileSize, y = j*TileSize}
       if ItemTypes[item] then
-        newItem = ItemTypes[item](i*TileSize,j*TileSize)
+        newItem = ItemTypes[item](obj)
       else
-        newItem = ItemTypes["other"]("other", i*TileSize,j*TileSize, "src/tilesets/non.png")
+        newItem = ItemTypes["other"]("other", obj, "src/tilesets/non.png")
       end
       set[j] = newItem
       newItem.collider = true
@@ -184,8 +205,3 @@ function Objects:removeColliders()
   end
 end
 
-
-function CreateID()
-  CurrId = CurrId + 1
-  return CurrId
-end

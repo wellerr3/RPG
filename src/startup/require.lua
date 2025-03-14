@@ -14,6 +14,7 @@ function RequireAll()
 
   require "src/entities/entity"
 
+  require "src/startup/initVariables"
   require "src/draw/scenes/sceneManager"
   require "src/utilis"
   require "src/entities/createCollider"
@@ -30,6 +31,7 @@ function RequireAll()
   require "src.entities.itemTypes"
   require "src.entities.characters.enemyTypes"
   require "src.entities.characters.characterBuilder"
+  require "src/entities/interactObjs"
   require "src/entities/objects"
   require "src/draw/drawOrder"
   require "src/lightShadow/shadows"
@@ -39,8 +41,6 @@ function RequireAll()
   require "src/gameEnd"
   require "src/draw/scenes/gameScene"
   require "src/draw/scenes/pauseMenu"
-  require "src/startup/initVariables"
-  require "src/entities/interactObjs"
   require "src/entities/projectiles/projectiles"
   require "src/entities/projectiles/bullet"
 

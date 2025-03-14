@@ -179,14 +179,3 @@ function FarmMap:checkCornAround(item)
   item.mode = shape
 end
 
-function Filter2 (other)
-  if (other.properties and other.properties.type == "cross") or other.type == "cross" then
-    return false
-  elseif (other.properties and other.properties.name == "player") or other.name == "player" then
-    return false
-  else
-    return "slide"
-  end
-end
-
-

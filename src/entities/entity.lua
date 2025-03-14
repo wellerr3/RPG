@@ -9,6 +9,8 @@ function Entity:new(x, y, imagePath, width, height)
   self.shadowOffsetX = self.height/2
   if imagePath then
     self.spriteSheet = love.graphics.newImage(imagePath)
+  else
+    self.spriteSheet = nil
   end
   self.state = "still"
   self.offsetX = 0

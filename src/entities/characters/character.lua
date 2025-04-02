@@ -26,7 +26,7 @@ function Character:new(name, x, y, imagePath, animSpeed, isHostle, height)
   self.img.dead = {}
   self.img.dead.still = self.img.default.down:clone():flipV()
   self.img.dead.still:gotoFrame(1)
-  self.isHostle = isHostle
+  self.isHostle = isHostle or false
   self.strength = 10
   self.isMoving = false
   self.hasAudio = false

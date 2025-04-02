@@ -7,7 +7,13 @@ EnemyTypes = {
 }
 
 NPCsKey = {
-  farm = {{},{}},
+  farm = {
+    {
+      {name = "snake", x = 800, y = 9000}
+      ,{name = "snake", x = 800, y = 9200}
+      ,{name = "rat", x = 1000, y = 9200}
+      ,{name = "rat", x = 1100, y = 9200},
+    },{}},
   worldMap = {
     {
       {name = "snake", x = 800, y = 9000}

@@ -87,7 +87,12 @@ function FarmMap:new(map)
   self.spriteSheet = love.graphics.newImage("src/tilesets/cornWall.png")
   self.grid = Anim8.newGrid(32, 32, self.spriteSheet:getWidth(), self.spriteSheet:getHeight())
   self.deleteTiles = {}
-  self.objects:createDuplicateObjs('corn', 25,0,107,75,"above")
+  self.edgeR = 25
+  self.edgeL = 107
+  self.edgeT = 0
+  self.edgeB = 75
+  -- (item, x1,y1,x2,y2,loc)
+  self.objects:createDuplicateObjs('corn', self.edgeR,self.edgeT,self.edgeL,self.edgeB,"above")
 end
 
 function FarmMap:update(dt)
@@ -121,11 +126,15 @@ function FarmMap:checkSight()
 
   local mapW = self.width * self.tilewidth
   local mapH = self.height * self.tileheight
-  local screenW = love.graphics.getWidth()
-  local screenH = love.graphics.getHeight()
+  local screenW = love.graphics.getWidth() / ScaleFactor
+  local screenH = love.graphics.getHeight() / ScaleFactor
   local playerTile = {x = Player.tileX, y = Player.tileY}
   local screenTileW = screenW / self.tilewidth
   local screenTileH = screenH / self.tileheight
+  print (Player.tileX, Player.tileY, self.edgeR, self.edgeL, self.edgeT, self.edgeB, screenW/2, screenH/2)
+  if (Player.tileX + screenTileW/2 < self.edgeR ) or (Player.tileX + screenTileW/2 > self.edgeL) or (Player.tileY  + screenTileH/2 < self.edgeT) or (Player.tileY  + screenTileH/2 > self.edgeB)then
+    return
+  end
   local segment = 12
   local px, py = Player:getCenter()
   local dist = 3 * TileSize

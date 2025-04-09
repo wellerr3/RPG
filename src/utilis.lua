@@ -121,10 +121,17 @@ function Filter2 (other)
     return false
   elseif (other.properties and other.properties.name == "player") or other.name == "player" then
     return false
+  elseif other.type == "enemy" then
+    return false
   else
     return "slide"
   end
 end
+
+function NoFilter (other)
+  return false
+end
+
 
 function CreateID()
   CurrId = CurrId + 1

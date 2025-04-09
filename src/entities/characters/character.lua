@@ -43,6 +43,7 @@ function Character:new(name, x, y, imagePath, animSpeed, isHostle, height)
   self.damageTimer = 0
   self.state = "wander"
   self.attackDamage = 0
+  self.seeThrough = true
 end
 
 function Character:update(dt)

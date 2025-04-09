@@ -7,7 +7,8 @@ OVariable = {
   CollisionTest = false,
   GlobalTime = 0,
   MasterVolume = .05,
-  ViewDots = false
+  ViewDots = false,
+  CollisionOn = true
 }
 
 Debug = false

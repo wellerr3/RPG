@@ -29,6 +29,7 @@ function MakeFullMap:new(maps)
   self.currMap = CurrMap
   self[CurrMap].map:bump_init(world)
   self[CurrMap].objects:addColliders()
+  self[CurrMap].npcs:addColliders()
 end
 
 function MakeFullMap:changeMap(newMap)

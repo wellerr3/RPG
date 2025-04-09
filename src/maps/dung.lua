@@ -9,9 +9,11 @@ return {
   height = 75,
   tilewidth = 32,
   tileheight = 32,
-  nextlayerid = 5,
-  nextobjectid = 25,
-  properties = {},
+  nextlayerid = 7,
+  nextobjectid = 61,
+  properties = {
+    ["openToSky"] = false
+  },
   tilesets = {
     {
       name = "wall",
@@ -441,9 +443,9 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 7,
-                y = 5,
-                width = 25,
+                x = 15,
+                y = 15,
+                width = 17,
                 height = 2,
                 rotation = 0,
                 visible = true,
@@ -458,10 +460,10 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 5,
-                y = 5,
+                x = 15,
+                y = 17,
                 width = 2,
-                height = 27,
+                height = 15,
                 rotation = 0,
                 visible = true,
                 properties = {
@@ -498,7 +500,7 @@ return {
                 type = "",
                 shape = "rectangle",
                 x = 0,
-                y = 5,
+                y = 15,
                 width = 32,
                 height = 2,
                 rotation = 0,
@@ -537,8 +539,8 @@ return {
                 type = "",
                 shape = "rectangle",
                 x = 0,
-                y = 5,
-                width = 26,
+                y = 15,
+                width = 16,
                 height = 2,
                 rotation = 0,
                 visible = true,
@@ -553,10 +555,10 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 26,
-                y = 5,
+                x = 16,
+                y = 15,
                 width = 2,
-                height = 27,
+                height = 17,
                 rotation = 0,
                 visible = true,
                 properties = {
@@ -592,7 +594,7 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 5,
+                x = 15,
                 y = 0,
                 width = 2,
                 height = 32,
@@ -637,7 +639,7 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 26,
+                x = 16,
                 y = 0,
                 width = 2,
                 height = 32,
@@ -676,10 +678,10 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 14,
-                y = 13,
-                width = 5,
-                height = 5,
+                x = 6,
+                y = 5,
+                width = 21,
+                height = 21,
                 rotation = 0,
                 visible = true,
                 properties = {
@@ -715,9 +717,9 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 7,
-                y = 26,
-                width = 25,
+                x = 17,
+                y = 16,
+                width = 15,
                 height = 2,
                 rotation = 0,
                 visible = true,
@@ -732,10 +734,10 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 5,
+                x = 15,
                 y = 0,
                 width = 2,
-                height = 28,
+                height = 18,
                 rotation = 0,
                 visible = true,
                 properties = {
@@ -772,7 +774,7 @@ return {
                 type = "",
                 shape = "rectangle",
                 x = 0,
-                y = 26,
+                y = 16,
                 width = 32,
                 height = 2,
                 rotation = 0,
@@ -810,10 +812,10 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 26,
+                x = 16,
                 y = 0,
                 width = 2,
-                height = 28,
+                height = 18,
                 rotation = 0,
                 visible = true,
                 properties = {
@@ -827,9 +829,9 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 0,
-                y = 26,
-                width = 26,
+                x = -1,
+                y = 16,
+                width = 17,
                 height = 2,
                 rotation = 0,
                 visible = true,
@@ -890,10 +892,10 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 26,
-                y = 26,
+                x = 16,
+                y = 16,
                 width = 2,
-                height = 6,
+                height = 16,
                 rotation = 0,
                 visible = true,
                 properties = {
@@ -907,9 +909,9 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 28,
-                y = 26,
-                width = 4,
+                x = 18,
+                y = 16,
+                width = 14,
                 height = 2,
                 rotation = 0,
                 visible = true,
@@ -946,10 +948,10 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 5,
-                y = 26,
+                x = 15,
+                y = 16,
                 width = 2,
-                height = 6,
+                height = 16,
                 rotation = 0,
                 visible = true,
                 properties = {
@@ -964,8 +966,8 @@ return {
                 type = "",
                 shape = "rectangle",
                 x = 0,
-                y = 26,
-                width = 5,
+                y = 16,
+                width = 15,
                 height = 2,
                 rotation = 0,
                 visible = true,
@@ -1002,10 +1004,10 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 26,
+                x = 16,
                 y = 0,
                 width = 2,
-                height = 7,
+                height = 17,
                 rotation = 0,
                 visible = true,
                 properties = {
@@ -1019,9 +1021,9 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 28,
-                y = 5,
-                width = 4,
+                x = 18,
+                y = 15,
+                width = 14,
                 height = 2,
                 rotation = 0,
                 visible = true,
@@ -1058,10 +1060,10 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 5,
+                x = 15,
                 y = 0,
                 width = 2,
-                height = 7,
+                height = 17,
                 rotation = 0,
                 visible = true,
                 properties = {
@@ -1076,8 +1078,8 @@ return {
                 type = "",
                 shape = "rectangle",
                 x = 0,
-                y = 5,
-                width = 5,
+                y = 15,
+                width = 15,
                 height = 2,
                 rotation = 0,
                 visible = true,
@@ -1114,9 +1116,9 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 7,
-                y = 5,
-                width = 25,
+                x = 17,
+                y = 15,
+                width = 15,
                 height = 2,
                 rotation = 0,
                 visible = true,
@@ -1131,10 +1133,10 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 5,
-                y = 5,
+                x = 15,
+                y = 15,
                 width = 2,
-                height = 27,
+                height = 17,
                 rotation = 0,
                 visible = true,
                 properties = {
@@ -1171,7 +1173,7 @@ return {
                 type = "",
                 shape = "rectangle",
                 x = 0,
-                y = 5,
+                y = 15,
                 width = 32,
                 height = 2,
                 rotation = 0,
@@ -1210,8 +1212,8 @@ return {
                 type = "",
                 shape = "rectangle",
                 x = 0,
-                y = 5,
-                width = 26,
+                y = 15,
+                width = 16,
                 height = 2,
                 rotation = 0,
                 visible = true,
@@ -1226,10 +1228,10 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 26,
-                y = 5,
+                x = 16,
+                y = 15,
                 width = 2,
-                height = 27,
+                height = 17,
                 rotation = 0,
                 visible = true,
                 properties = {
@@ -1265,7 +1267,7 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 5,
+                x = 15,
                 y = 0,
                 width = 2,
                 height = 32,
@@ -1304,7 +1306,7 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 26,
+                x = 16,
                 y = 0,
                 width = 2,
                 height = 32,
@@ -1343,9 +1345,9 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 7,
-                y = 26,
-                width = 25,
+                x = 17,
+                y = 16,
+                width = 15,
                 height = 2,
                 rotation = 0,
                 visible = true,
@@ -1360,10 +1362,10 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 5,
+                x = 15,
                 y = 0,
                 width = 2,
-                height = 28,
+                height = 18,
                 rotation = 0,
                 visible = true,
                 properties = {
@@ -1399,14 +1401,15 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 26,
+                x = 16,
                 y = 0,
                 width = 2,
-                height = 28,
+                height = 18,
                 rotation = 0,
                 visible = true,
                 properties = {
                   ["collidable"] = true,
+                  ["pitt"] = true,
                   ["type"] = "pit"
                 }
               },
@@ -1416,13 +1419,14 @@ return {
                 type = "",
                 shape = "rectangle",
                 x = 0,
-                y = 26,
-                width = 26,
+                y = 16,
+                width = 16,
                 height = 2,
                 rotation = 0,
                 visible = true,
                 properties = {
                   ["collidable"] = true,
+                  ["pitt"] = true,
                   ["type"] = "pit"
                 }
               }
@@ -1454,13 +1458,14 @@ return {
                 type = "",
                 shape = "rectangle",
                 x = 0,
-                y = 26,
+                y = 16,
                 width = 32,
                 height = 2,
                 rotation = 0,
                 visible = true,
                 properties = {
                   ["collidable"] = true,
+                  ["pitt"] = true,
                   ["type"] = "pit"
                 }
               }
@@ -1491,14 +1496,15 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 26,
-                y = 26,
+                x = 16,
+                y = 16,
                 width = 2,
-                height = 6,
+                height = 16,
                 rotation = 0,
                 visible = true,
                 properties = {
                   ["collidable"] = true,
+                  ["pitt"] = true,
                   ["type"] = "pit"
                 }
               },
@@ -1507,14 +1513,15 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 28,
-                y = 26,
-                width = 4,
+                x = 18,
+                y = 16,
+                width = 14,
                 height = 2,
                 rotation = 0,
                 visible = true,
                 properties = {
                   ["collidable"] = true,
+                  ["pitt"] = true,
                   ["type"] = "pit"
                 }
               }
@@ -1545,14 +1552,15 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 5,
-                y = 26,
+                x = 15,
+                y = 16,
                 width = 2,
-                height = 6,
+                height = 16,
                 rotation = 0,
                 visible = true,
                 properties = {
                   ["collidable"] = true,
+                  ["pitt"] = true,
                   ["type"] = "pit"
                 }
               },
@@ -1562,13 +1570,14 @@ return {
                 type = "",
                 shape = "rectangle",
                 x = 0,
-                y = 26,
-                width = 5,
+                y = 16,
+                width = 15,
                 height = 2,
                 rotation = 0,
                 visible = true,
                 properties = {
                   ["collidable"] = true,
+                  ["pitt"] = true,
                   ["type"] = "pit"
                 }
               }
@@ -1599,14 +1608,15 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 26,
+                x = 16,
                 y = 0,
                 width = 2,
-                height = 7,
+                height = 17,
                 rotation = 0,
                 visible = true,
                 properties = {
                   ["collidable"] = true,
+                  ["pitt"] = true,
                   ["type"] = "pit"
                 }
               },
@@ -1615,14 +1625,15 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 28,
-                y = 5,
-                width = 4,
+                x = 18,
+                y = 15,
+                width = 14,
                 height = 2,
                 rotation = 0,
                 visible = true,
                 properties = {
                   ["collidable"] = true,
+                  ["pitt"] = true,
                   ["type"] = "pit"
                 }
               }
@@ -1653,14 +1664,15 @@ return {
                 name = "",
                 type = "",
                 shape = "rectangle",
-                x = 5,
+                x = 15,
                 y = 0,
                 width = 2,
-                height = 7,
+                height = 17,
                 rotation = 0,
                 visible = true,
                 properties = {
                   ["collidable"] = true,
+                  ["pitt"] = true,
                   ["type"] = "pit"
                 }
               },
@@ -1670,13 +1682,14 @@ return {
                 type = "",
                 shape = "rectangle",
                 x = 0,
-                y = 5,
-                width = 5,
+                y = 15,
+                width = 15,
                 height = 2,
                 rotation = 0,
                 visible = true,
                 properties = {
                   ["collidable"] = true,
+                  ["pitt"] = true,
                   ["type"] = "pit"
                 }
               }
@@ -2452,7 +2465,7 @@ return {
         },
         {
           id = 3,
-          name = "",
+          name = "sconce",
           type = "fire",
           shape = "rectangle",
           x = 1312,
@@ -2472,7 +2485,7 @@ return {
         },
         {
           id = 4,
-          name = "",
+          name = "sconce",
           type = "fire",
           shape = "rectangle",
           x = 1408,
@@ -2492,7 +2505,7 @@ return {
         },
         {
           id = 5,
-          name = "",
+          name = "buttonDoor",
           type = "door",
           shape = "rectangle",
           x = 2080,
@@ -2512,7 +2525,7 @@ return {
         },
         {
           id = 7,
-          name = "",
+          name = "bossDoor",
           type = "door",
           shape = "rectangle",
           x = 1344,
@@ -2532,7 +2545,7 @@ return {
         },
         {
           id = 9,
-          name = "",
+          name = "lockedDoor",
           type = "door",
           shape = "rectangle",
           x = 2080,
@@ -2552,7 +2565,7 @@ return {
         },
         {
           id = 11,
-          name = "",
+          name = "button",
           type = "door",
           shape = "rectangle",
           x = 2015,
@@ -2572,7 +2585,7 @@ return {
         },
         {
           id = 12,
-          name = "",
+          name = "sconce",
           type = "fire",
           shape = "rectangle",
           x = 1824,
@@ -2592,7 +2605,7 @@ return {
         },
         {
           id = 13,
-          name = "",
+          name = "sconce",
           type = "fire",
           shape = "rectangle",
           x = 1824,
@@ -2612,7 +2625,7 @@ return {
         },
         {
           id = 14,
-          name = "",
+          name = "sconce",
           type = "fire",
           shape = "rectangle",
           x = 2304,
@@ -2632,7 +2645,7 @@ return {
         },
         {
           id = 15,
-          name = "",
+          name = "sconce",
           type = "fire",
           shape = "rectangle",
           x = 2304,
@@ -2652,7 +2665,7 @@ return {
         },
         {
           id = 16,
-          name = "",
+          name = "sconce",
           type = "fire",
           shape = "rectangle",
           x = 2016,
@@ -2672,7 +2685,7 @@ return {
         },
         {
           id = 17,
-          name = "",
+          name = "sconce",
           type = "fire",
           shape = "rectangle",
           x = 2144,
@@ -2752,7 +2765,7 @@ return {
         },
         {
           id = 21,
-          name = "",
+          name = "sconce",
           type = "fire",
           shape = "rectangle",
           x = 1824,
@@ -2772,7 +2785,7 @@ return {
         },
         {
           id = 22,
-          name = "",
+          name = "sconce",
           type = "fire",
           shape = "rectangle",
           x = 1824,
@@ -2792,7 +2805,7 @@ return {
         },
         {
           id = 23,
-          name = "",
+          name = "sconce",
           type = "fire",
           shape = "rectangle",
           x = 2304,
@@ -2812,7 +2825,7 @@ return {
         },
         {
           id = 24,
-          name = "",
+          name = "sconce",
           type = "fire",
           shape = "rectangle",
           x = 2304,
@@ -2828,6 +2841,586 @@ return {
             ["isFire"] = false,
             ["name"] = "sconce",
             ["neededKey"] = "torch"
+          }
+        },
+        {
+          id = 25,
+          name = "",
+          type = "fire",
+          shape = "rectangle",
+          x = 2176,
+          y = 1152,
+          width = 64,
+          height = 192,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "hole",
+            ["collision"] = false,
+            ["interactable"] = true,
+            ["name"] = "breakableFloor",
+            ["neededKey"] = ""
+          }
+        },
+        {
+          id = 27,
+          name = "",
+          type = "fire",
+          shape = "rectangle",
+          x = 1952,
+          y = 1152,
+          width = 224,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "hole",
+            ["collision"] = false,
+            ["interactable"] = true,
+            ["name"] = "breakableFloor",
+            ["neededKey"] = ""
+          }
+        },
+        {
+          id = 28,
+          name = "",
+          type = "fire",
+          shape = "rectangle",
+          x = 1952,
+          y = 1216,
+          width = 64,
+          height = 96,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "hole",
+            ["collision"] = false,
+            ["interactable"] = true,
+            ["name"] = "breakableFloor",
+            ["neededKey"] = ""
+          }
+        },
+        {
+          id = 29,
+          name = "",
+          type = "fire",
+          shape = "rectangle",
+          x = 1888,
+          y = 1248,
+          width = 64,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "hole",
+            ["collision"] = false,
+            ["interactable"] = true,
+            ["name"] = "breakableFloor",
+            ["neededKey"] = ""
+          }
+        },
+        {
+          id = 30,
+          name = "",
+          type = "fire",
+          shape = "rectangle",
+          x = 1856,
+          y = 1152,
+          width = 64,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "hole",
+            ["collision"] = false,
+            ["interactable"] = true,
+            ["name"] = "breakableFloor",
+            ["neededKey"] = ""
+          }
+        },
+        {
+          id = 31,
+          name = "",
+          type = "fire",
+          shape = "rectangle",
+          x = 1824,
+          y = 1056,
+          width = 416,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "hole",
+            ["collision"] = false,
+            ["interactable"] = true,
+            ["name"] = "breakableFloor",
+            ["neededKey"] = ""
+          }
+        },
+        {
+          id = 32,
+          name = "",
+          type = "fire",
+          shape = "rectangle",
+          x = 2272,
+          y = 1056,
+          width = 64,
+          height = 224,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "hole",
+            ["collision"] = false,
+            ["interactable"] = true,
+            ["name"] = "breakableFloor",
+            ["neededKey"] = ""
+          }
+        },
+        {
+          id = 33,
+          name = "",
+          type = "fire",
+          shape = "rectangle",
+          x = 2112,
+          y = 928,
+          width = 64,
+          height = 96,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "hole",
+            ["collision"] = false,
+            ["interactable"] = true,
+            ["name"] = "breakableFloor",
+            ["neededKey"] = ""
+          }
+        },
+        {
+          id = 35,
+          name = "",
+          type = "fire",
+          shape = "rectangle",
+          x = 2240,
+          y = 928,
+          width = 64,
+          height = 96,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "hole",
+            ["collision"] = false,
+            ["interactable"] = true,
+            ["name"] = "breakableFloor",
+            ["neededKey"] = ""
+          }
+        },
+        {
+          id = 36,
+          name = "",
+          type = "fire",
+          shape = "rectangle",
+          x = 1824,
+          y = 960,
+          width = 256,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "hole",
+            ["collision"] = false,
+            ["interactable"] = true,
+            ["name"] = "breakableFloor",
+            ["neededKey"] = ""
+          }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 6,
+      name = "NPCs",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 38,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1568,
+          y = 1952,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 40,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1152,
+          y = 1952,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 41,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2144,
+          y = 2176,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 42,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2144,
+          y = 1920,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 43,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1856,
+          y = 1984,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 44,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2016,
+          y = 1568,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 45,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2112,
+          y = 1568,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 46,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 448,
+          y = 1952,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 47,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 608,
+          y = 1952,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 48,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 576,
+          y = 2144,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 49,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 480,
+          y = 2048,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 50,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 736,
+          y = 2208,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 51,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 448,
+          y = 2272,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 52,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 736,
+          y = 2080,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 53,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2272,
+          y = 1312,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 54,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1856,
+          y = 544,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 55,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1856,
+          y = 672,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 56,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2272,
+          y = 544,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 57,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2272,
+          y = 800,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 58,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1248,
+          y = 1248,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 59,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1664,
+          y = 1248,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 60,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1440,
+          y = 1216,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat",
+            ["openToSky"] = false
           }
         }
       }

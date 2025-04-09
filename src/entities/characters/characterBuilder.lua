@@ -27,23 +27,42 @@ NPCsKey = {
 }
 
 
-function CharacterBuilder:new(key)
+function CharacterBuilder:new(map, key)
   self.NPCs = {}
   local enemyList = NPCsKey[key][1] or {}
   local npcList = NPCsKey[key][2] or {}
+  if map.layers and map.layers.NPCs then
+    for i, v in ipairs(map.layers.NPCs.objects) do
+      local openToSky = true
+      if v.properties then
+        openToSky = v.properties.openToSky
+      end
+      local char = {name = v.name, x = v.x, y = v.y, openToSky = openToSky}
+
+      if v.type == "Enemy" then
+        table.insert(enemyList, char)
+      else
+        table.insert(npcList, char)
+      end
+    end
+  end
   for i, char in ipairs(enemyList) do
     local enemy = EnemyTypes[char.name](char.x, char.y)
-    SkyShadow:addShadow(enemy)
+    if char.openToSky then
+      SkyShadow:addShadow(enemy, key)
+    end
     table.insert(self.NPCs, enemy)
   end
   for i, char in ipairs(npcList) do
     -- local npc = Character("Birb", 800,8900, "src/tilesets/npc1.png", .125, false, 64)
     local npc = Character(char.name, char.x, char.y, char.imagePath, char.animSpeed, false, char.height)
     npc.speed = 100
-    SkyShadow:addShadow(npc)
+    if char.openToSky then
+      SkyShadow:addShadow(npc, key)
+    end
     table.insert(self.NPCs, npc)
   end
-  self:addColliders()
+  -- self:addColliders()
 end
 
 function CharacterBuilder:update(dt)

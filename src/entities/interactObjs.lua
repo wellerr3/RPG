@@ -54,59 +54,13 @@ function MapObject:update(dt)
 end
 
 function MapObject:draw()
-  self.img[self.dir][self.mode]:draw(self.spriteSheet, self.x, self.y, nil, nil, nil, self.offsetX, self.offsetY)
+  if self.img[self.dir] and self.img[self.dir][self.mode] then
+    self.img[self.dir][self.mode]:draw(self.spriteSheet, self.x, self.y, nil, nil, nil, self.offsetX, self.offsetY)
+  end
 end
-
-
--- function InterObj:new(obj, map)
---   InterObj.super.new(self, obj.x, obj.y)
---   world:add(obj, obj.x, obj.y, obj.width, obj.height)
---   self.obj = obj
---   self.map = map
---   -- for i,v in pairs(obj.properties) do
---   --   print (i,v)
---   -- end
---   self.class = obj.properties.class
---   self.name = obj.properties.name or obj.properties.class
---   self.neededTool = ""
---   self.destMap = ""
---   if obj.properties.class == "fire" then
---     self.neededTool = "torch"
---   end
---   if obj.properties.class == "button" then
---     self.type = "cross"
---     obj.type = "cross"
---     self.collider = true
---     obj.collider = true
---     self.opens = obj.properties.opens
---   end
---   if obj.properties.class == "tele" then
---     self.type = "cross"
---     obj.type = "cross"
---     self.collider = true
---     obj.collider = true
---     self.teleTo = self.obj.properties.tele
---     self.name = self.obj.properties.name
---     self.destMap = self.obj.properties.destMap
---     self:findToTeleLocation(obj)
---   end
---   if obj.properties.neededKey then
---     self.neededTool = obj.properties.neededKey
---     CrossMapInteractables[self.name] = self
---   end
---   -- self.teleX = 0
---   -- self.teleY = 0
-
---   obj.interactObj = self
---   obj.interact = self.interact
--- end
 
 function MapObject:interact(tool)
 
-  -- local obj = self.interactObj
-  -- if not obj then
-  --   return
-  -- end
   if self.class == "tele" then
     self:tele()
   elseif self.class == "door" then

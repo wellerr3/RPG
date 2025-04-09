@@ -110,11 +110,11 @@ function Objects:createObjects(map)
     ObjList[map] = {}
   end
   for i, item in pairs(ObjList[map]) do
-    self:createItem(item)
+    self:createItem(item, map)
   end
 end
 
-function Objects:createItem(item)
+function Objects:createItem(item, map)
   local tileX = item.x
   local tileY = item.y
   item.x = item.x * TileSize
@@ -126,7 +126,7 @@ function Objects:createItem(item)
     newItem = ItemTypes["other"]("other", item.x, item.y, "src/tilesets/non.png")
   end
   if item.openToSky then
-    SkyShadow:addShadow(newItem)
+    SkyShadow:addShadow(newItem, map)
   end
   if item.extra then
     newItem.item = self:createItem({name = item.extra.name, x = tileX, y = tileY, keyID = item.extra.keyID})
@@ -158,7 +158,7 @@ function Objects:createMapObjects(map, mapObjects)
         -- obj, map
         obj = ItemTypes.tele(item, map)
       else
-        obj = InterObj(item, map)
+        obj = MapObject(item, map)
       end
       
       table.insert(self.interactable, obj)

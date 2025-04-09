@@ -36,6 +36,11 @@ function Shovel:new(x, y)
 end
 
 function Chest:new(x, y)
+  if type(x) ~= "number" then
+    self.map = y
+    x = x.x
+    y = x.y
+  end
   Chest.super.new(self, "Chest", x, y, "src/tilesets/chest.png")
   self.state = "closed"
   self.grid = Anim8.newGrid(32, 32, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)

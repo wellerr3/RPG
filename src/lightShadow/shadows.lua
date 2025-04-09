@@ -25,11 +25,14 @@ function Shadows:CheckDist()
 end
 
 function Shadows:update(dt)
+	if not self.entities[CurrMap] then
+		return
+	end
 	local timeAdd = 0
 	if self.source == "sky" then
 		timeAdd = OVariable.GlobalTime
 	end
-	for i, e in ipairs(self.entities) do
+	for i, e in ipairs(self.entities[CurrMap]) do
 		local dx       = -150 + timeAdd
 		local dy       = 60
 		local distance = math.sqrt(dx^2 + dy^2) / 50
@@ -42,7 +45,10 @@ function Shadows:update(dt)
 end
 
 function Shadows:draw()
-	for i, e in ipairs(self.entities) do
+	if not self.entities[CurrMap] then
+		return
+	end
+	for i, e in ipairs(self.entities[CurrMap]) do
 		love.graphics.setColor(0, 0, 0, .25)
 		self:drawShadow(e)
 	end
@@ -69,12 +75,15 @@ function Shadows:drawShadow(e)
   -- love.graphics.draw(e.img.default[e.dir], e.x, e.y)
 end
 
-function Shadows:addShadow(e)
-	table.insert(self.entities, e)
+function Shadows:addShadow(e, map)
+	if not self.entities[map] then
+		self.entities[map] = {}
+	end
+	table.insert(self.entities[map], e)
 end
 
-function Shadows:addShadowsToGroup(group)
+function Shadows:addShadowsToGroup(group, map)
 	for i, e in ipairs(group) do
-		self:addShadow(e)
+		self:addShadow(e, map)
 	end
 end

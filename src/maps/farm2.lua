@@ -9,9 +9,11 @@ return {
   height = 75,
   tilewidth = 32,
   tileheight = 32,
-  nextlayerid = 8,
-  nextobjectid = 6,
-  properties = {},
+  nextlayerid = 9,
+  nextobjectid = 33,
+  properties = {
+    ["openToSky"] = true
+  },
   tilesets = {
     {
       name = "Dirt",
@@ -684,6 +686,454 @@ return {
             ["interactable"] = true,
             ["name"] = "farmInside",
             ["tele"] = "farmOutside"
+          }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 8,
+      name = "NPCs",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 6,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2240,
+          y = 480,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 7,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2752,
+          y = 448,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 8,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2880,
+          y = 64,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 9,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 3360,
+          y = 256,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 10,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2848,
+          y = 2208,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 11,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2656,
+          y = 2208,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 12,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2240,
+          y = 2144,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 13,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1632,
+          y = 2240,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 14,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1248,
+          y = 2304,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 15,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1088,
+          y = 2272,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 16,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 960,
+          y = 2144,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 17,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 960,
+          y = 2304,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 18,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1600,
+          y = 1856,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 19,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1696,
+          y = 1536,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 20,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1760,
+          y = 1408,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 21,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 1664,
+          y = 1152,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 22,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2048,
+          y = 1120,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 23,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2400,
+          y = 992,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 24,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2560,
+          y = 832,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 25,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 3168,
+          y = 736,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 26,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 3232,
+          y = 1184,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 27,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 3520,
+          y = 1632,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 28,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 3712,
+          y = 2016,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 29,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 3552,
+          y = 1920,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 30,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 3232,
+          y = 2144,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 31,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 3392,
+          y = 1824,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 32,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2400,
+          y = 1696,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
           }
         }
       }

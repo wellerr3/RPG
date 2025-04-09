@@ -9,7 +9,9 @@ function Player:new(x, y, art, animSpeed)
   self.volume = 1
   self.spriteSheet1 = love.graphics.newImage("src/tilesets/shortCreg.png")
   self.spriteSheet2 = love.graphics.newImage("src/tilesets/tallCreg.png")
-  world:add(self, self.x + 5, self.y, 22, 22)
+  -- self.colliderSize = {xOffset = 5, yOffset = 0, height = 22, width = 22}
+  -- self:addCollider()
+  world:add(self, self.x, self.y, 16, 16)
   self.grid = Anim8.newGrid(32, 32, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
   self.grid2 = Anim8.newGrid(32, 64, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
   local numFrames = self.spriteSheet:getWidth() / self.width
@@ -30,8 +32,8 @@ function Player:new(x, y, art, animSpeed)
   self.audio:setVolume(self.volume * OVariable.MasterVolume)
   self.hasAudio = true
   self.height = 32
-  self.offsetX = 5
-  self.offsetY = 10
+  self.offsetX = 8
+  self.offsetY = 16
   self.shadowOffsetY = 22
   self.shadowOffsetX = 11
   self.name = "player"
@@ -47,6 +49,7 @@ function Player:new(x, y, art, animSpeed)
   self.text.textObj = love.graphics.newText(self.text.font)
   self.text.numlines = 0
   self.projectile = Projectile()
+  self.collide = true
 end
 
 function Player:update(dt)
@@ -124,14 +127,22 @@ function Player:setDirAndVel(dt)
   if vx == 0 and vy == 0 then
     self.isMoving = false
   else
+    local filter
+    if self.collide then
+      filter = Filter
+    else
+      filter = NoFilter
+    end
     self.isMoving = true
     local future_x = self.x + vx
     local future_y = self.y + vy
-    local actualX, actualY, cols, len = world:move(self, future_x, future_y, Filter)
+    local actualX, actualY, cols, len = world:move(self, future_x, future_y, filter)
     self.x, self.y = actualX, actualY
     if len > 0 then
-      if ((cols[1].other.interact) or (cols[1].other.properties and cols[1].other.properties.interactable)) and (cols[1].other.type == "cross" or (cols[1].other.properties and cols[1].other.properties.type == "cross")) then
-        cols[1].other:interact()
+      for i, col in ipairs(cols) do
+        if ((cols[1].other.interact) or (cols[1].other.properties and cols[1].other.properties.interactable)) and (cols[1].other.type == "cross" or (cols[1].other.properties and cols[1].other.properties.type == "cross")) then
+          cols[1].other:interact()
+        end
       end
     end
   end
@@ -140,37 +151,43 @@ end
 
 function Player:queryFront()
   local px, py = self.x, self.y
-  local checkDist = 22
+  local x, y = self.x, self.y
+  local checkDist = 16
   if self.dir == "right" then
     px = px + checkDist
+    py = py
   elseif self.dir == "left" then
     px = px - checkDist
+    py = py
   elseif self.dir == "up" then
     py = py - checkDist
+    px = px
   elseif self.dir == "down" then
     py = py + checkDist
+    px = px
   end
-  local goalX, goalY, cols, len = world:check(self, px + 5, py, Filter)
-  TestRect.x=px + 5
-  TestRect.y=py
+  local items, len = world:queryRect(px,py,checkDist,checkDist, Filter2)
+  -- local goalX, goalY, cols, len = world:check(self, px + 5, py, Filter)
+  TestRect = {x= px, y= py,w= checkDist, h=checkDist}
+
   if self.equiped then
     self.equiped.img["use"]:gotoFrame(1)
     self.equiped.img["use"]:resume()
   end
   if len ~= 0 then
-    -- for i, v in ipairs(cols[1]) do
-    --   print (i,v)
-    -- end
+    for i, item in ipairs(items) do
+      if item.interact then
+        item:interact(self.equiped)
+      elseif item.other and item.other.pitt then
+        GameMap[CurrMap]:pitt(self.equiped, item)
+      end
+    end
     -- if cols[1].other.properties then
     --   for i, v in ipairs(cols[1].other.properties) do
     --     print (i,v)
     --   end
     -- end
-    if cols[1].interact then
-      cols[1]:interact(self.equiped)
-    elseif cols[1].other.interact then
-      cols[1].other:interact(self.equiped)
-    end
+
   end
 end
 
@@ -222,3 +239,14 @@ function Player:getCenter()
 
   return x,y
 end
+
+
+function Player:setCollider()
+  self.collide = not self.collide
+  if self.collide then
+    self.type = "slide"
+  else
+    self.type = "cross"
+  end
+end
+

@@ -42,12 +42,13 @@ end
 
 function DebugMenu:MenuUpdate()
   local offset = 0
-  local collisionOn = "on"
+  local collisionTestOn = "on"
   local viewDots = "on"
+  local collisionOn = "on"
   if OVariable.CollisionTest then
-    collisionOn = "on"
+    collisionTestOn = "on"
   else
-    collisionOn = "off"
+    collisionTestOn = "off"
   end
   if OVariable.ViewDots then
     viewDots = "on"
@@ -58,15 +59,17 @@ function DebugMenu:MenuUpdate()
   self.textObj:add( {{0,0,0}, "Map: ".. CurrMap}, 50, 100 )
   self.textObj:add( {{0,0,0}, "Player X,Y: ".. math.floor(Player.x) .. ", " .. math.floor(Player.y)}, 50, 150 )
   self.textObj:add( {{0,0,0}, "GlobalTime: ".. math.floor(OVariable.GlobalTime)}, 50, 200 )
-  self.textObj:add( {{0,0,0}, "Collision: " .. collisionOn}, 50, 250 )
+  self.textObj:add( {{0,0,0}, "Collision View: " .. collisionTestOn}, 50, 250 )
   self.textObj:add( {{0,0,0}, "View Dots: " .. viewDots}, 50, 300 )
-  self.clickBoxes["collision"] = ColObj("collision", self.x + 50, self.y+ (offset * 50) + 250, 200, 25, "CollisionTest", "options")
-  self.clickBoxes["viewDots"] = ColObj("view dots", self.x + 50, self.y+ (offset * 50) + 300, 200, 25, "ViewDots", "options")
+  self.textObj:add( {{0,0,0}, "Turn off Coll: " .. collisionOn}, 50, 350 )
+  self.clickBoxes["collision"] = ColObj("Collision View", self.x + 50, self.y+ (offset * 50) + 250, 300, 25, "CollisionTest", "options")
+  self.clickBoxes["viewDots"] = ColObj("view dots", self.x + 50, self.y+ (offset * 50) + 300, 300, 25, "ViewDots", "options")
+  self.clickBoxes["turnOffColl"] = ColObj("Turn off Coll", self.x + 50, self.y+ (offset * 50) + 350, 300, 25, "CollisionOn", "options")
   for i, v in pairs(TeleLocations) do
     offset = offset + 1
     local x = self.x + 50
     local y = self.y + (offset * 50) + 400
-    local width = 200
+    local width = 300
     local height = 25
     love.graphics.rectangle( "fill", x, y, width, height)
     self.textObj:add( {{0,0,0}, i}, 50, (offset * 50) + 400 )
@@ -78,7 +81,7 @@ function ColObj:new(name, x, y, width, height, v, type)
   self.name = name
   self.x = x
   self.y = y
-  self.width = width or 200
+  self.width = width or 300
   self.height = height or 25
   self.type = type or "tele"
   self.selected = false
@@ -95,10 +98,14 @@ function ColObj:draw()
     end
   love.graphics.pop()
 end
+
 function ColObj:click()
   if self.type == "tele" then
     Player:teleport(self.info[1], self.info[2], self.info[3])
   elseif self.type == "options" then
+    if self.info == "CollisionOn" then
+      Player:setCollider()
+    end
     OVariable[self.info] = not OVariable[self.info]
   end
 end

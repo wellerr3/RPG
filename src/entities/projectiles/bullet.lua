@@ -42,7 +42,7 @@ function Bullet:new(x, y, goalX, goalY)
   -- CreateCollider(self)
   self.offsetX = self.width/2
   self.offsetY = self.height/2
-  world:add(self, self.x, self.y, 16, 16)
+  world:add(self, self.x + 4 , self.y + 4, 8, 8)
   self.timer = 300
   self.hit = false
   self.part = self:makePart(self.clickLoc.angle)
@@ -67,7 +67,7 @@ function Bullet:draw()
 		love.graphics.draw(particleData.system, self.x, self.y)
 	end
 
-  self.img[self.mode]:draw(self.spriteSheet, self.x,self.y, nil, self.scale, self.scale)
+  self.img[self.mode]:draw(self.spriteSheet, self.x - 4,self.y - 4, nil, self.scale, self.scale)
   
 end
 
@@ -83,8 +83,13 @@ function Bullet:move(dt)
     local px, py = CalculateXYFromDistAngle(self.x, self.y, self.speed * dt, self.clickLoc.angle)
     local actualX, actualY, cols, len = world:move(self, px, py, bulletFilter)
     self.x, self.y = actualX, actualY
-    if len == 0 then
-    elseif cols[1].other.name ~= 'player' then
+    if len > 0 then
+      for i, v in ipairs(cols) do
+        if v.other.isHostle then
+          -- attack
+          v.other:interact(self)
+        end
+      end
       if world:hasItem(self) then
         world:remove(self)
       end
@@ -94,10 +99,6 @@ function Bullet:move(dt)
       self.timer = self.explodeTimer
       self.hit = true
       self.clickLoc.x, self.clickLoc.y = self.x, self.y
-      if cols[1].other.isHostle then
-        -- attack
-        cols[1].other:interact(self)
-      end
     end
   end
 end

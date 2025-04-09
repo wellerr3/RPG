@@ -11,8 +11,8 @@ function IndMap:new(map, key)
   self.tilewidth = self.map.tilewidth
   self.tileheight = self.map.tileheight
   self.above, self.below, self.shadows = self:findOrder()
-  self.objects = Objects(key, map.objects)
-  self.npcs = CharacterBuilder(key)
+  self.objects = Objects(key, map.layers.Interactions.objects)
+  self.npcs = CharacterBuilder(map, key)
 end
 
 function IndMap:update(dt)
@@ -67,14 +67,27 @@ function IndMap:findOrder()
   return above, below, shadows
 end
 
+function IndMap:pitt(tool, col)
+  if col.properties.type == "pit" then
+    col.type = "cross"
+    -- break animation
+  end
+  if tool.element ~= "ice" then
+    return
+  end
+  if col.properties.type == "pit" then
+    -- add freeze
+    col.type = "cross"
+  end
 
+end
 
 function FarmMap:new(map)
   FarmMap.super:new(map, "farm")
   self.spriteSheet = love.graphics.newImage("src/tilesets/cornWall.png")
   self.grid = Anim8.newGrid(32, 32, self.spriteSheet:getWidth(), self.spriteSheet:getHeight())
   self.deleteTiles = {}
-  self.objects:createDuplicateObjs('corn', 25,0,107,75)
+  self.objects:createDuplicateObjs('corn', 25,0,107,75,"above")
 end
 
 function FarmMap:update(dt)
@@ -132,7 +145,7 @@ function FarmMap:checkSight()
     end
     local items, len =  world:querySegment(px, py, Hit[segment].x2, Hit[segment].y2, cornFilter)
     for i, item in ipairs(items) do
-      if i == #items then
+      if i == #items and item.element == "corn" then
         self:checkCornAround(item)
         if hitWall then
           item.drawn = true
@@ -152,7 +165,7 @@ end
 function FarmMap:checkCornAround(item)
   local shape = ""
   local currX, currY = math.floor(item.x/TileSize),math.floor(item.y/TileSize)
-  local corn = self.objects.objSets.below.corn
+  local corn = self.objects.objSets.above.corn
   if corn[currX] and corn[currX][currY - 1] and corn[currX][currY - 1].drawn == true then
     shape = shape .. "1"
   else

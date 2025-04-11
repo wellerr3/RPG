@@ -10,7 +10,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 9,
-  nextobjectid = 33,
+  nextobjectid = 34,
   properties = {
     ["openToSky"] = true
   },
@@ -1127,6 +1127,22 @@ return {
           shape = "rectangle",
           x = 2400,
           y = 1696,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "rat"
+          }
+        },
+        {
+          id = 33,
+          name = "rat",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 2977,
+          y = 223,
           width = 32,
           height = 32,
           rotation = 0,

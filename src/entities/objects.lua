@@ -12,7 +12,8 @@ ItemTypes = {
   buttonDoor = ButtonDoor,
   tele = TeleObj,
   button = Button,
-  sconce = Sconce
+  sconce = Sconce,
+  water = Water
 }
 
 ObjList = {}
@@ -27,7 +28,7 @@ ObjList.dung = {
   ,{name = "chest", x = 46, y = 32, extra = {name = "torch"}, openToSky = false, hasCollison = true}
   ,{name = "chest", x = 65, y = 16, extra = {name = "iceCube"}, openToSky = false, hasCollison = true}
   ,{name = "chest", x = 3, y = 26, extra = {name = "key", keyID = "B"}, openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 48, y = 68, extra = {name = "torch"}, openToSky = false, hasCollison = true}
+  ,{name = "chest", x = 48, y = 68, extra = {name = "iceCube"}, openToSky = false, hasCollison = true}
 }
 ObjList.farm = {
   -- {name = "chest", x = 5, y = 30, extra = "key", openToSky = false, hasCollison = true}

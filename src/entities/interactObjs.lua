@@ -6,6 +6,7 @@ TeleObj = MapObject:extend()
 Door = MapObject:extend()
 Sconce = MapObject:extend()
 Button = MapObject:extend()
+Water = MapObject:extend()
 
 ButtonDoor = Door:extend()
 LockedDoor = Door:extend()
@@ -15,7 +16,8 @@ BossDoor = Door:extend()
 InteractType = {
   door = Door,
   button = Button,
-  fire = Sconce
+  fire = Sconce,
+  water = Water
 }
 
 function MapObject:new(obj, map, imgPath)
@@ -23,10 +25,6 @@ function MapObject:new(obj, map, imgPath)
   -- (x, y, imagePath, width, height)
   self.obj = obj
   self.map = map
-  self.test = "yes"
-  -- for i,v in ipairs(obj.properties) do
-  --   self[i] = v
-  -- end
 
   if obj.properties.name then
     self.name = obj.properties.name
@@ -69,6 +67,8 @@ function MapObject:interact(tool)
     self:fire(tool)
   elseif self.class == "button" then
     self:press()
+  elseif self.class == "water" then
+    self:freeze(tool)
   end
 end
 
@@ -263,3 +263,30 @@ function Button:new(obj, map)
   self.img.down.closed = Anim8.newAnimation(self.grid(2, 1), 1)
 end
 
+
+function Water:new(obj, map)
+  Water.super.new(self, obj, map, "src/tilesets/ice.png")
+  local numFrames = self.spriteSheet:getWidth() / TileSize
+  local numTypes = self.spriteSheet:getHeight() / TileSize
+  self.dir = "up"
+  self.img = {}
+  self.img.up = {}
+  self.img.up.liquid = Anim8.newAnimation(self.grid(1, 1), 1)
+  self.img.up.frozen = Anim8.newAnimation(self.grid(1, 2), 1)
+
+  self.neededTool = "ice"
+  self.mode = "liquid"
+
+end
+
+
+function Water:freeze(tool)
+  if tool and tool.element == self.neededTool then
+    Player:addText("FREEZE")
+    self.mode = "frozen"
+    self.type = "cross"
+    self.obj.type = "cross"
+  else
+    Player:addText("That's water, yep")
+  end
+end

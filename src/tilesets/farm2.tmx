@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.1" orientation="orthogonal" renderorder="right-down" width="125" height="75" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="33">
+<map version="1.10" tiledversion="1.11.1" orientation="orthogonal" renderorder="right-down" width="125" height="75" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="34">
  <editorsettings>
   <export target="../maps/farm2.lua" format="lua"/>
  </editorsettings>
@@ -555,6 +555,12 @@
    </properties>
   </object>
   <object id="32" name="rat" type="Enemy" x="2400" y="1696" width="32" height="32">
+   <properties>
+    <property name="class" value="enemy"/>
+    <property name="name" value="rat"/>
+   </properties>
+  </object>
+  <object id="33" name="rat" type="Enemy" x="2977" y="223" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>

@@ -28,7 +28,6 @@ end
 
 function Projectile:addBullet(goalX, goalY)
   table.insert(self.bullets, Bullet(Player.x, Player.y, goalX, goalY))
-
 end
 
 

@@ -67,7 +67,7 @@ function IndMap:findOrder()
   return above, below, shadows
 end
 
-function IndMap:pitt(tool, col)
+function IndMap:pit(tool, col)
   if col.properties.type == "pit" then
     col.type = "cross"
     -- break animation
@@ -75,7 +75,7 @@ function IndMap:pitt(tool, col)
   if tool.element ~= "ice" then
     return
   end
-  if col.properties.type == "pit" then
+  if col.properties.element == "water" then
     -- add freeze
     col.type = "cross"
   end

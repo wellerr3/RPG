@@ -174,11 +174,23 @@ function Player:queryFront()
     self.equiped.img["use"]:gotoFrame(1)
     self.equiped.img["use"]:resume()
   end
-  if len ~= 0 then
-    for i, item in ipairs(items) do
+  print (len)
+  if len > 0 then
+    for i, item in pairs(items) do
+      print (i,item)
+      for ind, val in pairs(item) do
+        print (ind,val)
+        if ind == "properties" then
+          print("properties")
+          for ind2, val2 in ipairs(item.properties) do
+            print (ind2,val2)
+          end
+        end
+      end
       if item.interact then
         item:interact(self.equiped)
-      elseif item.other and item.other.pitt then
+      elseif item.other and item.other.interactable then
+        print ("test: ", item.other.type)
         GameMap[CurrMap]:pitt(self.equiped, item)
       end
     end
@@ -187,7 +199,6 @@ function Player:queryFront()
     --     print (i,v)
     --   end
     -- end
-
   end
 end
 

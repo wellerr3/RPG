@@ -56,6 +56,11 @@ function love.mousepressed(x, y, button, istouch)
   end
 end
 
+function love.wheelmoved(x, y)
+  Scene[CurrScene]:wheelmoved(x, y)
+end
+
+
 -- error handler
 local love_errorhandler = love.errorhandler
 

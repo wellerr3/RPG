@@ -5,6 +5,7 @@ function GetDist(startX, startY, endX, endY)
   return dist
 end
 Dirs = {"right","left","up","down"}
+AngledDirs = {right = "right", left = "left", up = "up", down = "down", upRight = "right", downLeft = "left",upLeft = "left", downRight = "right"}
 DirectionAxies = {
   right = {1,0},
   upRight = {1,0},
@@ -73,7 +74,6 @@ function GetRotation(dir, startDir, addOffset)
   if addOffset then
     offsets[1] = offsets[1] + (DirectionAxies[dir][1] * addOffset.dist) + addOffset.x
     offsets[2] = offsets[2] + (DirectionAxies[dir][2] * addOffset.dist) + addOffset.y
-
   end
   return imgRotation, offsets[1], offsets[2]
 end
@@ -136,4 +136,21 @@ end
 function CreateID()
   CurrId = CurrId + 1
   return CurrId
+end
+
+function DistFromDir(dir, checkDist, px, py)
+  if dir == "right" then
+    px = px + checkDist
+    py = py
+  elseif dir == "left" then
+    px = px - checkDist
+    py = py
+  elseif dir == "up" then
+    py = py - checkDist
+    px = px
+  elseif dir == "down" then
+    py = py + checkDist
+    px = px
+  end
+  return px, py
 end

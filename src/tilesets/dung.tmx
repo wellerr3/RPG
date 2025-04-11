@@ -707,7 +707,7 @@
   <image source="dungWater.png" width="128" height="416"/>
   <tile id="0">
    <properties>
-    <property name="collidable" type="bool" value="true"/>
+    <property name="collidable" type="bool" value="false"/>
    </properties>
    <animation>
     <frame tileid="0" duration="200"/>
@@ -718,7 +718,7 @@
   </tile>
   <tile id="4">
    <properties>
-    <property name="collidable" type="bool" value="true"/>
+    <property name="collidable" type="bool" value="false"/>
    </properties>
    <animation>
     <frame tileid="4" duration="200"/>
@@ -729,7 +729,7 @@
   </tile>
   <tile id="8">
    <properties>
-    <property name="collidable" type="bool" value="true"/>
+    <property name="collidable" type="bool" value="false"/>
    </properties>
    <animation>
     <frame tileid="8" duration="200"/>
@@ -740,7 +740,7 @@
   </tile>
   <tile id="12">
    <properties>
-    <property name="collidable" type="bool" value="true"/>
+    <property name="collidable" type="bool" value="false"/>
    </properties>
    <animation>
     <frame tileid="12" duration="200"/>
@@ -751,7 +751,7 @@
   </tile>
   <tile id="16">
    <properties>
-    <property name="collidable" type="bool" value="true"/>
+    <property name="collidable" type="bool" value="false"/>
    </properties>
    <animation>
     <frame tileid="16" duration="200"/>
@@ -762,7 +762,7 @@
   </tile>
   <tile id="20">
    <properties>
-    <property name="collidable" type="bool" value="true"/>
+    <property name="collidable" type="bool" value="false"/>
    </properties>
    <animation>
     <frame tileid="20" duration="200"/>
@@ -773,7 +773,7 @@
   </tile>
   <tile id="24">
    <properties>
-    <property name="collidable" type="bool" value="true"/>
+    <property name="collidable" type="bool" value="false"/>
    </properties>
    <animation>
     <frame tileid="24" duration="200"/>

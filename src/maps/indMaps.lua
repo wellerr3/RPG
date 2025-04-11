@@ -131,7 +131,7 @@ function FarmMap:checkSight()
   local playerTile = {x = Player.tileX, y = Player.tileY}
   local screenTileW = screenW / self.tilewidth
   local screenTileH = screenH / self.tileheight
-  print (Player.tileX, Player.tileY, self.edgeR, self.edgeL, self.edgeT, self.edgeB, screenW/2, screenH/2)
+  -- print (Player.tileX, Player.tileY, self.edgeR, self.edgeL, self.edgeT, self.edgeB, screenW/2, screenH/2)
   if (Player.tileX + screenTileW/2 < self.edgeR ) or (Player.tileX + screenTileW/2 > self.edgeL) or (Player.tileY  + screenTileH/2 < self.edgeT) or (Player.tileY  + screenTileH/2 > self.edgeB)then
     return
   end

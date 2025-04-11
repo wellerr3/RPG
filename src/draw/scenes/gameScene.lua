@@ -64,5 +64,11 @@ function GameScene:mousepressed(x, y, button, istouch)
     Player.projectile:addBullet(worldX, worldY)
   elseif Player.invScreen then
     Inv:mousepressed(x,y,button)
+  elseif button == "wu" or button == "wd" then
+    Inv:mousewheel(x,y,button)
   end
+end
+
+function GameScene:wheelmoved(x, y)
+  Inv:wheelmoved(x,y)
 end

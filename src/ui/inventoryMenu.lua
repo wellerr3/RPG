@@ -84,6 +84,24 @@ function InventoryMenu:keypressed(key)
   end
 end
 
-function InventoryMenu:mousepressed(x, y, button, istouch)
+function InventoryMenu:mousepressed(x, y, button)
   
+end
+
+function InventoryMenu:wheelmoved(x, y)
+  if #Player.inventory == 0 then
+    self.selected = 0
+    return
+  end
+  if y > 0 then
+    self.selected = ((self.selected) % #Player.inventory) + 1
+  elseif y < 0 then
+    self.selected = self.selected - 2
+    self.selected = ((self.selected) % #Player.inventory) + 1
+  end
+  if Player.equiped then
+    Player.equiped.mode = "default"
+  end
+  Player.equiped = Player.inventory[self.selected]
+  Player.equiped.mode = "use"
 end

@@ -1857,7 +1857,7 @@ return {
         {
           id = 0,
           properties = {
-            ["collidable"] = true
+            ["collidable"] = false
           },
           animation = {
             {
@@ -1881,7 +1881,7 @@ return {
         {
           id = 4,
           properties = {
-            ["collidable"] = true
+            ["collidable"] = false
           },
           animation = {
             {
@@ -1905,7 +1905,7 @@ return {
         {
           id = 8,
           properties = {
-            ["collidable"] = true
+            ["collidable"] = false
           },
           animation = {
             {
@@ -1929,7 +1929,7 @@ return {
         {
           id = 12,
           properties = {
-            ["collidable"] = true
+            ["collidable"] = false
           },
           animation = {
             {
@@ -1953,7 +1953,7 @@ return {
         {
           id = 16,
           properties = {
-            ["collidable"] = true
+            ["collidable"] = false
           },
           animation = {
             {
@@ -1977,7 +1977,7 @@ return {
         {
           id = 20,
           properties = {
-            ["collidable"] = true
+            ["collidable"] = false
           },
           animation = {
             {
@@ -2001,7 +2001,7 @@ return {
         {
           id = 24,
           properties = {
-            ["collidable"] = true
+            ["collidable"] = false
           },
           animation = {
             {

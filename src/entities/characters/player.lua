@@ -153,19 +153,9 @@ function Player:queryFront()
   local px, py = self.x, self.y
   local x, y = self.x, self.y
   local checkDist = 16
-  if self.dir == "right" then
-    px = px + checkDist
-    py = py
-  elseif self.dir == "left" then
-    px = px - checkDist
-    py = py
-  elseif self.dir == "up" then
-    py = py - checkDist
-    px = px
-  elseif self.dir == "down" then
-    py = py + checkDist
-    px = px
-  end
+
+  px, py = DistFromDir(self.dir, checkDist, px, py)
+
   local items, len = world:queryRect(px,py,checkDist,checkDist, Filter2)
   -- local goalX, goalY, cols, len = world:check(self, px + 5, py, Filter)
   TestRect = {x= px, y= py,w= checkDist, h=checkDist}
@@ -174,24 +164,23 @@ function Player:queryFront()
     self.equiped.img["use"]:gotoFrame(1)
     self.equiped.img["use"]:resume()
   end
-  print (len)
   if len > 0 then
     for i, item in pairs(items) do
-      print (i,item)
-      for ind, val in pairs(item) do
-        print (ind,val)
-        if ind == "properties" then
-          print("properties")
-          for ind2, val2 in ipairs(item.properties) do
-            print (ind2,val2)
-          end
-        end
-      end
+      -- print (i,item)
+      -- for ind, val in pairs(item) do
+      --   print (ind,val)
+      --   if ind == "properties" then
+      --     print("properties")
+      --     for ind2, val2 in ipairs(item.properties) do
+      --       print (ind2,val2)
+      --     end
+      --   end
+      -- end
       if item.interact then
         item:interact(self.equiped)
-      elseif item.other and item.other.interactable then
-        print ("test: ", item.other.type)
-        GameMap[CurrMap]:pitt(self.equiped, item)
+      -- elseif item.other and item.other.interactable then
+      --   print ("test: ", item.other.type)
+      --   GameMap[CurrMap]:pitt(self.equiped, item)
       end
     end
     -- if cols[1].other.properties then
@@ -260,4 +249,3 @@ function Player:setCollider()
     self.type = "cross"
   end
 end
-

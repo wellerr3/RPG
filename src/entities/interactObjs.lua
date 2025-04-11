@@ -276,17 +276,38 @@ function Water:new(obj, map)
 
   self.neededTool = "ice"
   self.mode = "liquid"
+  self.drawn = false
 
 end
 
 
 function Water:freeze(tool)
+  if not tool then
+    return
+  end
   if tool and tool.element == self.neededTool then
     Player:addText("FREEZE")
+    self.drawn = true
     self.mode = "frozen"
     self.type = "cross"
     self.obj.type = "cross"
+    -- check if one in front
+    local dir = AngledDirs[Player.dir]
+    local px, py = DistFromDir(dir, 20, self.x + 1, self.y + 1)
+    local items, len = world:queryRect(px,py,20,20, Filter2)
+    if len > 0 then
+      for i, v in ipairs(items) do
+        -- print (i,v)
+        -- for ind, val in pairs(v) do
+        --   print(ind, val)
+        -- end
+        if v.name == "water" then
+          v:interact(tool)
+        end
+      end
+    end
+
   else
-    Player:addText("That's water, yep")
+    Player:addText("What can I do? Freeze it?")
   end
 end

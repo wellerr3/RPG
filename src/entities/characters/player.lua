@@ -27,6 +27,11 @@ function Player:new(x, y, art, animSpeed)
     upLeft = Anim8.newAnimation(self.grid('1-' .. numFrames, 7), animSpeed)
   }
   self.img.default.left = self.img.default.right:clone():flipH()
+  self.img.slide = {}
+  self.img.slide.up = Anim8.newAnimation(self.grid('1-' .. numFrames, 8), animSpeed/2)
+  self.img.slide.down = self.img.slide.up:clone()
+  self.img.slide.left = self.img.slide.up:clone()
+  self.img.slide.right = self.img.slide.up:clone()
   self.inventory = {}
   self.audio = love.audio.newSource("audio/Fist Into Glove.mp3", "stream")
   self.audio:setVolume(self.volume * OVariable.MasterVolume)
@@ -53,9 +58,14 @@ function Player:new(x, y, art, animSpeed)
 end
 
 function Player:update(dt)
-  self.img.default[self.dir]:update(dt)
+  self.img[self.mode][self.dir]:update(dt)
   self.audio:setPitch( self.speed / 50 )
-  self:setDirAndVel(dt)
+  if self.mode == "slide" then
+    self:skid(dt)
+  else
+    self:setDirAndVel(dt)
+  end
+  
   self.projectile:update(dt)
   if self.damageTimer > 0 then
     self.damageTimer = self.damageTimer - 1
@@ -127,16 +137,16 @@ function Player:setDirAndVel(dt)
   if vx == 0 and vy == 0 then
     self.isMoving = false
   else
-    local filter
+    -- local filter
     if self.collide then
-      filter = Filter
+      self.filter = Filter
     else
-      filter = NoFilter
+      self.filter = NoFilter
     end
     self.isMoving = true
     local future_x = self.x + vx
     local future_y = self.y + vy
-    local actualX, actualY, cols, len = world:move(self, future_x, future_y, filter)
+    local actualX, actualY, cols, len = world:move(self, future_x, future_y, self.filter)
     self.x, self.y = actualX, actualY
     if len > 0 then
       for i, col in ipairs(cols) do
@@ -166,28 +176,10 @@ function Player:queryFront()
   end
   if len > 0 then
     for i, item in pairs(items) do
-      -- print (i,item)
-      -- for ind, val in pairs(item) do
-      --   print (ind,val)
-      --   if ind == "properties" then
-      --     print("properties")
-      --     for ind2, val2 in ipairs(item.properties) do
-      --       print (ind2,val2)
-      --     end
-      --   end
-      -- end
       if item.interact then
         item:interact(self.equiped)
-      -- elseif item.other and item.other.interactable then
-      --   print ("test: ", item.other.type)
-      --   GameMap[CurrMap]:pitt(self.equiped, item)
       end
     end
-    -- if cols[1].other.properties then
-    --   for i, v in ipairs(cols[1].other.properties) do
-    --     print (i,v)
-    --   end
-    -- end
   end
 end
 
@@ -247,5 +239,39 @@ function Player:setCollider()
     self.type = "slide"
   else
     self.type = "cross"
+  end
+end
+
+function Player:skid(dt)
+  self.mode = "slide"
+  self.isMoving = true
+  local dir = self.dir
+  local speed = self.speed * 1.5 * dt
+  local vx, vy = 0,0
+  -- local px, py = DistFromDir(dir, 64, self.x, self.y)
+  if AngledDirs[dir] == "down" then
+    vy = speed
+  elseif AngledDirs[dir] == "up" then
+    vy = -speed
+  elseif AngledDirs[dir] == "left" then
+    vx = -speed
+  elseif AngledDirs[dir] == "right" then
+    vx = speed
+  end
+  local future_x = self.x + vx
+  local future_y = self.y + vy
+  local actualX, actualY, cols, len = world:move(self, future_x, future_y, Filter)
+  self.x, self.y = actualX, actualY
+  for i,v in ipairs(cols) do
+    if v.type ~= "cross" and v.mode ~= "frozen" then
+      self.mode = "default"
+    end
+  end
+  if len == 0 then
+    self.mode = "default"
+  end
+  if actualX == future_x and actualY == future_y then
+  else
+    self.mode = "default"
   end
 end

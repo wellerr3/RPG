@@ -10,7 +10,7 @@ function GameScene:new(dt)
 
   -- CurrMap = "dung"
   -- Player = Player(43 * 32,75 * 32, "src/tilesets/tallCreg.png", .2)
-  Player = Player(32 * TileSize, 283 * TileSize, "src/tilesets/shortCreg.png", .2)
+  Player = Player(32 * TileSize, 283 * TileSize, "src/tilesets/shortCreg.png", .2)  
 
   Hud = Hud()
   -- ObjectSet = {}

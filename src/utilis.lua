@@ -141,16 +141,12 @@ end
 function DistFromDir(dir, checkDist, px, py)
   if dir == "right" then
     px = px + checkDist
-    py = py
   elseif dir == "left" then
     px = px - checkDist
-    py = py
   elseif dir == "up" then
     py = py - checkDist
-    px = px
   elseif dir == "down" then
     py = py + checkDist
-    px = px
   end
   return px, py
 end

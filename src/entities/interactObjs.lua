@@ -271,20 +271,19 @@ function Water:new(obj, map)
   self.dir = "up"
   self.img = {}
   self.img.up = {}
+  self.img.right = {}
   self.img.up.liquid = Anim8.newAnimation(self.grid(1, 1), 1)
-  self.img.up.frozen = Anim8.newAnimation(self.grid(1, 2), 1)
-
+  self.img.right.liquid = self.img.up.liquid:clone()
+  self.img.up.frozen = Anim8.newAnimation(self.grid("1 -" .. numFrames, 2), .0625, "pauseAtEnd")
+  self.img.right.frozen = Anim8.newAnimation(self.grid("1 -" .. numFrames, 3), .0625, "pauseAtEnd")
   self.neededTool = "ice"
   self.mode = "liquid"
   self.drawn = false
-
+  self.timer = 0
 end
 
 
 function Water:freeze(tool)
-  if not tool then
-    return
-  end
   if tool and tool.element == self.neededTool then
     Player:addText("FREEZE")
     self.drawn = true
@@ -293,20 +292,21 @@ function Water:freeze(tool)
     self.obj.type = "cross"
     -- check if one in front
     local dir = AngledDirs[Player.dir]
+    if dir == "right" or dir == "left" then
+      self.dir = "right"
+    end
     local px, py = DistFromDir(dir, 20, self.x + 1, self.y + 1)
     local items, len = world:queryRect(px,py,20,20, Filter2)
     if len > 0 then
       for i, v in ipairs(items) do
-        -- print (i,v)
-        -- for ind, val in pairs(v) do
-        --   print(ind, val)
-        -- end
         if v.name == "water" then
           v:interact(tool)
         end
       end
     end
-
+  end
+  if self.mode == "frozen" then
+    Player:skid(.017)
   else
     Player:addText("What can I do? Freeze it?")
   end

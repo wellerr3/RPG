@@ -10,7 +10,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 7,
-  nextobjectid = 796,
+  nextobjectid = 994,
   properties = {
     ["openToSky"] = false
   },
@@ -2167,6 +2167,35 @@ return {
           }
         }
       }
+    },
+    {
+      name = "chest",
+      firstgid = 135,
+      class = "",
+      tilewidth = 32,
+      tileheight = 32,
+      spacing = 0,
+      margin = 0,
+      columns = 2,
+      image = "../tilesets/chest.png",
+      imagewidth = 64,
+      imageheight = 32,
+      objectalignment = "unspecified",
+      tilerendersize = "tile",
+      fillmode = "stretch",
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 32,
+        height = 32
+      },
+      properties = {},
+      wangsets = {},
+      tilecount = 2,
+      tiles = {}
     }
   },
   layers = {
@@ -2263,7 +2292,7 @@ return {
         5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 8, 8, 8, 11, 12, 12, 12, 18, 12, 18, 12, 12, 15, 18, 16, 16, 16, 16, 12, 6, 7, 8, 8, 11, 12, 17, 17, 16, 15, 35, 36, 36, 36, 36, 36, 36, 37, 12, 17, 12, 12, 17, 10, 8, 8, 9, 4, 12, 18, 13, 2, 2, 2, 2, 2, 14, 17, 18, 13, 2, 14, 17, 15, 6, 5,
         5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 2, 2, 2, 14, 16, 12, 12, 12, 17, 18, 12, 12, 12, 12, 12, 18, 18, 18, 12, 6, 5, 5, 5, 7, 11, 12, 18, 15, 12, 12, 16, 15, 18, 16, 15, 16, 18, 12, 16, 16, 15, 10, 9, 5, 5, 5, 4, 17, 12, 18, 16, 18, 12, 16, 18, 17, 17, 16, 15, 18, 18, 18, 16, 6, 5,
         5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 15, 16, 12, 16, 18, 18, 17, 15, 18, 17, 16, 15, 16, 16, 15, 15, 12, 15, 12, 6, 5, 5, 5, 5, 4, 12, 17, 16, 18, 18, 18, 16, 17, 17, 16, 17, 17, 15, 15, 17, 12, 6, 5, 5, 5, 5, 4, 79, 12, 18, 18, 12, 12, 12, 12, 16, 15, 18, 18, 18, 12, 12, 79, 6, 5,
-        5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 15, 17, 17, 17, 12, 17, 16, 17, 16, 12, 18, 17, 15, 12, 18, 12, 12, 12, 12, 6, 5, 5, 5, 5, 4, 12, 12, 17, 17, 15, 12, 0, 12, 12, 0, 12, 12, 12, 12, 12, 12, 6, 5, 5, 5, 5, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 5,
+        5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 15, 17, 17, 17, 12, 17, 16, 17, 16, 12, 18, 17, 15, 12, 18, 12, 12, 12, 12, 6, 5, 5, 5, 5, 4, 12, 12, 17, 17, 15, 12, 18, 12, 12, 18, 12, 12, 12, 12, 12, 12, 6, 5, 5, 5, 5, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 5,
         5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 5, 5, 5, 5, 7, 8, 8, 8, 8, 8, 8, 11, 12, 12, 10, 8, 8, 8, 8, 8, 8, 9, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
         5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 12, 12, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5
       }
@@ -2361,7 +2390,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 107, 95, 95, 95, 95, 95, 95, 91, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 79, 0, 0, 79, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
@@ -2503,46 +2532,6 @@ return {
           }
         },
         {
-          id = 3,
-          name = "sconce",
-          type = "fire",
-          shape = "rectangle",
-          x = 1312,
-          y = 2304,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["class"] = "fire",
-            ["collision"] = true,
-            ["interactable"] = true,
-            ["isFire"] = false,
-            ["name"] = "sconce",
-            ["neededKey"] = "torch"
-          }
-        },
-        {
-          id = 4,
-          name = "sconce",
-          type = "fire",
-          shape = "rectangle",
-          x = 1408,
-          y = 2304,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["class"] = "fire",
-            ["collision"] = true,
-            ["interactable"] = true,
-            ["isFire"] = false,
-            ["name"] = "sconce",
-            ["neededKey"] = "torch"
-          }
-        },
-        {
           id = 5,
           name = "buttonDoor",
           type = "door",
@@ -2620,86 +2609,6 @@ return {
             ["name"] = "button",
             ["opens"] = "r1Door",
             ["unlockId"] = "r1Button"
-          }
-        },
-        {
-          id = 12,
-          name = "sconce",
-          type = "fire",
-          shape = "rectangle",
-          x = 1824,
-          y = 1888,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["class"] = "fire",
-            ["collision"] = true,
-            ["interactable"] = true,
-            ["isFire"] = false,
-            ["name"] = "sconce",
-            ["neededKey"] = "torch"
-          }
-        },
-        {
-          id = 13,
-          name = "sconce",
-          type = "fire",
-          shape = "rectangle",
-          x = 1824,
-          y = 2272,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["class"] = "fire",
-            ["collision"] = true,
-            ["interactable"] = true,
-            ["isFire"] = false,
-            ["name"] = "sconce",
-            ["neededKey"] = "torch"
-          }
-        },
-        {
-          id = 14,
-          name = "sconce",
-          type = "fire",
-          shape = "rectangle",
-          x = 2304,
-          y = 1888,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["class"] = "fire",
-            ["collision"] = true,
-            ["interactable"] = true,
-            ["isFire"] = false,
-            ["name"] = "sconce",
-            ["neededKey"] = "torch"
-          }
-        },
-        {
-          id = 15,
-          name = "sconce",
-          type = "fire",
-          shape = "rectangle",
-          x = 2304,
-          y = 2272,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["class"] = "fire",
-            ["collision"] = true,
-            ["interactable"] = true,
-            ["isFire"] = false,
-            ["name"] = "sconce",
-            ["neededKey"] = "torch"
           }
         },
         {
@@ -2789,86 +2698,6 @@ return {
           shape = "rectangle",
           x = 896,
           y = 2016,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["class"] = "fire",
-            ["collision"] = true,
-            ["interactable"] = true,
-            ["isFire"] = false,
-            ["name"] = "sconce",
-            ["neededKey"] = "torch"
-          }
-        },
-        {
-          id = 21,
-          name = "sconce",
-          type = "fire",
-          shape = "rectangle",
-          x = 1824,
-          y = 1408,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["class"] = "fire",
-            ["collision"] = true,
-            ["interactable"] = true,
-            ["isFire"] = false,
-            ["name"] = "sconce",
-            ["neededKey"] = "torch"
-          }
-        },
-        {
-          id = 22,
-          name = "sconce",
-          type = "fire",
-          shape = "rectangle",
-          x = 1824,
-          y = 1792,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["class"] = "fire",
-            ["collision"] = true,
-            ["interactable"] = true,
-            ["isFire"] = false,
-            ["name"] = "sconce",
-            ["neededKey"] = "torch"
-          }
-        },
-        {
-          id = 23,
-          name = "sconce",
-          type = "fire",
-          shape = "rectangle",
-          x = 2304,
-          y = 1408,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["class"] = "fire",
-            ["collision"] = true,
-            ["interactable"] = true,
-            ["isFire"] = false,
-            ["name"] = "sconce",
-            ["neededKey"] = "torch"
-          }
-        },
-        {
-          id = 24,
-          name = "sconce",
-          type = "fire",
-          shape = "rectangle",
-          x = 2304,
-          y = 1792,
           width = 32,
           height = 32,
           rotation = 0,
@@ -16788,6 +16617,234 @@ return {
             ["interactable"] = true,
             ["name"] = "water",
             ["neededKey"] = "iceCube"
+          }
+        },
+        {
+          id = 800,
+          name = "sconce",
+          type = "fire",
+          shape = "rectangle",
+          x = 1824,
+          y = 2304,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 79,
+          visible = true,
+          properties = {
+            ["class"] = "fire",
+            ["collidable"] = false,
+            ["collision"] = true,
+            ["interactable"] = true,
+            ["isFire"] = false,
+            ["moveObj"] = true,
+            ["name"] = "sconce",
+            ["neededKey"] = "torch"
+          }
+        },
+        {
+          id = 801,
+          name = "sconce",
+          type = "fire",
+          shape = "rectangle",
+          x = 1408,
+          y = 2336,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 79,
+          visible = true,
+          properties = {
+            ["class"] = "fire",
+            ["collision"] = true,
+            ["interactable"] = true,
+            ["isFire"] = false,
+            ["moveObj"] = true,
+            ["name"] = "sconce",
+            ["neededKey"] = "torch"
+          }
+        },
+        {
+          id = 802,
+          name = "sconce",
+          type = "fire",
+          shape = "rectangle",
+          x = 1312,
+          y = 2336,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 79,
+          visible = true,
+          properties = {
+            ["class"] = "fire",
+            ["collision"] = true,
+            ["interactable"] = true,
+            ["isFire"] = false,
+            ["moveObj"] = true,
+            ["name"] = "sconce",
+            ["neededKey"] = "torch"
+          }
+        },
+        {
+          id = 812,
+          name = "sconce",
+          type = "fire",
+          shape = "rectangle",
+          x = 2304,
+          y = 2304,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 79,
+          visible = true,
+          properties = {
+            ["class"] = "fire",
+            ["collidable"] = false,
+            ["collision"] = true,
+            ["interactable"] = true,
+            ["isFire"] = false,
+            ["moveObj"] = true,
+            ["name"] = "sconce",
+            ["neededKey"] = "torch"
+          }
+        },
+        {
+          id = 813,
+          name = "sconce",
+          type = "fire",
+          shape = "rectangle",
+          x = 2304,
+          y = 1920,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 79,
+          visible = true,
+          properties = {
+            ["class"] = "fire",
+            ["collidable"] = false,
+            ["collision"] = true,
+            ["interactable"] = true,
+            ["isFire"] = false,
+            ["moveObj"] = true,
+            ["name"] = "sconce",
+            ["neededKey"] = "torch"
+          }
+        },
+        {
+          id = 814,
+          name = "sconce",
+          type = "fire",
+          shape = "rectangle",
+          x = 1824,
+          y = 1920,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 79,
+          visible = true,
+          properties = {
+            ["class"] = "fire",
+            ["collidable"] = false,
+            ["collision"] = true,
+            ["interactable"] = true,
+            ["isFire"] = false,
+            ["moveObj"] = true,
+            ["name"] = "sconce",
+            ["neededKey"] = "torch"
+          }
+        },
+        {
+          id = 815,
+          name = "sconce",
+          type = "fire",
+          shape = "rectangle",
+          x = 2304,
+          y = 1824,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 79,
+          visible = true,
+          properties = {
+            ["class"] = "fire",
+            ["collidable"] = false,
+            ["collision"] = true,
+            ["interactable"] = true,
+            ["isFire"] = false,
+            ["moveObj"] = true,
+            ["name"] = "sconce",
+            ["neededKey"] = "torch"
+          }
+        },
+        {
+          id = 816,
+          name = "sconce",
+          type = "fire",
+          shape = "rectangle",
+          x = 1824,
+          y = 1824,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 79,
+          visible = true,
+          properties = {
+            ["class"] = "fire",
+            ["collidable"] = false,
+            ["collision"] = true,
+            ["interactable"] = true,
+            ["isFire"] = false,
+            ["moveObj"] = true,
+            ["name"] = "sconce",
+            ["neededKey"] = "torch"
+          }
+        },
+        {
+          id = 817,
+          name = "sconce",
+          type = "fire",
+          shape = "rectangle",
+          x = 1824,
+          y = 1440,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 79,
+          visible = true,
+          properties = {
+            ["class"] = "fire",
+            ["collidable"] = false,
+            ["collision"] = true,
+            ["interactable"] = true,
+            ["isFire"] = false,
+            ["moveObj"] = true,
+            ["name"] = "sconce",
+            ["neededKey"] = "torch"
+          }
+        },
+        {
+          id = 818,
+          name = "sconce",
+          type = "fire",
+          shape = "rectangle",
+          x = 2304,
+          y = 1440,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 79,
+          visible = true,
+          properties = {
+            ["class"] = "fire",
+            ["collidable"] = false,
+            ["collision"] = true,
+            ["interactable"] = true,
+            ["isFire"] = false,
+            ["moveObj"] = true,
+            ["name"] = "sconce",
+            ["neededKey"] = "torch"
           }
         }
       }

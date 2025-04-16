@@ -65,7 +65,6 @@ function Player:update(dt)
   else
     self:setDirAndVel(dt)
   end
-  
   self.projectile:update(dt)
   if self.damageTimer > 0 then
     self.damageTimer = self.damageTimer - 1
@@ -76,6 +75,9 @@ function Player:update(dt)
       self.text.textObj:clear()
       self.text.numlines = 0
     end
+  end
+  if self.equiped then
+    self.equiped:update(dt)
   end
   self.tileX, self.tileY = math.floor(self.x / TileSize), math.floor(self.y / TileSize)
 end

@@ -6,7 +6,8 @@ Shovel = Loot:extend()
 InteractObj = Loot:extend()
 Corn = Loot:extend()
 
-function Key:new(x, y, keyID)
+function Key:new(obj)
+  local x, y, keyID = obj.x, obj.y, obj.keyID
   Key.super.new(self,"Key", x, y, "src/tilesets/key.png")
   self.drawnAbove = true
   self.keyID = keyID
@@ -14,28 +15,32 @@ function Key:new(x, y, keyID)
   self.name = self.name
 end
 
-function Torch:new(x, y)
+function Torch:new(obj)
+  local x, y = obj.x, obj.y
   Torch.super.new(self, "Torch", x, y, "src/tilesets/fire.png")
   self.drawnAbove = true
   self.drawn = false
   self.element = "fire"
 end
 
-function IceCube:new(x, y)
+function IceCube:new(obj)
+  local x, y = obj.x, obj.y
   Key.super.new(self,"Ice Cube", x, y, "src/tilesets/iceCube.png")
   self.drawnAbove = true
   self.drawn = false
   self.element = "ice"
 end
 
-function Shovel:new(x, y)
+function Shovel:new(obj)
+  local x, y = obj.x, obj.y
   Key.super.new(self,"Shovel", x, y, "src/tilesets/shovel.png")
   self.drawnAbove = true
   self.drawn = false
   self.element = "rock"
 end
 
-function Chest:new(x, y)
+function Chest:new(obj)
+  local x, y = obj.x, obj.y
   if type(x) ~= "number" then
     self.map = y
     x = x.x

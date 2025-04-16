@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.1" orientation="orthogonal" renderorder="right-down" width="75" height="75" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="796">
+<map version="1.10" tiledversion="1.11.1" orientation="orthogonal" renderorder="right-down" width="75" height="75" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="994">
  <editorsettings>
   <export target="../maps/dung.lua" format="lua"/>
  </editorsettings>
@@ -867,6 +867,9 @@
    </wangset>
   </wangsets>
  </tileset>
+ <tileset firstgid="135" name="chest" tilewidth="32" tileheight="32" tilecount="2" columns="2">
+  <image source="chest.png" width="64" height="32"/>
+ </tileset>
  <layer id="1" name="Dungeon" width="75" height="75">
   <properties>
    <property name="isAbove" type="bool" value="false"/>
@@ -945,7 +948,7 @@
 5,5,5,5,5,5,5,5,5,7,8,8,8,11,12,12,12,18,12,18,12,12,15,18,16,16,16,16,12,6,7,8,8,11,12,17,17,16,15,35,36,36,36,36,36,36,37,12,17,12,12,17,10,8,8,9,4,12,18,13,2,2,2,2,2,14,17,18,13,2,14,17,15,6,5,
 5,5,5,5,5,5,5,5,5,1,2,2,2,14,16,12,12,12,17,18,12,12,12,12,12,18,18,18,12,6,5,5,5,7,11,12,18,15,12,12,16,15,18,16,15,16,18,12,16,16,15,10,9,5,5,5,4,17,12,18,16,18,12,16,18,17,17,16,15,18,18,18,16,6,5,
 5,5,5,5,5,5,5,5,5,4,15,16,12,16,18,18,17,15,18,17,16,15,16,16,15,15,12,15,12,6,5,5,5,5,4,12,17,16,18,18,18,16,17,17,16,17,17,15,15,17,12,6,5,5,5,5,4,79,12,18,18,12,12,12,12,16,15,18,18,18,12,12,79,6,5,
-5,5,5,5,5,5,5,5,5,4,15,17,17,17,12,17,16,17,16,12,18,17,15,12,18,12,12,12,12,6,5,5,5,5,4,12,12,17,17,15,12,0,12,12,0,12,12,12,12,12,12,6,5,5,5,5,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,5,
+5,5,5,5,5,5,5,5,5,4,15,17,17,17,12,17,16,17,16,12,18,17,15,12,18,12,12,12,12,6,5,5,5,5,4,12,12,17,17,15,12,18,12,12,18,12,12,12,12,12,12,6,5,5,5,5,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,5,
 5,5,5,5,5,5,5,5,5,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,5,5,5,5,7,8,8,8,8,8,8,11,12,12,10,8,8,8,8,8,8,9,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,12,12,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5
 </data>
@@ -1028,7 +1031,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,107,95,95,95,95,95,95,91,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,79,0,0,79,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
@@ -1132,26 +1135,6 @@
     <property name="tele" value="dung1Outside"/>
    </properties>
   </object>
-  <object id="3" name="sconce" type="fire" x="1312" y="2304" width="32" height="32">
-   <properties>
-    <property name="class" value="fire"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="isFire" type="bool" value="false"/>
-    <property name="name" value="sconce"/>
-    <property name="neededKey" value="torch"/>
-   </properties>
-  </object>
-  <object id="4" name="sconce" type="fire" x="1408" y="2304" width="32" height="32">
-   <properties>
-    <property name="class" value="fire"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="isFire" type="bool" value="false"/>
-    <property name="name" value="sconce"/>
-    <property name="neededKey" value="torch"/>
-   </properties>
-  </object>
   <object id="5" name="buttonDoor" type="door" x="2080" y="1856" width="32" height="32">
    <properties>
     <property name="class" value="door"/>
@@ -1190,46 +1173,6 @@
     <property name="name" value="button"/>
     <property name="opens" value="r1Door"/>
     <property name="unlockId" value="r1Button"/>
-   </properties>
-  </object>
-  <object id="12" name="sconce" type="fire" x="1824" y="1888" width="32" height="32">
-   <properties>
-    <property name="class" value="fire"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="isFire" type="bool" value="false"/>
-    <property name="name" value="sconce"/>
-    <property name="neededKey" value="torch"/>
-   </properties>
-  </object>
-  <object id="13" name="sconce" type="fire" x="1824" y="2272" width="32" height="32">
-   <properties>
-    <property name="class" value="fire"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="isFire" type="bool" value="false"/>
-    <property name="name" value="sconce"/>
-    <property name="neededKey" value="torch"/>
-   </properties>
-  </object>
-  <object id="14" name="sconce" type="fire" x="2304" y="1888" width="32" height="32">
-   <properties>
-    <property name="class" value="fire"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="isFire" type="bool" value="false"/>
-    <property name="name" value="sconce"/>
-    <property name="neededKey" value="torch"/>
-   </properties>
-  </object>
-  <object id="15" name="sconce" type="fire" x="2304" y="2272" width="32" height="32">
-   <properties>
-    <property name="class" value="fire"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="isFire" type="bool" value="false"/>
-    <property name="name" value="sconce"/>
-    <property name="neededKey" value="torch"/>
    </properties>
   </object>
   <object id="16" name="sconce" type="fire" x="2016" y="1216" width="32" height="32">
@@ -1273,46 +1216,6 @@
    </properties>
   </object>
   <object id="20" type="fire" x="896" y="2016" width="32" height="32">
-   <properties>
-    <property name="class" value="fire"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="isFire" type="bool" value="false"/>
-    <property name="name" value="sconce"/>
-    <property name="neededKey" value="torch"/>
-   </properties>
-  </object>
-  <object id="21" name="sconce" type="fire" x="1824" y="1408" width="32" height="32">
-   <properties>
-    <property name="class" value="fire"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="isFire" type="bool" value="false"/>
-    <property name="name" value="sconce"/>
-    <property name="neededKey" value="torch"/>
-   </properties>
-  </object>
-  <object id="22" name="sconce" type="fire" x="1824" y="1792" width="32" height="32">
-   <properties>
-    <property name="class" value="fire"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="isFire" type="bool" value="false"/>
-    <property name="name" value="sconce"/>
-    <property name="neededKey" value="torch"/>
-   </properties>
-  </object>
-  <object id="23" name="sconce" type="fire" x="2304" y="1408" width="32" height="32">
-   <properties>
-    <property name="class" value="fire"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="isFire" type="bool" value="false"/>
-    <property name="name" value="sconce"/>
-    <property name="neededKey" value="torch"/>
-   </properties>
-  </object>
-  <object id="24" name="sconce" type="fire" x="2304" y="1792" width="32" height="32">
    <properties>
     <property name="class" value="fire"/>
     <property name="collision" type="bool" value="true"/>
@@ -7908,6 +7811,124 @@
     <property name="interactable" type="bool" value="true"/>
     <property name="name" value="water"/>
     <property name="neededKey" value="iceCube"/>
+   </properties>
+  </object>
+  <object id="800" name="sconce" type="fire" gid="79" x="1824" y="2304" width="32" height="32">
+   <properties>
+    <property name="class" value="fire"/>
+    <property name="collidable" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="isFire" type="bool" value="false"/>
+    <property name="moveObj" type="bool" value="true"/>
+    <property name="name" value="sconce"/>
+    <property name="neededKey" value="torch"/>
+   </properties>
+  </object>
+  <object id="801" name="sconce" type="fire" gid="79" x="1408" y="2336" width="32" height="32">
+   <properties>
+    <property name="class" value="fire"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="isFire" type="bool" value="false"/>
+    <property name="moveObj" type="bool" value="true"/>
+    <property name="name" value="sconce"/>
+    <property name="neededKey" value="torch"/>
+   </properties>
+  </object>
+  <object id="802" name="sconce" type="fire" gid="79" x="1312" y="2336" width="32" height="32">
+   <properties>
+    <property name="class" value="fire"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="isFire" type="bool" value="false"/>
+    <property name="moveObj" type="bool" value="true"/>
+    <property name="name" value="sconce"/>
+    <property name="neededKey" value="torch"/>
+   </properties>
+  </object>
+  <object id="812" name="sconce" type="fire" gid="79" x="2304" y="2304" width="32" height="32">
+   <properties>
+    <property name="class" value="fire"/>
+    <property name="collidable" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="isFire" type="bool" value="false"/>
+    <property name="moveObj" type="bool" value="true"/>
+    <property name="name" value="sconce"/>
+    <property name="neededKey" value="torch"/>
+   </properties>
+  </object>
+  <object id="813" name="sconce" type="fire" gid="79" x="2304" y="1920" width="32" height="32">
+   <properties>
+    <property name="class" value="fire"/>
+    <property name="collidable" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="isFire" type="bool" value="false"/>
+    <property name="moveObj" type="bool" value="true"/>
+    <property name="name" value="sconce"/>
+    <property name="neededKey" value="torch"/>
+   </properties>
+  </object>
+  <object id="814" name="sconce" type="fire" gid="79" x="1824" y="1920" width="32" height="32">
+   <properties>
+    <property name="class" value="fire"/>
+    <property name="collidable" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="isFire" type="bool" value="false"/>
+    <property name="moveObj" type="bool" value="true"/>
+    <property name="name" value="sconce"/>
+    <property name="neededKey" value="torch"/>
+   </properties>
+  </object>
+  <object id="815" name="sconce" type="fire" gid="79" x="2304" y="1824" width="32" height="32">
+   <properties>
+    <property name="class" value="fire"/>
+    <property name="collidable" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="isFire" type="bool" value="false"/>
+    <property name="moveObj" type="bool" value="true"/>
+    <property name="name" value="sconce"/>
+    <property name="neededKey" value="torch"/>
+   </properties>
+  </object>
+  <object id="816" name="sconce" type="fire" gid="79" x="1824" y="1824" width="32" height="32">
+   <properties>
+    <property name="class" value="fire"/>
+    <property name="collidable" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="isFire" type="bool" value="false"/>
+    <property name="moveObj" type="bool" value="true"/>
+    <property name="name" value="sconce"/>
+    <property name="neededKey" value="torch"/>
+   </properties>
+  </object>
+  <object id="817" name="sconce" type="fire" gid="79" x="1824" y="1440" width="32" height="32">
+   <properties>
+    <property name="class" value="fire"/>
+    <property name="collidable" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="isFire" type="bool" value="false"/>
+    <property name="moveObj" type="bool" value="true"/>
+    <property name="name" value="sconce"/>
+    <property name="neededKey" value="torch"/>
+   </properties>
+  </object>
+  <object id="818" name="sconce" type="fire" gid="79" x="2304" y="1440" width="32" height="32">
+   <properties>
+    <property name="class" value="fire"/>
+    <property name="collidable" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="isFire" type="bool" value="false"/>
+    <property name="moveObj" type="bool" value="true"/>
+    <property name="name" value="sconce"/>
+    <property name="neededKey" value="torch"/>
    </properties>
   </object>
  </objectgroup>

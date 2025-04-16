@@ -77,7 +77,7 @@ function Bullet:move(dt)
     if item == other then
       return false
     end
-    if (other.properties and other.properties.type == "cross") or (other.type == "cross") or (other.name == "player") then
+    if (other.properties and other.properties.type == "cross") or (other.type == "cross") or (other.name == "player")  or (other.type == "noWalk")then
       -- return "cross"
       return false
     else

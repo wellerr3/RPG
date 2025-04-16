@@ -280,6 +280,7 @@ function Water:new(obj, map)
   self.mode = "liquid"
   self.drawn = false
   self.timer = 0
+  self.type = "noWalk"
 end
 
 

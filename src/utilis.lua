@@ -99,7 +99,7 @@ end
 function Filter (item, other)
   if (other.properties and other.properties.type == "cross") or (other.type == "cross") then
     return "cross"
-  elseif (other.properties and other.properties.type == "touch") or (other.type == "touch") then
+  elseif (other.properties and other.properties.type == "touch") or (other.type == "touch") or (other.type == "noWalk") then
     return "touch"
   else
     return "slide"

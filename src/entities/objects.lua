@@ -18,24 +18,24 @@ ItemTypes = {
 
 ObjList = {}
 ObjList.worldMap = {
-  {name = "chest", x = 27, y = 279, extra = {name = "shovel"}, openToSky = true, hasCollison = true}
-  ,{name = "chest", x = 30, y = 266, extra = {name = "iceCube"}, openToSky = true, hasCollison = true}
-  -- ,{name = "chest", x = 27, y = 266, extra = "torch", openToSky = true, hasCollison = true}
+  {name = "chest", x = 27, y = 279, extra = {name = "shovel"}, openToSky = true, collison = true}
+  ,{name = "chest", x = 30, y = 266, extra = {name = "torch"}, openToSky = true, collison = true}
+  -- ,{name = "chest", x = 27, y = 266, extra = "torch", openToSky = true, collison = true}
 }
 ObjList.dung = {
-  {name = "chest", x = 63, y = 66, extra = {name = "key", keyID = "B"}, openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 65, y = 48, extra = {name = "key", keyID = "B"},openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 46, y = 32, extra = {name = "torch"}, openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 65, y = 16, extra = {name = "iceCube"}, openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 3, y = 26, extra = {name = "key", keyID = "B"}, openToSky = false, hasCollison = true}
-  ,{name = "chest", x = 48, y = 68, extra = {name = "iceCube"}, openToSky = false, hasCollison = true}
+  {name = "chest", x = 63, y = 66, extra = {name = "key", keyID = "B"}, openToSky = false, collison = true}
+  ,{name = "chest", x = 65, y = 48, extra = {name = "key", keyID = "B"},openToSky = false, collison = true}
+  ,{name = "chest", x = 46, y = 32, extra = {name = "torch"}, openToSky = false, collison = true}
+  ,{name = "chest", x = 65, y = 16, extra = {name = "iceCube"}, openToSky = false, collison = true}
+  ,{name = "chest", x = 3, y = 26, extra = {name = "key", keyID = "B"}, openToSky = false, collison = true}
+  ,{name = "chest", x = 48, y = 68, extra = {name = "iceCube"}, openToSky = false, collison = true}
 }
 ObjList.farm = {
-  -- {name = "chest", x = 5, y = 30, extra = "key", openToSky = false, hasCollison = true}
-  -- ,{name = "chest", x = 20, y = 30, extra = "key", openToSky = false, hasCollison = true}
-  -- ,{name = "chest", x = 21, y = 32, extra = "torch", openToSky = false, hasCollison = true}
-  -- ,{name = "chest", x = 2, y = 20, extra = "iceCube", openToSky = false, hasCollison = true}
-  -- ,{name = "chest", x = 0, y = 33, extra = "key", openToSky = false, hasCollison = true}
+  -- {name = "chest", x = 5, y = 30, extra = "key", openToSky = false, collison = true}
+  -- ,{name = "chest", x = 20, y = 30, extra = "key", openToSky = false, collison = true}
+  -- ,{name = "chest", x = 21, y = 32, extra = "torch", openToSky = false, collison = true}
+  -- ,{name = "chest", x = 2, y = 20, extra = "iceCube", openToSky = false, collison = true}
+  -- ,{name = "chest", x = 0, y = 33, extra = "key", openToSky = false, collison = true}
 }
 CurrId = 1
 
@@ -122,7 +122,7 @@ function Objects:createItem(item, map)
   item.y = item.y * TileSize
   local newItem = {}
   if ItemTypes[item.name] then
-    newItem = ItemTypes[item.name](item.x, item.y, item.keyID)
+    newItem = ItemTypes[item.name]({x = item.x, y = item.y, keyID = item.keyID})
   else
     newItem = ItemTypes["other"]("other", item.x, item.y, "src/tilesets/non.png")
   end
@@ -133,7 +133,7 @@ function Objects:createItem(item, map)
     newItem.item = self:createItem({name = item.extra.name, x = tileX, y = tileY, keyID = item.extra.keyID})
     newItem.item.shown = false
   end
-  if item.hasCollison then
+  if item.collison then
     newItem.collidable = true
   else
     newItem.collidable = false
@@ -153,6 +153,9 @@ function Objects:createMapObjects(map, mapObjects)
     item.map = map
     if prop.interactable == true then
       local obj
+      if prop.moveObj then
+        item.y = item.y + 32
+      end
       if ItemTypes[prop.name] then
         obj = ItemTypes[prop.name](item, map)
       elseif prop.tele then
@@ -161,7 +164,6 @@ function Objects:createMapObjects(map, mapObjects)
       else
         obj = MapObject(item, map)
       end
-      
       table.insert(self.interactable, obj)
       table.insert(self.allObjs, obj)
     end
@@ -177,7 +179,7 @@ function Objects:createDuplicateObjs(item, x1,y1,x2,y2,loc)
     for j = y1, y2, 1 do
       local obj = {x = i*TileSize, y = j*TileSize}
       if ItemTypes[item] then
-        newItem = ItemTypes[item](obj)
+        newItem = ItemTypes[item](obj, self.mapName)
       else
         newItem = ItemTypes["other"]("other", obj, "src/tilesets/non.png")
       end
@@ -195,7 +197,6 @@ function Objects:addColliders()
       CreateCollider(item)
     end
   end
-  
 end
 
 function Objects:removeColliders()

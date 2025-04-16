@@ -29,7 +29,9 @@ function Loot:new(type, x, y, imagePath)
 end
 
 function Loot:update(dt)
-  self.img[self.mode]:update(dt)
+  print (self.mode)
+  self.img.use:update(dt)
+  -- self.img.default:update(dt)
 end
 
 function Loot:draw(x, y, scale, rotation, mode)
@@ -38,6 +40,7 @@ function Loot:draw(x, y, scale, rotation, mode)
   rotation = rotation or 0
   scale = scale or 1
   mode = mode or self.mode
+  self.mode = mode
   self.img[mode]:draw(self.spriteSheet, x,y, rotation, scale, scale)
   if mode == "inventory" then
     

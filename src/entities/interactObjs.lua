@@ -212,14 +212,16 @@ end
 
 function BossDoor:new(obj, map)
   LockedDoor.super.new(self, obj, map)
-  self.neededTool = obj.properties.neededKey
+  -- self.neededTool = obj.properties.neededKey
+  self.neededTool = nil
   self.grid2 = Anim8.newGrid(self.width, self.height, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0, 0,0)
+  local numFrames = self.spriteSheet:getWidth() / self.width
   for i = 1, 2, 1 do
     self.img[self.dirs[i]] = {}
     self.img[self.dirs[i]]["closed"] = Anim8.newAnimation(self.grid2(i,3), 1)
   end
   for i = 1, 2, 1 do
-    self.img[self.dirs[i]]["open"] = Anim8.newAnimation(self.grid2(i + 2, 3), 1)
+    self.img[self.dirs[i]]["open"] = Anim8.newAnimation(self.grid2('1-' .. numFrames, 4), .125, "pauseAtEnd")
   end
 end
 

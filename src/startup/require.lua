@@ -9,6 +9,8 @@ function RequireAll()
   bump_debug = require "assets/bump_debug"
   flux = require "assets/flux"
   AllParticleData = require("src/entities/projectiles/particle")
+  lovecc = require 'assets/lovecc'
+  lovecc.addPalette('allcolors',true)
 
   require "assets/TEsound"
 

@@ -2,7 +2,7 @@ PauseMenu = Object:extend()
 MenuSquare = Object:extend()
 
 function PauseMenu:new()
-  self.name = "pauseMenu"
+  self.name = "pause menu"
   local offset = 100
   self.width =  love.graphics.getWidth() - (offset * 2)
   self.height = love.graphics.getHeight() - (offset * 2)
@@ -40,40 +40,15 @@ end
 
 function PauseMenu:draw()
   love.graphics.push("all")
-    love.graphics.setColor(.5,0,.25, 1)
+    love.graphics.setColor(lovecc.getColor('cornflowerblue'))
     love.graphics.rectangle( "fill", self.x, self.y, self.width, self.height)
     love.graphics.setColor(1,1,1,1)
     love.graphics.printf( self.name, self.font, self.textBoxX, self.y + 50, 300, "center")
     for i,v in pairs(self.clickBoxes) do
       v:draw()
-    end  
-  love.graphics.pop()
-
-end
-
-function MenuSquare:new(name, x, y, width, height, font)
-  self.name = name
-  self.width = width or 200
-  self.height = height or 25
-  self.selected = false
-  self.font = font
-  self.textBoxX = x
-  self.textBoxY = y
-  self.x = x + 50
-  self.y = y - 30
-end
-
-function MenuSquare:draw()
-  love.graphics.push("all")
-    if self.selected then
-      love.graphics.setColor(1,0,.25,.5)
-      love.graphics.rectangle( "fill", self.x, self.y, self.width, self.height)
-    else
-      love.graphics.rectangle( "fill", self.x, self.y, self.width, self.height)
     end
-    love.graphics.setColor(1,.25,.25,1)
-    love.graphics.printf( self.name, self.font, self.textBoxX, self.textBoxY, 300, "center")
   love.graphics.pop()
+
 end
 
 function PauseMenu:keypressed(key)
@@ -106,7 +81,6 @@ function PauseMenu:enter(mode)
   end
 end
 
-
 function PauseMenu:mousepressed(x, y, button, istouch)
   if button == 1 then
     self:checkBoxes(x,y, true)
@@ -126,4 +100,29 @@ function PauseMenu:checkBoxes(x,y, click)
       v.selected = false
     end
   end
+end
+
+function MenuSquare:new(name, x, y, width, height, font)
+  self.name = name
+  self.width = width or 200
+  self.height = height or 25
+  self.selected = false
+  self.font = font
+  self.textBoxX = x
+  self.textBoxY = y
+  self.x = x + 50
+  self.y = y - 30
+end
+
+function MenuSquare:draw()
+  love.graphics.push("all")
+    if self.selected then
+      love.graphics.setColor(lovecc.getColor('darkSlateBlue'))
+      love.graphics.rectangle( "fill", self.x, self.y, self.width, self.height)
+    else
+      love.graphics.rectangle( "fill", self.x, self.y, self.width, self.height)
+    end
+    love.graphics.setColor(lovecc.getColor('black'))
+    love.graphics.printf( self.name, self.font, self.textBoxX, self.textBoxY, 300, "center")
+  love.graphics.pop()
 end

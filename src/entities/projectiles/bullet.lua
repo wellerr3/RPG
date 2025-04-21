@@ -46,10 +46,8 @@ function Bullet:new(x, y, goalX, goalY)
   self.timer = 300
   self.hit = false
   -- self.part = self:makePart(self.clickLoc.angle)
-  self:makePart(self.clickLoc.angle)
-  for _, particleData in ipairs(self.particles) do
-		particleData.system:setDirection(self.clickLoc.angle)
-	end
+  self.particle = self:makePart(self.clickLoc.angle)
+	self.particle.system:setDirection(self.clickLoc.angle)
   initializeOrResetParticles()
   
 end
@@ -64,9 +62,7 @@ function Bullet:draw()
   -- self.img[self.mode]:draw(self.spriteSheet, self.x,self.y, 0, self.scale, self.scale)
   -- love.graphics.draw( drawable, x, y, r, sx, sy, ox, oy, kx, ky )
   -- self.img[self.mode]:draw(self.spriteSheet, self.x,self.y, self.clickLoc.angle + math.pi/2, self.scale, self.scale, self.offsetX, self.offsetY)
-	for _, particleData in ipairs(self.particles) do
-		love.graphics.draw(particleData.system, self.x - 4, self.y - 4)
-	end
+	love.graphics.draw(self.particle.system, self.x - 4, self.y - 4)
 
   self.img[self.mode]:draw(self.spriteSheet, self.x - 4,self.y - 4, nil, self.scale, self.scale)
   
@@ -78,7 +74,6 @@ function Bullet:move(dt)
       return false
     end
     if (other.properties and other.properties.type == "cross") or (other.type == "cross") or (other.name == "player")  or (other.type == "noWalk")then
-      -- return "cross"
       return false
     else
       return "slide"
@@ -117,36 +112,7 @@ function Bullet:findGoal(goalX, goalY)
 end
 
 function Bullet:makePart(ang)
-  -- local LG        = love.graphics
-  -- self.particles = {x=8, y=8}
-  
-  -- local image1 = LG.newImage("src/tilesets/part.png")
-  -- image1:setFilter("linear", "linear")
-  
-  -- local ps = LG.newParticleSystem(image1, 968)
-  -- ps:setColors(0.52216339111328, 0.04345703125, 0.6953125, 0.640625, 0.05078125, 0.64404296875, 1, 0.72265625, 0.14030241966248, 0.014572143554688, 0.74609375, 0.73046875, 0.077985763549805, 0.072509765625, 0.7734375, 0.7578125)
-  -- ps:setDirection(0)
-  -- ps:setEmissionArea("none", 0, 0, 0, false)
-  -- ps:setEmitterLifetime(-1)
-  -- ps:setInsertMode("top")
-  -- ps:setLinearAcceleration(0, 0, 0, 0)
-  -- ps:setLinearDamping(0, 0)
-  -- ps:setOffset(0, 0)
-  -- ps:setParticleLifetime(1.0, 1.4)
-  -- ps:setRadialAcceleration(0, 0)
-  -- ps:setRelativeRotation(true)
-  -- ps:setRotation(0, 0)
-  -- ps:setSizes(0.34369108080864)
-  -- ps:setSizeVariation(.9)
-  -- ps:setSpeed(-200, 0)
-  -- ps:setSpin(2.0931723117828, 0.00080475676804781)
-  -- ps:setSpinVariation(0.72843450307846)
-  -- ps:setSpread(0)
-  -- ps:setTangentialAcceleration(125.45534515381, 0)
-  -- table.insert(self.particles, {system=ps, kickStartSteps=8, kickStartDt=0.1753271818161, emitAtStart=15, blendMode="add", shader=nil, texturePath="star.png", texturePreset="star", shaderPath="", shaderFilename="", x=0, y=0})
-  -- table.insert(AllParticleData, {system=ps, kickStartSteps=8, kickStartDt=0.1753271818161, emitAtStart=15, blendMode="add", shader=nil, texturePath="star.png", texturePreset="star", shaderPath="", shaderFilename="", x=0, y=0})
 
-  -- return self.particles
   self.particles = {x=8, y=8}
   local image1 = love.graphics.newImage("src/tilesets/dotTest.png")
   image1:setFilter("linear", "linear")
@@ -155,7 +121,7 @@ function Bullet:makePart(ang)
   ps:setColors(0.52216339111328, 0.04345703125, 0.6953125, 0.640625, 0.05078125, 0.64404296875, 1, 0.72265625, 0.14030241966248, 0.014572143554688, 0.74609375, 0.73046875, 0.077985763549805, 0.072509765625, 0.7734375, 0.7578125)
   ps:setDirection(0)
   ps:setEmissionArea("none", 0, 0, 0, false)
-  ps:setEmissionRate(100)
+  ps:setEmissionRate(50)
   ps:setEmitterLifetime(-1)
   ps:setInsertMode("top")
   ps:setLinearAcceleration(0, 0, 0, 0)
@@ -179,8 +145,9 @@ function Bullet:makePart(ang)
   -- At draw time:
   -- love.graphics.setBlendMode("add")
   -- love.graphics.draw(ps, -11.844038584875+0, 14.407300666676+0)
-  table.insert(self.particles, {system=ps, kickStartSteps=8, kickStartDt=0.1753271818161, emitAtStart=0, blendMode="add", shader=nil, texturePath="src/tilesets/dotTest.png", texturePreset="dot", shaderPath="", shaderFilename="", x=0, y=0})
-  table.insert(AllParticleData, {system=ps, kickStartSteps=8, kickStartDt=0.1753271818161, emitAtStart=0, blendMode="add", shader=nil, texturePath="src/tilesets/dotTest.png", texturePreset="dot", shaderPath="", shaderFilename="", x=0, y=0})
-  return self.particles
+  local particle = {system=ps, kickStartSteps=3, kickStartDt=0.1753271818161, emitAtStart=50, blendMode="add", shader=nil, texturePath="src/tilesets/dotTest.png", texturePreset="dot", shaderPath="", shaderFilename="", x=0, y=0}
+  table.insert(self.particles, particle)
+  table.insert(AllParticleData, particle)
+  return particle
 
 end

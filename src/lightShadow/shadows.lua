@@ -4,7 +4,8 @@ Shadows = Object:extend()
 
 function Shadows:new(source)
 	self.entities = {}
-	table.insert(self.entities, Player)
+	self.keyMap = {}
+	-- table.insert(self.entities, Player)
 	self.source = source or "sky"
 
 end
@@ -75,15 +76,26 @@ function Shadows:drawShadow(e)
   -- love.graphics.draw(e.img.default[e.dir], e.x, e.y)
 end
 
-function Shadows:addShadow(e, map)
+function Shadows:addShadow(e, map, id)
 	if not self.entities[map] then
 		self.entities[map] = {}
+		self.keyMap[map] = {}
 	end
+	id = id or 'noID'
 	table.insert(self.entities[map], e)
+	self.keyMap[map][id] = #self.entities[map]
 end
 
 function Shadows:addShadowsToGroup(group, map)
 	for i, e in ipairs(group) do
-		self:addShadow(e, map)
+		self:addShadow(e, map, e.id)
+	end
+end
+
+function Shadows:checkExists(map, id)
+	if self.keyMap[map] and self.keyMap[map] then
+		return self.keyMap[map]
+	else
+		return false
 	end
 end

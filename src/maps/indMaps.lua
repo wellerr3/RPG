@@ -13,6 +13,7 @@ function IndMap:new(map, key)
   self.above, self.below, self.shadows = self:findOrder()
   self.objects = Objects(key, map.layers.Interactions.objects)
   self.npcs = CharacterBuilder(map, key)
+  self.openToSky = map.properties.openToSky
 end
 
 function IndMap:update(dt)

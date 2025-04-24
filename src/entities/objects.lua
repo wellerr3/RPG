@@ -115,7 +115,7 @@ function Objects:createObjects(map)
   end
 end
 
-function Objects:createItem(item, map)
+function Objects:createItem(item, map, ind)
   local tileX = item.x
   local tileY = item.y
   item.x = item.x * TileSize
@@ -127,7 +127,7 @@ function Objects:createItem(item, map)
     newItem = ItemTypes["other"]("other", item.x, item.y, "src/tilesets/non.png")
   end
   if item.openToSky then
-    SkyShadow:addShadow(newItem, map)
+    SkyShadow:addShadow(newItem, map, item.id)
   end
   if item.extra then
     newItem.item = self:createItem({name = item.extra.name, x = tileX, y = tileY, keyID = item.extra.keyID})
@@ -154,7 +154,7 @@ function Objects:createMapObjects(map, mapObjects)
     if prop.interactable == true then
       local obj
       if prop.moveObj then
-        item.y = item.y + 32
+        item.y = item.y - 32
       end
       if ItemTypes[prop.name] then
         obj = ItemTypes[prop.name](item, map)

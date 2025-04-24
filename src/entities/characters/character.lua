@@ -47,7 +47,10 @@ function Character:new(name, x, y, imagePath, animSpeed, isHostle, height)
 end
 
 function Character:update(dt)
-  self.img.default[self.dir]:update(dt)
+  if not self.img[self.mode] then
+    self.mode = "default"
+  end
+  self.img[self.mode][self.dir]:update(dt)
   self:setMoveMode(dt)
   if self.damageTimer > 0 then
     self.damageTimer = self.damageTimer - 1
@@ -74,7 +77,7 @@ function Character:draw()
   end
 end
 
-function Character:setMoveMode(dt)
+function Character:setMoveMode(dt, useFilter)
   local ex = self.x
   local ey = self.y
   local change = false
@@ -98,11 +101,15 @@ function Character:setMoveMode(dt)
   else
     px, py = self:wander(dt)
   end
+  local filter = useFilter or Filter
   -- local goalX, goalY, cols, len = world:check(self, px , py)
-  local actualX, actualY, cols, len = world:move(self, px, py, Filter)
+  local actualX, actualY, cols, len = world:move(self, px, py, filter)
   if actualX ~= self.x or actualY ~= self.y then
     self.isMoving = true
     self.dir = GetDir(self.x, self.y, actualX, actualY)
+    if not self.img[self.mode][self.dir] then
+      self.dir = "up"
+    end
   end
   self.x, self.y = actualX, actualY
   if len == 0 then
@@ -111,6 +118,8 @@ function Character:setMoveMode(dt)
       if cols[i].other.name == "player" then
         -- attack
         Player:hurt(self.attackDamage)
+      elseif cols[i].other.type == "enemy" then
+        self.target.has = false
       end
     end
   end

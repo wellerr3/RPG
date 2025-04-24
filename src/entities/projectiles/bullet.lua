@@ -69,19 +69,10 @@ function Bullet:draw()
 end
 
 function Bullet:move(dt)
-  local function bulletFilter (item, other)
-    if item == other then
-      return false
-    end
-    if (other.properties and other.properties.type == "cross") or (other.type == "cross") or (other.name == "player")  or (other.type == "noWalk")then
-      return false
-    else
-      return "slide"
-    end
-  end
+
   if not self.hit then
     local px, py = CalculateXYFromDistAngle(self.x, self.y, self.speed * dt, self.clickLoc.angle)
-    local actualX, actualY, cols, len = world:move(self, px, py, bulletFilter)
+    local actualX, actualY, cols, len = world:move(self, px, py, WaterFilter)
     self.x, self.y = actualX, actualY
     if len > 0 then
       for i, v in ipairs(cols) do

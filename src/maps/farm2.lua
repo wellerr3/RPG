@@ -717,7 +717,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -733,7 +734,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -749,7 +751,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -765,7 +768,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -781,7 +785,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -797,7 +802,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -813,7 +819,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -829,7 +836,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -845,7 +853,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -861,7 +870,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -877,7 +887,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -893,7 +904,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -909,7 +921,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -925,7 +938,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -941,7 +955,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -957,7 +972,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -973,7 +989,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -989,7 +1006,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -1005,7 +1023,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -1021,7 +1040,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -1037,7 +1057,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -1053,7 +1074,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -1069,7 +1091,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -1085,7 +1108,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -1101,7 +1125,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -1117,7 +1142,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -1133,7 +1159,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         },
         {
@@ -1149,7 +1176,8 @@ return {
           visible = true,
           properties = {
             ["class"] = "enemy",
-            ["name"] = "rat"
+            ["name"] = "rat",
+            ["openToSky"] = true
           }
         }
       }

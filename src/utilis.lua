@@ -49,6 +49,38 @@ function GetDir(x, y, newX, newY)
   return dir
 end
 
+function GetDirDia(x, y, newX, newY)
+  local angle = CalculateAngle({x = x, y = y}, {x = newX, y = newY})
+  local dir = 'still'
+  -- angle = angle / math.pi
+  print (angle)
+  angle = angle / math.pi
+  print (angle)
+  if angle < 0.3926991 then
+    dir = "right"
+  elseif angle < 1.178 then
+    dir = "upRight"
+  elseif angle < 1.96 then
+    dir = "up"
+  elseif angle < 2.75 then
+    dir = "upLeft"
+  elseif angle < 3.5 then
+    dir = "left"
+  elseif angle < 4.3196899 then
+    dir = "downLeft"
+  elseif angle < 5.1050881 then
+    dir = "down"
+  elseif angle < 5.8904862 then
+    dir = "downRight"
+  else
+    dir = "right"
+
+  end
+
+
+  return dir
+end
+
 function GetRotation(dir, startDir, addOffset)
   startDir = startDir or "right"
   local offset = 32
@@ -130,6 +162,17 @@ end
 
 function NoFilter (other)
   return false
+end
+
+function WaterFilter (item, other)
+  if item == other then
+    return false
+  end
+  if (other.properties and other.properties.type == "cross") or (other.type == "cross") or (other.name == "player")  or (other.type == "noWalk")then
+    return false
+  else
+    return "slide"
+  end
 end
 
 

@@ -2,7 +2,7 @@ return {
   version = "1.10",
   luaversion = "5.1",
   tiledversion = "1.11.1",
-  class = "",
+  class = "dungeon",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 75,
@@ -10,7 +10,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 7,
-  nextobjectid = 994,
+  nextobjectid = 1006,
   properties = {
     ["openToSky"] = false
   },
@@ -2253,7 +2253,7 @@ return {
         5, 5, 5, 7, 11, 18, 16, 16, 17, 10, 9, 5, 5, 5, 4, 12, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 12, 12, 10, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 11, 12, 18, 6, 4, 46, 47, 47, 47, 47, 47, 47, 48, 12, 49, 50, 12, 16, 49, 50, 18, 6, 5,
         5, 5, 5, 5, 7, 11, 12, 12, 10, 9, 5, 5, 5, 5, 4, 12, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 16, 12, 6, 5, 5, 5, 1, 2, 2, 2, 3, 5, 5, 5, 4, 18, 12, 6, 4, 51, 53, 53, 53, 53, 53, 53, 52, 16, 51, 52, 16, 16, 51, 52, 17, 6, 5,
         5, 5, 5, 5, 5, 7, 8, 8, 9, 5, 5, 5, 5, 5, 7, 58, 9, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 12, 12, 6, 5, 5, 5, 4, 15, 18, 17, 6, 5, 5, 5, 4, 12, 12, 63, 59, 12, 16, 18, 15, 16, 15, 15, 17, 17, 17, 16, 12, 18, 17, 12, 12, 6, 5,
-        5, 5, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 60, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 5, 5, 5, 5, 5, 5, 4, 12, 12, 6, 5, 5, 5, 4, 12, 12, 12, 6, 5, 5, 5, 4, 12, 12, 6, 4, 46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 48, 16, 46, 48, 6, 5,
+        5, 5, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 60, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 5, 5, 5, 5, 5, 5, 4, 12, 12, 6, 5, 5, 5, 4, 12, 12, 12, 6, 5, 5, 5, 4, 12, 12, 6, 4, 46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 48, 16, 46, 48, 6, 5,
         5, 5, 4, 28, 29, 29, 29, 29, 29, 29, 30, 12, 17, 16, 17, 12, 12, 17, 16, 12, 28, 29, 29, 29, 29, 29, 29, 29, 29, 30, 6, 5, 5, 5, 5, 5, 5, 4, 16, 12, 6, 5, 1, 2, 14, 16, 12, 15, 13, 2, 3, 5, 4, 15, 18, 6, 4, 51, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 52, 17, 49, 50, 6, 5,
         5, 5, 4, 31, 32, 32, 32, 32, 32, 32, 33, 10, 8, 8, 8, 8, 8, 8, 8, 11, 31, 32, 32, 32, 32, 32, 32, 32, 32, 33, 6, 5, 5, 5, 5, 5, 5, 4, 12, 12, 6, 1, 14, 12, 12, 15, 12, 12, 12, 16, 13, 3, 4, 12, 18, 6, 4, 18, 16, 16, 15, 18, 12, 18, 15, 16, 15, 16, 12, 12, 18, 49, 50, 6, 5,
         5, 5, 4, 31, 32, 32, 32, 32, 32, 32, 33, 13, 2, 2, 2, 2, 2, 2, 2, 14, 35, 36, 36, 43, 32, 42, 36, 36, 43, 33, 6, 5, 5, 5, 5, 5, 5, 4, 12, 12, 6, 4, 12, 15, 17, 10, 8, 11, 12, 15, 12, 6, 4, 18, 15, 6, 4, 12, 46, 48, 16, 46, 47, 47, 47, 47, 47, 47, 47, 48, 17, 49, 50, 6, 5,
@@ -17234,6 +17234,210 @@ return {
           properties = {
             ["class"] = "enemy",
             ["name"] = "rat",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 994,
+          name = "seaMonster",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 832,
+          y = 1376,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "seaMonster",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 995,
+          name = "seaMonster",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 160,
+          y = 1152,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "seaMonster",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 996,
+          name = "seaMonster",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 128,
+          y = 1472,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "seaMonster",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 997,
+          name = "seaMonster",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 736,
+          y = 1536,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "seaMonster",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 998,
+          name = "seaMonster",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 832,
+          y = 1600,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "seaMonster",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 999,
+          name = "seaMonster",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 832,
+          y = 1472,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "seaMonster",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 1000,
+          name = "seaMonster",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 448,
+          y = 1280,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "seaMonster",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 1001,
+          name = "seaMonster",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 800,
+          y = 1280,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "seaMonster",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 1002,
+          name = "seaMonster",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 768,
+          y = 1120,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "seaMonster",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 1003,
+          name = "seaMonster",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 128,
+          y = 832,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "seaMonster",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 1004,
+          name = "seaMonster",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 192,
+          y = 704,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "seaMonster",
+            ["openToSky"] = false
+          }
+        },
+        {
+          id = 1005,
+          name = "seaMonster",
+          type = "Enemy",
+          shape = "rectangle",
+          x = 192,
+          y = 992,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["class"] = "enemy",
+            ["name"] = "seaMonster",
             ["openToSky"] = false
           }
         }

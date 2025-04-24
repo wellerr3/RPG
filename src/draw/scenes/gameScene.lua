@@ -7,7 +7,7 @@ function GameScene:new(dt)
   Cam = Camera()
   ScreenWidth = love.graphics.getWidth() / ScaleFactor
   ScreenHeight = love.graphics.getHeight() / ScaleFactor
-
+  SkyShadow = Shadows()
   -- CurrMap = "dung"
   -- Player = Player(43 * 32,75 * 32, "src/tilesets/tallCreg.png", .2)
   Player = Player(32 * TileSize, 283 * TileSize, "src/tilesets/shortCreg.png", .2)  
@@ -15,7 +15,6 @@ function GameScene:new(dt)
   Hud = Hud()
   -- ObjectSet = {}
   -- NPCSet = {}
-  SkyShadow = Shadows()
   -- ObjectSet = Objects()
   CreateMaps()
   -- NPCs = CharacterBuilder()

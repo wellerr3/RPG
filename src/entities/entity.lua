@@ -25,4 +25,6 @@ function Entity:new(x, y, imagePath, width, height)
   self.mode = "default"
   self.scale = 1
   self.type = nil
+  self.target = {has = false}
+  self.id = CreateID()
 end

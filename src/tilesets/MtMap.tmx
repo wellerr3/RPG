@@ -3,6 +3,9 @@
  <editorsettings>
   <export target="../maps/MtMap.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="openToSky" type="bool" value="true"/>
+ </properties>
  <tileset firstgid="1" name="background" tilewidth="32" tileheight="32" tilecount="36" columns="6">
   <image source="background.png" width="192" height="192"/>
  </tileset>

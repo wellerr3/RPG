@@ -4,24 +4,25 @@ NumNPC = 1
 EnemyTypes = {
   snake = Snake,
   rat = Rat,
+  seaMonster = SeaMonster,
 }
 
 NPCsKey = {
   farm = {
     {
-      {name = "snake", x = 800, y = 9000}
-      ,{name = "snake", x = 800, y = 9200}
-      ,{name = "rat", x = 1000, y = 9200}
-      ,{name = "rat", x = 1100, y = 9200},
+      {name = "snake", x = 800, y = 9000, openToSky = true}
+      ,{name = "snake", x = 800, y = 9200, openToSky = true}
+      ,{name = "rat", x = 1000, y = 9200, openToSky = true}
+      ,{name = "rat", x = 1100, y = 9200, openToSky = true},
     },{}},
   worldMap = {
     {
-      {name = "snake", x = 800, y = 9000}
-      ,{name = "snake", x = 800, y = 9200}
-      ,{name = "rat", x = 1000, y = 9200}
-      ,{name = "rat", x = 1100, y = 9200}
+      {name = "seaMonster", x = 800, y = 9000, openToSky = true}
+      ,{name = "seaMonster", x = 800, y = 9200, openToSky = true}
+      ,{name = "seaMonster", x = 1000, y = 9200, openToSky = true}
+      ,{name = "seaMonster", x = 1100, y = 9200, openToSky = true}
     },{
-      {name = "Birb", x = 800, y = 8900, imagePath = "src/tilesets/npc1.png", animSpeed = .125, height = 64}
+      {name = "Birb", x = 800, y = 8900, imagePath = "src/tilesets/npc1.png", animSpeed = .125, height = 64, openToSky = true}
     }},
   dung = {{},{}}
 }
@@ -49,7 +50,7 @@ function CharacterBuilder:new(map, key)
   for i, char in ipairs(enemyList) do
     local enemy = EnemyTypes[char.name](char.x, char.y)
     if char.openToSky then
-      SkyShadow:addShadow(enemy, key)
+      SkyShadow:addShadow(enemy, key, enemy.id)
     end
     table.insert(self.NPCs, enemy)
   end
@@ -58,7 +59,7 @@ function CharacterBuilder:new(map, key)
     local npc = Character(char.name, char.x, char.y, char.imagePath, char.animSpeed, false, char.height)
     npc.speed = 100
     if char.openToSky then
-      SkyShadow:addShadow(npc, key)
+      SkyShadow:addShadow(npc, key, npc.id)
     end
     table.insert(self.NPCs, npc)
   end

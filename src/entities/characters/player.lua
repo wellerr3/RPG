@@ -39,8 +39,8 @@ function Player:new(x, y, art, animSpeed)
   self.height = 32
   self.offsetX = 8
   self.offsetY = 16
-  self.shadowOffsetY = 22
-  self.shadowOffsetX = 11
+  self.shadowOffsetX = 8
+  self.shadowOffsetY = 16
   self.name = "player"
   self.damageTimer = 0
   self.invScreen = false
@@ -55,6 +55,8 @@ function Player:new(x, y, art, animSpeed)
   self.text.numlines = 0
   self.projectile = Projectile()
   self.collide = true
+  self.openToSky = true
+  SkyShadow:addShadow(self, CurrMap, self.id)
 end
 
 function Player:update(dt)
@@ -213,10 +215,13 @@ end
 
 
 function Player:teleport(x,y, map)
-  world:update(self, x, y)
   if map ~= CurrMap then
     FullMap:changeMap(map)
+    if map.openToSky and not SkyShadow:checkExists(map, self.id) then
+      SkyShadow:addShadow(self, map, self.id)
+    end
   end
+  world:update(self, x, y)
   self.x, self.y = x, y
 end
 
@@ -277,3 +282,4 @@ function Player:skid(dt)
     self.mode = "default"
   end
 end
+

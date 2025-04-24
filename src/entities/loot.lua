@@ -16,7 +16,6 @@ function Loot:new(type, x, y, imagePath)
     self.img.use = self.img.default:clone()
     self.img.tablet = self.img.default:clone()
   end
-  self.id = CreateID()
   self.name = self.type
   self.drawnAbove = false
   self.itemOffset = {
@@ -29,7 +28,6 @@ function Loot:new(type, x, y, imagePath)
 end
 
 function Loot:update(dt)
-  print (self.mode)
   self.img.use:update(dt)
   -- self.img.default:update(dt)
 end

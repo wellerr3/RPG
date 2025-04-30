@@ -37,7 +37,7 @@ function Bullet:new(x, y, goalX, goalY)
   self.height = 32
   self.speed = 300
   self.type = "cross"
-  self.damage = 50
+  self.damage = 10
   self.name = "bullet"
   -- CreateCollider(self)
   self.offsetX = self.width/2
@@ -54,7 +54,9 @@ end
 
 function Bullet:update(dt)
   self.img[self.mode]:update(dt)
-  self:move(dt)
+  if not self.hit then
+    self:move(dt)
+  end
   self.timer = self.timer - 1
 end
 
@@ -69,27 +71,25 @@ function Bullet:draw()
 end
 
 function Bullet:move(dt)
-
-  if not self.hit then
-    local px, py = CalculateXYFromDistAngle(self.x, self.y, self.speed * dt, self.clickLoc.angle)
-    local actualX, actualY, cols, len = world:move(self, px, py, WaterFilter)
-    self.x, self.y = actualX, actualY
-    if len > 0 then
-      for i, v in ipairs(cols) do
-        if v.other.isHostle then
-          v.other:interact(self)
-        end
+  local px, py = CalculateXYFromDistAngle(self.x, self.y, self.speed * dt, self.clickLoc.angle)
+  local actualX, actualY, cols, len = world:move(self, px, py, BulletFilter)
+  if len > 0 then
+    for i, v in ipairs(cols) do
+      if v.other.isHostle then
+        v.other:interact(self)
       end
-      if world:hasItem(self) then
-        world:remove(self)
-      end
-      self.mode = "explode"
-      self.img.explode:gotoFrame(1)
-      self.img.explode:resume()
-      self.timer = self.explodeTimer
-      self.hit = true
-      self.clickLoc.x, self.clickLoc.y = self.x, self.y
     end
+    if world:hasItem(self) then
+      world:remove(self)
+    end
+    self.mode = "explode"
+    self.img.explode:gotoFrame(1)
+    self.img.explode:resume()
+    self.timer = self.explodeTimer
+    self.hit = true
+    self.clickLoc.x, self.clickLoc.y = self.x, self.y
+  else
+    self.x, self.y = actualX, actualY
   end
 end
 

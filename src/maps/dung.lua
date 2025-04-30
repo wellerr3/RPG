@@ -441,7 +441,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 15,
                 y = 15,
@@ -451,14 +451,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               },
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 15,
                 y = 17,
@@ -468,8 +467,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -497,7 +495,7 @@ return {
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 0,
                 y = 15,
@@ -507,8 +505,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -536,7 +533,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 0,
                 y = 15,
@@ -546,14 +543,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               },
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 16,
                 y = 15,
@@ -563,8 +559,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -592,7 +587,7 @@ return {
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 15,
                 y = 0,
@@ -602,8 +597,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -637,7 +631,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 16,
                 y = 0,
@@ -647,8 +641,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -676,7 +669,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 6,
                 y = 5,
@@ -686,8 +679,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -715,7 +707,7 @@ return {
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 17,
                 y = 16,
@@ -725,14 +717,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               },
               {
                 id = 3,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 15,
                 y = 0,
@@ -742,8 +733,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -771,7 +761,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 0,
                 y = 16,
@@ -781,8 +771,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -810,7 +799,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 16,
                 y = 0,
@@ -820,14 +809,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               },
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = -1,
                 y = 16,
@@ -837,8 +825,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -890,7 +877,7 @@ return {
               {
                 id = 3,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 16,
                 y = 16,
@@ -900,14 +887,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               },
               {
                 id = 4,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 18,
                 y = 16,
@@ -917,8 +903,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -946,7 +931,7 @@ return {
               {
                 id = 3,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 15,
                 y = 16,
@@ -956,14 +941,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               },
               {
                 id = 4,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 0,
                 y = 16,
@@ -973,8 +957,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -1002,7 +985,7 @@ return {
               {
                 id = 3,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 16,
                 y = 0,
@@ -1012,14 +995,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               },
               {
                 id = 4,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 18,
                 y = 15,
@@ -1029,8 +1011,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -1058,7 +1039,7 @@ return {
               {
                 id = 3,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 15,
                 y = 0,
@@ -1068,14 +1049,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               },
               {
                 id = 4,
                 name = "",
-                type = "",
+                type = "pitWater",
                 shape = "rectangle",
                 x = 0,
                 y = 15,
@@ -1085,8 +1065,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = false,
-                  ["pitt"] = false,
-                  ["type"] = "pitWater"
+                  ["pitt"] = false
                 }
               }
             }
@@ -1114,7 +1093,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 17,
                 y = 15,
@@ -1124,14 +1103,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               },
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 15,
                 y = 15,
@@ -1141,8 +1119,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               }
             }
@@ -1170,7 +1147,7 @@ return {
               {
                 id = 4,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 0,
                 y = 15,
@@ -1180,8 +1157,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               }
             }
@@ -1209,7 +1185,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 0,
                 y = 15,
@@ -1219,14 +1195,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               },
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 16,
                 y = 15,
@@ -1236,8 +1211,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               }
             }
@@ -1265,7 +1239,7 @@ return {
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 15,
                 y = 0,
@@ -1275,8 +1249,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               }
             }
@@ -1304,7 +1277,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 16,
                 y = 0,
@@ -1314,8 +1287,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               }
             }
@@ -1343,7 +1315,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 17,
                 y = 16,
@@ -1353,14 +1325,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               },
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 15,
                 y = 0,
@@ -1370,8 +1341,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               }
             }
@@ -1399,7 +1369,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 16,
                 y = 0,
@@ -1409,14 +1379,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               },
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 0,
                 y = 16,
@@ -1426,8 +1395,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               }
             }
@@ -1455,7 +1423,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 0,
                 y = 16,
@@ -1465,8 +1433,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               }
             }
@@ -1494,7 +1461,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 16,
                 y = 16,
@@ -1504,14 +1471,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               },
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 18,
                 y = 16,
@@ -1521,8 +1487,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               }
             }
@@ -1550,7 +1515,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 15,
                 y = 16,
@@ -1560,14 +1525,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               },
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 0,
                 y = 16,
@@ -1577,8 +1541,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               }
             }
@@ -1606,7 +1569,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 16,
                 y = 0,
@@ -1616,14 +1579,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               },
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 18,
                 y = 15,
@@ -1633,8 +1595,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               }
             }
@@ -1662,7 +1623,7 @@ return {
               {
                 id = 1,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 15,
                 y = 0,
@@ -1672,14 +1633,13 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               },
               {
                 id = 2,
                 name = "",
-                type = "",
+                type = "pit",
                 shape = "rectangle",
                 x = 0,
                 y = 15,
@@ -1689,8 +1649,7 @@ return {
                 visible = true,
                 properties = {
                   ["collidable"] = true,
-                  ["pitt"] = true,
-                  ["type"] = "pit"
+                  ["pitt"] = true
                 }
               }
             }
@@ -2499,7 +2458,7 @@ return {
       id = 4,
       name = "Interactions",
       class = "",
-      visible = true,
+      visible = false,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -16866,7 +16825,7 @@ return {
         {
           id = 38,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1568,
           y = 1952,
@@ -16883,7 +16842,7 @@ return {
         {
           id = 40,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1152,
           y = 1952,
@@ -16900,7 +16859,7 @@ return {
         {
           id = 41,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2144,
           y = 2176,
@@ -16917,7 +16876,7 @@ return {
         {
           id = 42,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2144,
           y = 1920,
@@ -16934,7 +16893,7 @@ return {
         {
           id = 43,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1856,
           y = 1984,
@@ -16951,7 +16910,7 @@ return {
         {
           id = 44,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2016,
           y = 1568,
@@ -16968,7 +16927,7 @@ return {
         {
           id = 45,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2112,
           y = 1568,
@@ -16985,7 +16944,7 @@ return {
         {
           id = 46,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 448,
           y = 1952,
@@ -17002,7 +16961,7 @@ return {
         {
           id = 47,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 608,
           y = 1952,
@@ -17019,7 +16978,7 @@ return {
         {
           id = 48,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 576,
           y = 2144,
@@ -17036,7 +16995,7 @@ return {
         {
           id = 49,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 480,
           y = 2048,
@@ -17053,7 +17012,7 @@ return {
         {
           id = 50,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 736,
           y = 2208,
@@ -17070,7 +17029,7 @@ return {
         {
           id = 51,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 448,
           y = 2272,
@@ -17087,7 +17046,7 @@ return {
         {
           id = 52,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 736,
           y = 2080,
@@ -17104,7 +17063,7 @@ return {
         {
           id = 53,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2272,
           y = 1312,
@@ -17121,7 +17080,7 @@ return {
         {
           id = 54,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1856,
           y = 544,
@@ -17138,7 +17097,7 @@ return {
         {
           id = 55,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1856,
           y = 672,
@@ -17155,7 +17114,7 @@ return {
         {
           id = 56,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2272,
           y = 544,
@@ -17172,7 +17131,7 @@ return {
         {
           id = 57,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2272,
           y = 800,
@@ -17189,7 +17148,7 @@ return {
         {
           id = 58,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1248,
           y = 1248,
@@ -17206,7 +17165,7 @@ return {
         {
           id = 59,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1664,
           y = 1248,
@@ -17223,7 +17182,7 @@ return {
         {
           id = 60,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1440,
           y = 1216,
@@ -17240,7 +17199,7 @@ return {
         {
           id = 994,
           name = "seaMonster",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 832,
           y = 1376,
@@ -17257,7 +17216,7 @@ return {
         {
           id = 995,
           name = "seaMonster",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 160,
           y = 1152,
@@ -17274,7 +17233,7 @@ return {
         {
           id = 996,
           name = "seaMonster",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 128,
           y = 1472,
@@ -17291,7 +17250,7 @@ return {
         {
           id = 997,
           name = "seaMonster",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 736,
           y = 1536,
@@ -17308,7 +17267,7 @@ return {
         {
           id = 998,
           name = "seaMonster",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 832,
           y = 1600,
@@ -17325,7 +17284,7 @@ return {
         {
           id = 999,
           name = "seaMonster",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 832,
           y = 1472,
@@ -17342,7 +17301,7 @@ return {
         {
           id = 1000,
           name = "seaMonster",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 448,
           y = 1280,
@@ -17359,7 +17318,7 @@ return {
         {
           id = 1001,
           name = "seaMonster",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 800,
           y = 1280,
@@ -17376,7 +17335,7 @@ return {
         {
           id = 1002,
           name = "seaMonster",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 768,
           y = 1120,
@@ -17393,7 +17352,7 @@ return {
         {
           id = 1003,
           name = "seaMonster",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 128,
           y = 832,
@@ -17410,7 +17369,7 @@ return {
         {
           id = 1004,
           name = "seaMonster",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 192,
           y = 704,
@@ -17427,7 +17386,7 @@ return {
         {
           id = 1005,
           name = "seaMonster",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 192,
           y = 992,

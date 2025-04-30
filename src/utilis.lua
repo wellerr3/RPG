@@ -29,52 +29,48 @@ function CalculateXYFromSpeedandDest(p1, p2, dt)
   return x, y
 end
 
-function GetDir(x, y, newX, newY)
-  local dir = 'still'
-  local difX = x - newX
-  local difY = y - newY
-  if math.abs(difX) > math.abs(difY) then
-    if difX < 0 then
-      dir = "right"
-    else
-      dir = "left"
-    end
-  elseif math.abs(difX) < math.abs(difY) then
-    if difY < 0 then
-      dir = "down"
-    else
-      dir = "up"
-    end
-  end
-  return dir
-end
+-- function GetDir(x, y, newX, newY)
+--   local dir = 'still'
+--   local difX = x - newX
+--   local difY = y - newY
+--   if math.abs(difX) > math.abs(difY) then
+--     if difX < 0 then
+--       dir = "right"
+--     else
+--       dir = "left"
+--     end
+--   elseif math.abs(difX) < math.abs(difY) then
+--     if difY < 0 then
+--       dir = "down"
+--     else
+--       dir = "up"
+--     end
+--   end
+--   return dir
+-- end
 
-function GetDirDia(x, y, newX, newY)
+function GetDir(x, y, newX, newY, name)
   local angle = CalculateAngle({x = x, y = y}, {x = newX, y = newY})
   local dir = 'still'
-  -- angle = angle / math.pi
-  print (angle)
   angle = angle / math.pi
-  print (angle)
-  if angle < 0.3926991 then
+  if angle < -7/8 then
     dir = "right"
-  elseif angle < 1.178 then
-    dir = "upRight"
-  elseif angle < 1.96 then
-    dir = "up"
-  elseif angle < 2.75 then
-    dir = "upLeft"
-  elseif angle < 3.5 then
-    dir = "left"
-  elseif angle < 4.3196899 then
-    dir = "downLeft"
-  elseif angle < 5.1050881 then
-    dir = "down"
-  elseif angle < 5.8904862 then
+  elseif angle < -5/8 then
     dir = "downRight"
+  elseif angle < -3/8 then
+    dir = "down"
+  elseif angle <-1/8 then
+    dir = "downLeft"
+  elseif angle < 1/8 then
+    dir = "left"
+  elseif angle < 3/8 then
+    dir = "upLeft"
+  elseif angle < 5/8 then
+    dir = "up"
+  elseif angle < 7/8 then
+    dir = "upRight"
   else
     dir = "right"
-
   end
 
 
@@ -153,7 +149,7 @@ function Filter2 (other)
     return false
   elseif (other.properties and other.properties.name == "player") or other.name == "player" then
     return false
-  elseif other.type == "enemy" then
+  elseif other.properties  and other.properties.class == "enemy" then
     return false
   else
     return "slide"
@@ -164,12 +160,23 @@ function NoFilter (other)
   return false
 end
 
-function WaterFilter (item, other)
+function BulletFilter (item, other)
   if item == other then
     return false
   end
   if (other.properties and other.properties.type == "cross") or (other.type == "cross") or (other.name == "player")  or (other.type == "noWalk")then
     return false
+  else
+    return "touch"
+  end
+end
+
+function OverWaterFilter (item, other)
+  if item == other then
+    return false
+  end
+  if (other.properties and other.properties.type == "cross") or (other.type == "cross") or (other.type == "noWalk")then
+    return "cross"
   else
     return "slide"
   end

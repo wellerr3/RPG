@@ -18,11 +18,11 @@ NPCsKey = {
   worldMap = {
     {
       {name = "seaMonster", x = 800, y = 9000, openToSky = true}
-      ,{name = "seaMonster", x = 800, y = 9200, openToSky = true}
-      ,{name = "seaMonster", x = 1000, y = 9200, openToSky = true}
-      ,{name = "seaMonster", x = 1100, y = 9200, openToSky = true}
+      -- ,{name = "seaMonster", x = 800, y = 9200, openToSky = true}
+      -- ,{name = "seaMonster", x = 1000, y = 9200, openToSky = true}
+      -- ,{name = "seaMonster", x = 1100, y = 9200, openToSky = true}
     },{
-      {name = "Birb", x = 800, y = 8900, imagePath = "src/tilesets/npc1.png", animSpeed = .125, height = 64, openToSky = true}
+      -- {name = "Birb", x = 800, y = 8900, imagePath = "src/tilesets/npc1.png", animSpeed = .125, height = 64, openToSky = true}
     }},
   dung = {{},{}}
 }
@@ -39,8 +39,10 @@ function CharacterBuilder:new(map, key)
         openToSky = v.properties.openToSky
       end
       local char = {name = v.name, x = v.x, y = v.y, openToSky = openToSky}
-
-      if v.type == "Enemy" then
+      -- for ind,val in pairs(v) do
+      --   print (ind, val)
+      -- end
+      if v.properties  and v.properties.class == "enemy" then
         table.insert(enemyList, char)
       else
         table.insert(npcList, char)

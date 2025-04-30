@@ -37,7 +37,7 @@ function Character:new(name, x, y, imagePath, animSpeed, isHostle, height)
   self.name = name or "Character"
   self.drawnAbove = false
   self.hp = 100
-  self.speed = 200
+  self.speed = 100
   self.wanderDist = 300
   self.sightDist = 300
   self.damageTimer = 0
@@ -106,9 +106,9 @@ function Character:setMoveMode(dt, useFilter)
   local actualX, actualY, cols, len = world:move(self, px, py, filter)
   if actualX ~= self.x or actualY ~= self.y then
     self.isMoving = true
-    self.dir = GetDir(self.x, self.y, actualX, actualY)
+    self.dir = GetDir(self.x, self.y, actualX, actualY, self.name .. self.id)
     if not self.img[self.mode][self.dir] then
-      self.dir = "up"
+      self.dir = AngledDirs[self.dir]
     end
   end
   self.x, self.y = actualX, actualY
@@ -118,7 +118,7 @@ function Character:setMoveMode(dt, useFilter)
       if cols[i].other.name == "player" then
         -- attack
         Player:hurt(self.attackDamage)
-      elseif cols[i].other.type == "enemy" then
+      elseif cols[i].other.properties  and cols[i].other.properties.class == "enemy" then
         self.target.has = false
       end
     end
@@ -127,7 +127,6 @@ end
 
 
 function Character:wander(dt)
-  -- local dirs = {"right","left","up","down"}
   if math.random(20) == 1 then
     self.dir = Dirs[math.random(#Dirs)]
   end

@@ -41,7 +41,7 @@ function GameScene:update(dt)
     Inv:update(dt)
   end
   -- ObjectSet[CurrMap]:update(dt)
-  Hud:update()
+  Hud:update(dt)
 end
 
 function GameScene:draw()

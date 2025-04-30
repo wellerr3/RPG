@@ -11,7 +11,7 @@ function Hud:new()
 end
 
 
-function Hud:update()
+function Hud:update(dt)
   self.hp = Player.hp
   self.strength = Player.strength
 end

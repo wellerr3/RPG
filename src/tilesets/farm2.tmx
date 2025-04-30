@@ -398,196 +398,196 @@
   </object>
  </objectgroup>
  <objectgroup id="8" name="NPCs">
-  <object id="6" name="rat" type="Enemy" x="2240" y="480" width="32" height="32">
+  <object id="6" name="rat" type="enemy" x="2240" y="480" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="7" name="rat" type="Enemy" x="2752" y="448" width="32" height="32">
+  <object id="7" name="rat" type="enemy" x="2752" y="448" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="8" name="rat" type="Enemy" x="2880" y="64" width="32" height="32">
+  <object id="8" name="rat" type="enemy" x="2880" y="64" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="9" name="rat" type="Enemy" x="3360" y="256" width="32" height="32">
+  <object id="9" name="rat" type="enemy" x="3360" y="256" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="10" name="rat" type="Enemy" x="2848" y="2208" width="32" height="32">
+  <object id="10" name="rat" type="enemy" x="2848" y="2208" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="11" name="rat" type="Enemy" x="2656" y="2208" width="32" height="32">
+  <object id="11" name="rat" type="enemy" x="2656" y="2208" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="12" name="rat" type="Enemy" x="2240" y="2144" width="32" height="32">
+  <object id="12" name="rat" type="enemy" x="2240" y="2144" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="13" name="rat" type="Enemy" x="1632" y="2240" width="32" height="32">
+  <object id="13" name="rat" type="enemy" x="1632" y="2240" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="14" name="rat" type="Enemy" x="1248" y="2304" width="32" height="32">
+  <object id="14" name="rat" type="enemy" x="1248" y="2304" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="15" name="rat" type="Enemy" x="1088" y="2272" width="32" height="32">
+  <object id="15" name="rat" type="enemy" x="1088" y="2272" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="16" name="rat" type="Enemy" x="960" y="2144" width="32" height="32">
+  <object id="16" name="rat" type="enemy" x="960" y="2144" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="17" name="rat" type="Enemy" x="960" y="2304" width="32" height="32">
+  <object id="17" name="rat" type="enemy" x="960" y="2304" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="18" name="rat" type="Enemy" x="1600" y="1856" width="32" height="32">
+  <object id="18" name="rat" type="enemy" x="1600" y="1856" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="19" name="rat" type="Enemy" x="1696" y="1536" width="32" height="32">
+  <object id="19" name="rat" type="enemy" x="1696" y="1536" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="20" name="rat" type="Enemy" x="1760" y="1408" width="32" height="32">
+  <object id="20" name="rat" type="enemy" x="1760" y="1408" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="21" name="rat" type="Enemy" x="1664" y="1152" width="32" height="32">
+  <object id="21" name="rat" type="enemy" x="1664" y="1152" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="22" name="rat" type="Enemy" x="2048" y="1120" width="32" height="32">
+  <object id="22" name="rat" type="enemy" x="2048" y="1120" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="23" name="rat" type="Enemy" x="2400" y="992" width="32" height="32">
+  <object id="23" name="rat" type="enemy" x="2400" y="992" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="24" name="rat" type="Enemy" x="2560" y="832" width="32" height="32">
+  <object id="24" name="rat" type="enemy" x="2560" y="832" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="25" name="rat" type="Enemy" x="3168" y="736" width="32" height="32">
+  <object id="25" name="rat" type="enemy" x="3168" y="736" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="26" name="rat" type="Enemy" x="3232" y="1184" width="32" height="32">
+  <object id="26" name="rat" type="enemy" x="3232" y="1184" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="27" name="rat" type="Enemy" x="3520" y="1632" width="32" height="32">
+  <object id="27" name="rat" type="enemy" x="3520" y="1632" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="28" name="rat" type="Enemy" x="3712" y="2016" width="32" height="32">
+  <object id="28" name="rat" type="enemy" x="3712" y="2016" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="29" name="rat" type="Enemy" x="3552" y="1920" width="32" height="32">
+  <object id="29" name="rat" type="enemy" x="3552" y="1920" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="30" name="rat" type="Enemy" x="3232" y="2144" width="32" height="32">
+  <object id="30" name="rat" type="enemy" x="3232" y="2144" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="31" name="rat" type="Enemy" x="3392" y="1824" width="32" height="32">
+  <object id="31" name="rat" type="enemy" x="3392" y="1824" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="32" name="rat" type="Enemy" x="2400" y="1696" width="32" height="32">
+  <object id="32" name="rat" type="enemy" x="2400" y="1696" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>
     <property name="openToSky" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="33" name="rat" type="Enemy" x="2977" y="223" width="32" height="32">
+  <object id="33" name="rat" type="enemy" x="2977" y="223" width="32" height="32">
    <properties>
     <property name="class" value="enemy"/>
     <property name="name" value="rat"/>

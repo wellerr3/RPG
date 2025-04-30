@@ -707,7 +707,7 @@ return {
         {
           id = 6,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2240,
           y = 480,
@@ -724,7 +724,7 @@ return {
         {
           id = 7,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2752,
           y = 448,
@@ -741,7 +741,7 @@ return {
         {
           id = 8,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2880,
           y = 64,
@@ -758,7 +758,7 @@ return {
         {
           id = 9,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 3360,
           y = 256,
@@ -775,7 +775,7 @@ return {
         {
           id = 10,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2848,
           y = 2208,
@@ -792,7 +792,7 @@ return {
         {
           id = 11,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2656,
           y = 2208,
@@ -809,7 +809,7 @@ return {
         {
           id = 12,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2240,
           y = 2144,
@@ -826,7 +826,7 @@ return {
         {
           id = 13,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1632,
           y = 2240,
@@ -843,7 +843,7 @@ return {
         {
           id = 14,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1248,
           y = 2304,
@@ -860,7 +860,7 @@ return {
         {
           id = 15,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1088,
           y = 2272,
@@ -877,7 +877,7 @@ return {
         {
           id = 16,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 960,
           y = 2144,
@@ -894,7 +894,7 @@ return {
         {
           id = 17,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 960,
           y = 2304,
@@ -911,7 +911,7 @@ return {
         {
           id = 18,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1600,
           y = 1856,
@@ -928,7 +928,7 @@ return {
         {
           id = 19,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1696,
           y = 1536,
@@ -945,7 +945,7 @@ return {
         {
           id = 20,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1760,
           y = 1408,
@@ -962,7 +962,7 @@ return {
         {
           id = 21,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 1664,
           y = 1152,
@@ -979,7 +979,7 @@ return {
         {
           id = 22,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2048,
           y = 1120,
@@ -996,7 +996,7 @@ return {
         {
           id = 23,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2400,
           y = 992,
@@ -1013,7 +1013,7 @@ return {
         {
           id = 24,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2560,
           y = 832,
@@ -1030,7 +1030,7 @@ return {
         {
           id = 25,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 3168,
           y = 736,
@@ -1047,7 +1047,7 @@ return {
         {
           id = 26,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 3232,
           y = 1184,
@@ -1064,7 +1064,7 @@ return {
         {
           id = 27,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 3520,
           y = 1632,
@@ -1081,7 +1081,7 @@ return {
         {
           id = 28,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 3712,
           y = 2016,
@@ -1098,7 +1098,7 @@ return {
         {
           id = 29,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 3552,
           y = 1920,
@@ -1115,7 +1115,7 @@ return {
         {
           id = 30,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 3232,
           y = 2144,
@@ -1132,7 +1132,7 @@ return {
         {
           id = 31,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 3392,
           y = 1824,
@@ -1149,7 +1149,7 @@ return {
         {
           id = 32,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2400,
           y = 1696,
@@ -1166,7 +1166,7 @@ return {
         {
           id = 33,
           name = "rat",
-          type = "Enemy",
+          type = "enemy",
           shape = "rectangle",
           x = 2977,
           y = 223,

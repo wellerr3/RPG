@@ -69,7 +69,7 @@ function IndMap:findOrder()
 end
 
 function IndMap:pit(tool, col)
-  if col.properties.type == "pit" then
+  if col.other.properties  and col.other.properties.class == "pit" then
     col.type = "cross"
     -- break animation
   end

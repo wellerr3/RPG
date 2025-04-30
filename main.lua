@@ -17,6 +17,7 @@ function love.load()
 end
 
 function love.update(dt)
+  Sounds:update(dt)
   Scene[CurrScene]:update(dt)
   if Debug then
     DebugMenu:update(dt)

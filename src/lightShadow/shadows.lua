@@ -71,7 +71,7 @@ function Shadows:drawShadow(e)
 	-- if e.mode == "dead" then
 	-- 	e.img.dead:gotoFrame(1)
 	-- else
-		e.img[e.mode][e.dir]:draw(e.spriteSheet, offsetX, offsetY, 0, e.scaleX, 1, e.width/2, e.height, e.shearing*e.scaleX,0)
+	e.img[e.mode][e.dir]:draw(e.spriteSheet, offsetX, offsetY, 0, e.scaleX, 1, e.width/2, e.height, e.shearing*e.scaleX,0)
 	-- end
   -- love.graphics.draw(e.img.default[e.dir], e.x, e.y)
 end

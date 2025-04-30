@@ -14,13 +14,13 @@ function SeaMonster:new(x, y)
   SeaMonster.super.new(self,"Sea Monster", x, y, "src/tilesets/SeaMonster.png", .25)
   self.img.moving = {}
   self.img.loading = {}
-  self.img.moving.down = Anim8.newAnimation(self.grid('7-10', 1), .25)
-  self.img.moving.right = Anim8.newAnimation(self.grid('7-10', 2), .25)
+  self.img.moving.down = Anim8.newAnimation(self.grid('1-10', 1), .25)
+  self.img.moving.right = Anim8.newAnimation(self.grid('1-10', 2), .25)
   self.img.moving.left =  self.img.moving.right:clone():flipH()
-  self.img.moving.up = Anim8.newAnimation(self.grid('7-10', 3), .25)
-  self.img.moving.downLeft = Anim8.newAnimation(self.grid('7-10', 4), .25)
+  self.img.moving.up = Anim8.newAnimation(self.grid('1-10', 3), .25)
+  self.img.moving.downLeft = Anim8.newAnimation(self.grid('1-10', 4), .25)
   self.img.moving.downRight =  self.img.moving.downLeft:clone():flipH()
-  self.img.moving.upRight = Anim8.newAnimation(self.grid('7-10', 5), .25)
+  self.img.moving.upRight = Anim8.newAnimation(self.grid('1-10', 5), .25)
   self.img.moving.upLeft =  self.img.moving.upRight:clone():flipH()
   self.img.loading.down = Anim8.newAnimation(self.grid('1-6', 1), .25, "pauseAtEnd")
   self.img.loading.right = Anim8.newAnimation(self.grid('1-6', 2), .25, "pauseAtEnd")
@@ -30,12 +30,13 @@ function SeaMonster:new(x, y)
   self.img.loading.downRight =  self.img.loading.downLeft:clone():flipH()
   self.img.loading.upRight = Anim8.newAnimation(self.grid('1-6', 5), .25, "pauseAtEnd")
   self.img.loading.upLeft =  self.img.loading.upRight:clone():flipH()
+  self.mode = "moving"
 
 end
 
 function SeaMonster:update(dt)
   self.img[self.mode][self.dir]:update(dt)
-  self:setMoveMode(dt, WaterFilter)
+  self:setMoveMode(dt, OverWaterFilter)
   if self.damageTimer > 0 then
     self.damageTimer = self.damageTimer - 1
   end

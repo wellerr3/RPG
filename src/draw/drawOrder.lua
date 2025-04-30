@@ -5,7 +5,6 @@ function  GameDrawOrder()
   Cam:attach()
 
     -- BEFORE PLAYER
-    -- love.graphics.setShader(shader)
     for i, layer in pairs(GameMap.below) do
       GameMap:drawLayer(layer)
     end
@@ -40,9 +39,6 @@ function  GameDrawOrder()
   if Player.invScreen then
     Inv:draw()
   end
-
-
-
 end
 
 function drawRects()
@@ -57,6 +53,66 @@ function drawRects()
     end
 end
 
+
+
+-- function TestShader()
+--   overlay_image = love.graphics.newImage("src/tilesets/test.png")
+--   tile_image = love.graphics.newImage("src/tilesets/test2.png") -- Assuming you have a tile texture
+
+--   local overlay_width = overlay_image:getWidth()
+--   shader1 = love.graphics.newShader[[uniform sampler2D overlay_tex;
+--   uniform float scale; // calculated by 1/texture size e.g. 1/144
+
+--   varying vec2 world_position;
+
+--   vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) {
+--     // only apply overlay_tex on the fully red parts of the original tiles
+--     float mix_amount = 0.0;
+--     if (color.r == 1.0 && color.g == 0.0 && color.b == 0.0) {
+--       mix_amount = 1.0;
+--     }
+
+--     // sample the overlay_tex using worldPos
+--     vec4 overlay_color = texture2D(overlay_tex, world_position * scale);
+
+--     // combine original color and overlay color together
+--     return mix(color, overlay_color, mix_amount);
+--   }]]
+--   shader = love.graphics.newShader([[
+--     uniform sampler2D overlay_tex;
+--     uniform float scale; // calculated by 1/texture size e.g. 1/144
+
+--     varying vec2 world_position;
+
+--     vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) {
+--       // only apply overlay_tex on the fully red parts of the original tiles
+--       float mix_amount = floor(color.r);
+
+--       // sample the overlay_tex using worldPos
+--       vec4 overlay_color = texture2D(overlay_tex, world_position * scale);
+
+--       // combine original color and overlay color together
+--       return mix(color, overlay_color, mix_amount);
+--     }
+--   ]], [[
+--     attribute vec4 a_position;
+--     attribute vec2 a_texCoord;
+
+--     uniform mat4 model;
+--     uniform mat4 projection;
+
+--     varying vec2 world_position;
+
+--     vec4 position(mat4 transform_matrix, vec4 vertexPosition) {
+--       world_position = (model * vec4(vertexPosition.xy, 0.0, 1.0)).xy;
+--       return transform_matrix * vertexPosition;
+--     }
+--   ]])
+
+--   shader:send("overlay_tex", overlay_image)
+--   shader:send("scale", .001)
+  
+-- end
 
 -- love.graphics.stencil(function()
 --   love.graphics.draw(sprite.image, sprite.x, sprite.y)
@@ -193,4 +249,12 @@ end
 
 
 
+-- end
+
+
+
+-- function love.draw()
+--   love.graphics.setShader(shader)
+--   love.graphics.draw(tile_image, 100, 100) -- Example drawing of your tiles
+--   love.graphics.setShader() -- Reset to the default shader
 -- end

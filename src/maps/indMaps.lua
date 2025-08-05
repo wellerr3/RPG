@@ -93,7 +93,8 @@ function FarmMap:new(map)
   self.edgeT = 0
   self.edgeB = 75
   -- (item, x1,y1,x2,y2,loc)
-  self.objects:createDuplicateObjs('corn', self.edgeR,self.edgeT,self.edgeL,self.edgeB,"above")
+  self.dir = "below"
+  self.objects:createDuplicateObjs('corn', self.edgeR,self.edgeT,self.edgeL,self.edgeB,self.dir)
 end
 
 function FarmMap:update(dt)
@@ -140,6 +141,7 @@ function FarmMap:checkSight()
   local px, py = Player:getCenter()
   local dist = 3 * TileSize
   local angle = math.pi /(segment/2)
+  Hit["player"] = {}
   while (segment > 0) do
     -- print ("Segment ", segment)
       -- local items, len = world:queryRect((Player.tileX * TileSize) + TileSize, (Player.tileY * TileSize) + TileSize, searchSize * TileSize, searchSize * TileSize)
@@ -149,11 +151,11 @@ function FarmMap:checkSight()
     local itemInfo, len2 = world:querySegmentWithCoords(px,py, segX, segY, Filter2)
     if len2 > 0 then
       hitWall = true
-      Hit[segment] = itemInfo[1]
+      Hit["player"][segment] = itemInfo[1]
     else
-      Hit[segment] = {x1 = segX, y1 = segY, x2 = segX, y2 = segY}
+      Hit["player"][segment] = {x1 = segX, y1 = segY, x2 = segX, y2 = segY}
     end
-    local items, len =  world:querySegment(px, py, Hit[segment].x2, Hit[segment].y2, cornFilter)
+    local items, len =  world:querySegment(px, py, Hit["player"][segment].x2, Hit["player"][segment].y2, cornFilter)
     for i, item in ipairs(items) do
       if i == #items and item.element == "corn" then
         self:checkCornAround(item)
@@ -175,7 +177,7 @@ end
 function FarmMap:checkCornAround(item)
   local shape = ""
   local currX, currY = math.floor(item.x/TileSize),math.floor(item.y/TileSize)
-  local corn = self.objects.objSets.above.corn
+  local corn = self.objects.objSets[self.dir].corn
   if corn[currX] and corn[currX][currY - 1] and corn[currX][currY - 1].drawn == true then
     shape = shape .. "1"
   else

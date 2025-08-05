@@ -1,6 +1,7 @@
 Snake = Enemy:extend()
 Rat = Enemy:extend()
 SeaMonster = Enemy:extend()
+BossSeaMonster = Enemy:extend()
 
 function Snake:new(x, y)
   Snake.super.new(self,"Snake", x, y, "src/tilesets/snek.png", .25)
@@ -63,3 +64,47 @@ end
 --   return px, py
 -- end
 
+
+function BossSeaMonster:new(x, y)
+  BossSeaMonster.super.new(self,"Sea Monster", x, y, "src/tilesets/beegSeaMonsterBase.png", .25, 64, 64)
+  self.spriteSheet = love.graphics.newImage("src/tilesets/beegSeaMonsterBase.png")
+  self.grid = Anim8.newGrid(64, 64, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
+
+  self.spriteSheetBoop = love.graphics.newImage("src/tilesets/beegSeaMonsterNose.png")
+  self.drawnAbove = true
+  self.img.boop = {}
+  self.gridBoop = Anim8.newGrid(64, 64, self.spriteSheetBoop:getWidth(), self.spriteSheetBoop:getHeight(), 0,0,0)
+  local numFramesWideBoop = self.spriteSheetBoop:getWidth() / 64
+  local numFramesWide = self.spriteSheet:getWidth() / 64
+
+  self.img.default.still = Anim8.newAnimation(self.grid('1-' .. numFramesWide, 1), .25)
+  self.img.default.up = Anim8.newAnimation(self.grid('1-' .. numFramesWide, 1), .25)
+  self.img.boop.still = Anim8.newAnimation(self.gridBoop('1-' .. numFramesWideBoop, 1), .25)
+  self.img.boop.up = Anim8.newAnimation(self.gridBoop('1-' .. numFramesWideBoop, 1), .25)
+  self.boopOffset = 0
+  self.dir = "up"
+end
+
+function BossSeaMonster:update(dt)
+  -- print ("self.dir", self.dir)
+  self.img.default[self.dir]:update(dt)
+  self.img.boop[self.dir]:update(dt)
+  if self.damageTimer > 0 then
+    self.damageTimer = self.damageTimer - 1
+  end
+end
+
+function BossSeaMonster:draw()
+  -- print ("drawing Boss", self.x, self.y)
+  if self.damageTimer and self.damageTimer > 0 then
+    love.graphics.setColor(1,0,0,.5)
+    love.graphics.rectangle("fill", self.x - self.offsetX, self.y - self.offsetY, self.width, self.height)
+    love.graphics.setColor(1,1,1,1)
+  end
+  self.img.default[self.dir]:draw(self.spriteSheet, self.x, self.y, nil, nil, nil, self.offsetX, self.offsetY)
+  self.img.boop[self.dir]:draw(self.spriteSheetBoop, self.x + self.boopOffset, self.y, nil, nil, nil, self.offsetX, self.offsetY)
+  if self.hasAudio then
+    self.audio:play()
+  end
+  
+end

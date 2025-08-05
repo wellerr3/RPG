@@ -247,11 +247,113 @@ function Sconce:fire(tool)
   if tool and tool.element == "fire" then
     Player:addText("FIRE")
     self.mode = "lit"
+    -- self:getShadows()
   else
     Player:addText("i need a torch")
   end
 end
 
+function Sconce:getShadows()
+  -- look around in circle like corn 
+  self:checkSight()
+  -- SkyShadow:addShadow(newItem, map, item.id, self)
+end
+
+function Sconce:checkSight()
+  -- local function sortByX(v1, v2)
+  --   return v1.x < v2.x
+  -- end
+  -- local function sortByY(v1, v2)
+  --   return v1.y < v2.y
+  -- end
+  local function shadowFilter(other)
+    if other.type == "cross" or other.type == "noWalk" then
+      return false
+    else
+      return 'slide'
+    end
+  end
+
+  local function preFilter (other)
+    if (other.properties and other.properties.type == "cross") or other.type == "cross" or other.type == "noWalk" then
+      return false
+    elseif other.id == self.id then
+      return false
+    else
+      return "slide"
+    end
+  end
+
+  local screenW = love.graphics.getWidth() / ScaleFactor
+  local screenH = love.graphics.getHeight() / ScaleFactor
+
+  local segment = 30
+  local px, py = self:getCenter()
+  local dist = 10 * TileSize
+  local angle = math.pi /(segment/2)
+  Hit[self.id] = {}
+  while (segment > 0) do
+    local hitWall = false
+    local a = angle * segment
+    local segX, segY = CalculateXYFromDistAngle(px,py, dist, a)
+    local itemInfo, len2 = world:querySegmentWithCoords(px,py, segX, segY, preFilter)
+
+    if len2 > 0 then
+      hitWall = true
+      Hit[self.id][segment] = itemInfo[1]
+    else
+      Hit[self.id][segment] = {x1 = segX, y1 = segY, x2 = segX, y2 = segY}
+    end
+    local items, len =  world:querySegment(px, py, Hit[self.id][segment].x2, Hit[self.id][segment].y2, shadowFilter)
+    for i, item in ipairs(items) do
+      if i == #items then
+        -- self:checkShadowAround(item)
+        if hitWall then
+          -- item.drawn = true
+          print ("in if hitwall")
+          SkyShadow:addShadow(item, CurrMap, item.id, self)
+        end
+      else
+        if item.type == "cross" and item.seeThrough then
+
+        end
+      end
+
+    end
+    segment = segment - 1
+  end
+end
+
+
+function Sconce:checkShadowAround(item)
+  -- local shape = ""
+  -- local currX, currY = math.floor(item.x/TileSize),math.floor(item.y/TileSize)
+  -- local corn = self.objects.objSets.above.corn
+  -- if corn[currX] and corn[currX][currY - 1] and corn[currX][currY - 1].drawn == true then
+  --   shape = shape .. "1"
+  -- else
+  --   shape = shape .. "0"
+  -- end
+  -- if corn[currX + 1] and corn[currX + 1][currY] and corn[currX + 1][currY].drawn then
+  --   shape = shape .. "1"
+  -- else
+  --   shape = shape .. "0"
+  -- end
+  -- if corn[currX] and corn[currX][currY + 1] and corn[currX][currY + 1].drawn then
+  --   shape = shape .. "1"
+  -- else
+  --   shape = shape .. "0"
+  -- end
+  -- if corn[currX - 1] and corn[currX - 1][currY] and corn[currX - 1][currY].drawn then
+  --   shape = shape .. "1"
+  -- else
+  --   shape = shape .. "0"
+  -- end
+  -- if shape == "1111" then
+  --   shape = "default"
+  -- end
+  -- item.mode = shape
+end
 
 
 function Button:new(obj, map)

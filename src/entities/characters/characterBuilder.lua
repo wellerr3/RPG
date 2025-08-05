@@ -5,6 +5,7 @@ EnemyTypes = {
   snake = Snake,
   rat = Rat,
   seaMonster = SeaMonster,
+  bossSeaMonster = BossSeaMonster,
 }
 
 NPCsKey = {
@@ -17,14 +18,16 @@ NPCsKey = {
     },{}},
   worldMap = {
     {
-      {name = "seaMonster", x = 800, y = 9000, openToSky = true}
-      -- ,{name = "seaMonster", x = 800, y = 9200, openToSky = true}
-      -- ,{name = "seaMonster", x = 1000, y = 9200, openToSky = true}
-      -- ,{name = "seaMonster", x = 1100, y = 9200, openToSky = true}
+      {name = "rat", x = 800, y = 9000, openToSky = true}
+      ,{name = "snake", x = 800, y = 9200, openToSky = true}
+      ,{name = "rat", x = 1000, y = 9200, openToSky = true}
+      ,{name = "rat", x = 1100, y = 9200, openToSky = true}
     },{
       -- {name = "Birb", x = 800, y = 8900, imagePath = "src/tilesets/npc1.png", animSpeed = .125, height = 64, openToSky = true}
     }},
-  dung = {{},{}}
+  dung = {{
+    {name = "bossSeaMonster", x = 42 * TileSize, y = 43 * TileSize, openToSky = false}
+  },{}}
 }
 
 

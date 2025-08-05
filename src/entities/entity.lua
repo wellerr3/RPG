@@ -28,3 +28,9 @@ function Entity:new(x, y, imagePath, width, height)
   self.target = {has = false}
   self.id = CreateID()
 end
+
+function Entity:getCenter()
+  local x = self.x + (self.height/2)
+  local y = self.y + (self.width/2)
+  return x,y
+end

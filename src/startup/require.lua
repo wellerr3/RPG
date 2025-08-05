@@ -37,6 +37,7 @@ function RequireAll()
   require "src/entities/objects"
   require "src/draw/drawOrder"
   require "src/lightShadow/shadows"
+  require "src/lightShadow/fireShadow"
   require "src/maps/indMaps"
   require "src/maps/createMaps"
   require "src/draw/vertexShader"

@@ -2,7 +2,7 @@ Sounds = Entity:extend()
 
 function Sounds:new()
   -- self.music = love.audio.newSource("audio/Between The Spaces - The Soundlings.mp3", "stream")
-  self.music = love.audio.newSource("audio/Song2.wav", "stream")
+  self.music = love.audio.newSource("audio/Song4.wav", "stream")
 
   self.music:setLooping(true)
   self.volume = 5

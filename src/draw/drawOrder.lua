@@ -29,7 +29,9 @@ function  GameDrawOrder()
     end
     if OVariable.ViewDots then
       for i,v in pairs(Hit) do
-        love.graphics.circle("fill", v.x1, v.y1, 5)
+        for ind, val in ipairs(v) do
+          love.graphics.circle("fill", val.x1, val.y1, 5)
+        end
       end
     end
 

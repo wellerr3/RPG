@@ -1,15 +1,16 @@
 Character = Entity:extend()
 
-function Character:new(name, x, y, imagePath, animSpeed, isHostle, height)
+function Character:new(name, x, y, imagePath, animSpeed, isHostle, height, width)
   Character.super.new(self, x, y, imagePath)
   self.height = height or self.height
+  self.width = width or self.width
   animSpeed = animSpeed or .25
   self.dir = "down"
   self.img = {}
   self.img.default = {}
-  self.grid = Anim8.newGrid(32, self.height, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
+  self.grid = Anim8.newGrid(self.width, self.height, self.spriteSheet:getWidth(), self.spriteSheet:getHeight(), 0,0,0)
   self.img.default.still = Anim8.newAnimation(self.grid(1, 1), 1)
-  local numFramesWide = self.spriteSheet:getWidth() / 32
+  local numFramesWide = self.spriteSheet:getWidth() / self.width
   local numFramesHigh = self.spriteSheet:getHeight() / self.height
   self.img.default.down = Anim8.newAnimation(self.grid('1-' .. numFramesWide, 1), animSpeed)
   if numFramesHigh > 1 then
@@ -70,6 +71,7 @@ function Character:draw()
       self.audio:stop()
     end
   else
+    print(self.mode, self.dir)
     self.img[self.mode][self.dir]:draw(self.spriteSheet, self.x, self.y, nil, nil, nil, self.offsetX, self.offsetY)
     if self.hasAudio then
       self.audio:play()

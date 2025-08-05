@@ -32,6 +32,10 @@ function Player:new(x, y, art, animSpeed)
   self.img.slide.down = self.img.slide.up:clone()
   self.img.slide.left = self.img.slide.up:clone()
   self.img.slide.right = self.img.slide.up:clone()
+  self.img.slide.upLeft = self.img.slide.up:clone()
+  self.img.slide.downLeft = self.img.slide.up:clone()
+  self.img.slide.upRight = self.img.slide.up:clone()
+  self.img.slide.downRight = self.img.slide.up:clone()
   self.inventory = {}
   self.audio = love.audio.newSource("audio/Fist Into Glove.mp3", "stream")
   self.audio:setVolume(self.volume * OVariable.MasterVolume)
@@ -230,13 +234,6 @@ function Player:addText(text)
   self.text.numlines = self.text.numlines + 1
   local offset = 16
   self.text.textObj:add(text, 0, offset + (16 * self.text.numlines))
-end
-
-function Player:getCenter()
-  local x = self.x + (self.height/2)
-  local y = self.y + (self.width/2)
-
-  return x,y
 end
 
 

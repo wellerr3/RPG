@@ -71,7 +71,7 @@ function Character:draw()
       self.audio:stop()
     end
   else
-    print(self.mode, self.dir)
+    -- print(self.mode, self.dir)
     self.img[self.mode][self.dir]:draw(self.spriteSheet, self.x, self.y, nil, nil, nil, self.offsetX, self.offsetY)
     if self.hasAudio then
       self.audio:play()

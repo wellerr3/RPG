@@ -145,11 +145,16 @@ function FilterTest (item, other)
 end
 
 function Filter2 (other)
+  -- if other.properties then
+  --   for i,v in pairs(other.properties) do
+  --     print(i,v)
+  --   end
+  -- end
   if (other.properties and other.properties.type == "cross") or other.type == "cross" then
     return false
   elseif (other.properties and other.properties.name == "player") or other.name == "player" then
     return false
-  elseif other.properties  and other.properties.class == "enemy" then
+  elseif (other.properties  and other.properties.class == "enemy") or other.class == "enemy" then
     return false
   else
     return "slide"

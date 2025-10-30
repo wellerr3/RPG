@@ -38,8 +38,8 @@ function  GameDrawOrder()
   Cam:detach()
   Hud:draw()
   -- AFTER CAM
-  if Player.invScreen then
-    Inv:draw()
+  if Player.inScreen then
+    InScreen[CurrInScreen]:draw()
   end
 end
 

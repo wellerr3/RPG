@@ -88,9 +88,10 @@ function PauseMenu:enter(mode)
     self.menuScreen = "main"
   elseif mode == "volume up" then
     OVariable.MasterVolume = OVariable.MasterVolume + .01
-    print("test", OVariable.MasterVolume)
+    print("Volume: ", OVariable.MasterVolume)
   elseif mode == "volume down" then
     OVariable.MasterVolume = OVariable.MasterVolume - .01
+    print("Volume: ", OVariable.MasterVolume)
   end
 end
 function PauseMenu:mousepressed(x, y, button, istouch)

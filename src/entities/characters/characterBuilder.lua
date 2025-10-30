@@ -23,7 +23,7 @@ NPCsKey = {
       ,{name = "rat", x = 1000, y = 9200, openToSky = true}
       ,{name = "rat", x = 1100, y = 9200, openToSky = true}
     },{
-      -- {name = "Birb", x = 800, y = 8900, imagePath = "src/tilesets/npc1.png", animSpeed = .125, height = 64, openToSky = true}
+      {name = "Birb", x = 800, y = 8900, imagePath = "src/tilesets/npc1.png", animSpeed = .125, height = 64, openToSky = true, portrait = "src/tilesets/portrat1.png"}
     }},
   dung = {{
     {name = "bossSeaMonster", x = 42 * TileSize, y = 43 * TileSize, openToSky = false}
@@ -45,7 +45,7 @@ function CharacterBuilder:new(map, key)
       -- for ind,val in pairs(v) do
       --   print (ind, val)
       -- end
-      if v.properties  and v.properties.class == "enemy" then
+      if v.properties and v.properties.class == "enemy" then
         table.insert(enemyList, char)
       else
         table.insert(npcList, char)
@@ -61,7 +61,8 @@ function CharacterBuilder:new(map, key)
   end
   for i, char in ipairs(npcList) do
     -- local npc = Character("Birb", 800,8900, "src/tilesets/npc1.png", .125, false, 64)
-    local npc = Character(char.name, char.x, char.y, char.imagePath, char.animSpeed, false, char.height)
+    -- name, x, y, art, animSpeed, height, width, portrait
+    local npc = NPC(char.name, char.x, char.y, char.imagePath, char.animSpeed, char.height, 32, char.portrait)
     npc.speed = 100
     if char.openToSky then
       SkyShadow:addShadow(npc, key, npc.id)

@@ -47,7 +47,7 @@ function Player:new(x, y, art, animSpeed)
   self.shadowOffsetY = 16
   self.name = "player"
   self.damageTimer = 0
-  self.invScreen = false
+  self.inScreen = false
   self.equiped = nil
   self.runMultiplier = 2
   self.tileX = math.floor(self.x / TileSize)
@@ -210,7 +210,8 @@ end
 
 function Player:keypressed(key)
   if key == 'm' then
-    self.invScreen = not self.invScreen
+    self.inScreen = not self.inScreen
+    CurrInScreen = "Inv"
   end
   if key == 'space' then
     self:queryFront()

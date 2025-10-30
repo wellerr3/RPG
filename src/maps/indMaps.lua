@@ -46,7 +46,7 @@ function IndMap:findOrder()
       end
        return layer1.properties.order < layer2.properties.order
     end
-}
+  }
   for i, layer in ipairs(self.map.layers) do
     local properties = self.map:getLayerProperties(i)
     if properties.shadow then
@@ -93,7 +93,7 @@ function FarmMap:new(map)
   self.edgeT = 0
   self.edgeB = 75
   -- (item, x1,y1,x2,y2,loc)
-  self.dir = "below"
+  self.dir = "above"
   self.objects:createDuplicateObjs('corn', self.edgeR,self.edgeT,self.edgeL,self.edgeB,self.dir)
 end
 
@@ -137,7 +137,7 @@ function FarmMap:checkSight()
   if (Player.tileX + screenTileW/2 < self.edgeR ) or (Player.tileX + screenTileW/2 > self.edgeL) or (Player.tileY  + screenTileH/2 < self.edgeT) or (Player.tileY  + screenTileH/2 > self.edgeB)then
     return
   end
-  local segment = 12
+  local segment = 30
   local px, py = Player:getCenter()
   local dist = 3 * TileSize
   local angle = math.pi /(segment/2)

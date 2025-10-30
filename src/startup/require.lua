@@ -11,6 +11,7 @@ function RequireAll()
   AllParticleData = require("src/entities/projectiles/particle")
   lovecc = require 'assets/lovecc'
   lovecc.addPalette('allcolors',true)
+  Anima = require 'assets/Anima'
 
   require "assets/TEsound"
 
@@ -24,8 +25,10 @@ function RequireAll()
   require "src.entities.characters.character"
   require "src.entities.characters.player"
   require "src.entities.characters.enemy"
+  require "src.entities.characters.npc"
   require "src/ui/hud"
   require "src/ui/inventoryMenu"
+  require "src/ui/dialogMenu"
   require "src/ui/debugMenu"
   require "src/sounds"
   require "src/camUpdate"

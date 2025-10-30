@@ -11,12 +11,12 @@ function InventoryMenu:new()
   self.textObj = love.graphics.newText(self.font)
   self.textObj:add( {{0,0,0}, "Inventory: "}, 50, 50 )
   self.selected = 1
+  print ("making menu")
 end
 
 
 function InventoryMenu:update()
   self:MenuUpdate()
-
 end
 
 
@@ -66,7 +66,7 @@ end
 
 function InventoryMenu:keypressed(key)
   if key == "m" then
-    Player.invScreen = not Player.invScreen
+    Player.inScreen = not Player.inScreen
   end
   if key == "d" or key == "right" then
     self.selected = ((self.selected) % #Player.inventory) + 1

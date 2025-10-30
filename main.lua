@@ -13,7 +13,6 @@ function love.load()
   require("src/startup/gameStart")
   GameStart()
   DebugMenu = DebugMenu()
-  Hit = {}
 end
 
 function love.update(dt)
@@ -42,6 +41,10 @@ function love.keypressed(key)
   end
   if key == "b" then
     Debug = not Debug
+  end
+  if key == "p" then
+    Player.inScreen = not Player.inScreen
+    CurrInScreen = "Dialog"
   end
 end
 

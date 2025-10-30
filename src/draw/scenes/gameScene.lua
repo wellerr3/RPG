@@ -10,7 +10,7 @@ function GameScene:new(dt)
   SkyShadow = Shadows()
   -- CurrMap = "dung"
   -- Player = Player(43 * 32,75 * 32, "src/tilesets/tallCreg.png", .2)
-  Player = Player(32 * TileSize, 283 * TileSize, "src/tilesets/shortCreg.png", .2)  
+  Player = Player(32 * TileSize, 283 * TileSize, "src/tilesets/shortCreg.png", .2)
 
   Hud = Hud()
   -- ObjectSet = {}
@@ -20,13 +20,20 @@ function GameScene:new(dt)
   -- NPCs = CharacterBuilder()
 
   -- SkyShadow:addShadowsToGroup(NPCs.NPCs)
-
   Inv = InventoryMenu()
+  Dialog = DialogMenu()
+  InScreen = {
+    Inv = Inv,
+    Dialog = Dialog
+  }
+
+  CurrInScreen = "Inv"
+
   Cam:zoom(ScaleFactor)
 end
 
 function GameScene:update(dt)
-  if not Player.invScreen then
+  if not Player.inScreen then
     if OVariable.GlobalTime > 300 then
       -- restart day
       OVariable.GlobalTime = 0
@@ -38,7 +45,7 @@ function GameScene:update(dt)
     SkyShadow:update(dt)
     TEsound.cleanup()
   else
-    Inv:update(dt)
+    InScreen[CurrInScreen]:update(dt)
   end
   -- ObjectSet[CurrMap]:update(dt)
   Hud:update(dt)
@@ -49,25 +56,25 @@ function GameScene:draw()
 end
 
 function GameScene:keypressed(key)
-  if not Player.invScreen then
+  if not Player.inScreen then
     Player:keypressed(key)
   else
-    Inv:keypressed(key)
+    InScreen[CurrInScreen]:keypressed(key)
   end
 end
 
 
 function GameScene:mousepressed(x, y, button, istouch)
-  if button == 1 and not Player.invScreen then
+  if button == 1 and not Player.inScreen then
     local worldX, worldY = Cam:mousePosition()
     Player.projectile:addBullet(worldX, worldY)
-  elseif Player.invScreen then
-    Inv:mousepressed(x,y,button)
+  elseif Player.inScreen then
+    InScreen[CurrInScreen]:mousepressed(x,y,button)
   elseif button == "wu" or button == "wd" then
-    Inv:mousewheel(x,y,button)
+    InScreen[CurrInScreen]:mousewheel(x,y,button)
   end
 end
 
 function GameScene:wheelmoved(x, y)
-  Inv:wheelmoved(x,y)
+  InScreen[CurrInScreen]:wheelmoved(x,y)
 end
